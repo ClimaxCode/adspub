@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    `maven-publish`
+    signing
 }
 
 android {
@@ -40,4 +42,51 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+
+afterEvaluate {
+    configure<PublishingExtension>{
+        publications {
+            create<MavenPublication>("mavenJava") {
+                // Publish the Android library artifact
+                from(components["release"])
+
+
+                // Configure POM metadata (optional)
+                pom {
+                    name.set("Ads Library")
+                    description.set("A simple ads library for Android applications.")
+                    url.set("https://github.com/ClimaxCode/adspub")
+
+                    licenses {
+                        license {
+                            name.set("The Apache License, Version 2.0")
+                            url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                        }
+                    }
+
+//                developers {
+//                    developer {
+//                        id.set("ClimaxCode")
+//                        name.set("Climax Code")
+//                        email.set("youremail@example.com")
+//                    }
+//                }
+
+                    scm {
+                        connection.set("scm:git:git://github.com/ClimaxCode/adspub.git")
+                        developerConnection.set("scm:git:ssh://github.com/ClimaxCode/adspub.git")
+                        url.set("https://github.com/ClimaxCode/adspub")
+                    }
+                }
+            }
+        }
+
+        repositories {
+            maven {
+                url = uri("https://jitpack.io") // Publish to JitPack
+            }
+        }
+    }
+
 }
