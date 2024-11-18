@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "com.github.ClimaxCode"
-version = "1.0.6"
+version = "1.0.0"
 
 android {
     namespace = "com.example.ads"
@@ -54,7 +54,6 @@ dependencies {
     implementation(libs.ssp.android)
     implementation(libs.shimmer)
 
-    implementation("com.github.ClimaxCode:ads:1.0.6") // Replace with your actual dependency
 }
 configure<PublishingExtension>{
     publications {
