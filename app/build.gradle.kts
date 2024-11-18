@@ -66,7 +66,7 @@ configure<PublishingExtension>{
             pom {
                 name.set("Ads Library")
                 description.set("A simple ads library for Android applications.")
-                url.set("https://github.com/ClimaxCode/ads")
+                url.set("https://github.com/ClimaxCode/adspub")
 
                 licenses {
                     license {
@@ -84,9 +84,9 @@ configure<PublishingExtension>{
 //                }
 
                 scm {
-                    connection.set("scm:git:git://github.com/ClimaxCode/ads.git")
-                    developerConnection.set("scm:git:ssh://github.com/ClimaxCode/ads.git")
-                    url.set("https://github.com/ClimaxCode/ads")
+                    connection.set("scm:git:git://github.com/ClimaxCode/adspub.git")
+                    developerConnection.set("scm:git:ssh://github.com/ClimaxCode/adspub.git")
+                    url.set("https://github.com/ClimaxCode/adspub")
                 }
             }
         }
