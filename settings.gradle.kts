@@ -26,3 +26,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Ads"
 include(":app")
+include(":adspub")
