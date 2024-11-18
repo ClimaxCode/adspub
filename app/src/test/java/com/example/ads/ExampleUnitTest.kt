@@ -1,4 +1,4 @@
-package com.example.ads
+package com.climax.ads
 
 import org.junit.Test
 

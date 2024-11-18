@@ -9,11 +9,11 @@ group = "com.github.ClimaxCode"
 version = "1.0.0"
 
 android {
-    namespace = "com.example.ads"
+    namespace = "com.climax.ads"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.ads"
+        applicationId = "com.climax.ads"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
