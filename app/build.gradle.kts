@@ -7,11 +7,11 @@ group = "com.github.ClimaxCode"
 version = "1.0.0"
 
 android {
-    namespace = "com.climax.ads"
+    namespace = "com.climax.code"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.climax.ads"
+        applicationId = "com.climax.code"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -55,6 +55,6 @@ dependencies {
     implementation(libs.sdp.android)
     implementation(libs.ssp.android)
     implementation(libs.shimmer)
- //   implementation(project(":adspub"))
+    implementation(project(":adspub"))
 
 }

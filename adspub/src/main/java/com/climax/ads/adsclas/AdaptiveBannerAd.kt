@@ -6,8 +6,7 @@ import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.FrameLayout
-import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
@@ -18,7 +17,12 @@ class AdaptiveBannerAd(var context: Context) {
     private lateinit var adView: AdView
     private var TAG = "AdaptiveBanner"
 
-    fun loadAdaptiveBanner(containerLayout : ConstraintLayout, adLayout: FrameLayout, bannerId: String,loadingText :TextView,onShowAdCompletedAction: ((Boolean) -> Unit)?=null) {
+    fun loadAdaptiveBanner(
+        bannerId: String,
+        adLayout: FrameLayout,
+        loadingText: ShimmerFrameLayout,
+        onShowAdCompletedAction: ((Boolean) -> Unit)? = null
+    ) {
         if (!Constants.isPurchased() && context.isNetworkAvailable()) {
             adView = AdView(context)
 
@@ -80,10 +84,10 @@ class AdaptiveBannerAd(var context: Context) {
                     Log.d(TAG, "onAdOpened: ")
                 }
             }
-        }else{
+        } else {
             onShowAdCompletedAction?.invoke(false)
             adLayout.visibility = View.GONE
-            containerLayout.visibility = View.GONE
+          //  containerLayout.visibility = View.GONE
             loadingText.visibility = View.GONE
 
         }

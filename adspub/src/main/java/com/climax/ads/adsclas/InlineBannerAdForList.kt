@@ -9,6 +9,7 @@ import android.view.Display
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.gms.ads.*
 
 
@@ -19,14 +20,14 @@ class InlineBannerAdForList {
 
     var adView: AdView? = null
 
-    fun loadBannerAd(context: Activity?,  onShowAdCompletedAction: (Boolean) -> Unit) {
+    fun loadBannerAd(context: Activity?, adId:String, adContainerView: FrameLayout, shimmerFrameLayout: ShimmerFrameLayout, onShowAdCompletedAction: (Boolean) -> Unit) {
         if (!Constants.isPurchased()) {
             context?.let {
                 Log.e(BANNER_MANAGER_TAG, "LoadNewBannerAd")
 
                 if (adView == null) {
                     adView = AdView(context).apply {
-                        adUnitId = Constants.inlineBannerId
+                        adUnitId =adId
                         setAdSize(getAdSize(context))
                     }
                 }
@@ -44,6 +45,7 @@ class InlineBannerAdForList {
                         super.onAdLoaded()
                         Log.e(BANNER_MANAGER_TAG, "onAdLoaded")
                         onShowAdCompletedAction.invoke(true)
+                        showInlineBannerAd(adContainerView,shimmerFrameLayout)
                     }
 
                     override fun onAdImpression() {
@@ -62,7 +64,7 @@ class InlineBannerAdForList {
         }
     }
 
-    fun showInlineBannerAd( adContainerView: FrameLayout?, shimmerFrameLayout: TextView){
+    fun showInlineBannerAd( adContainerView: FrameLayout?, shimmerFrameLayout: ShimmerFrameLayout){
         adView?.let { ad ->
             (ad.parent as? ViewGroup)?.removeView(ad)
 

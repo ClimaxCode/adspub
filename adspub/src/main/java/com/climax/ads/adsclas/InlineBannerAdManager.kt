@@ -9,6 +9,7 @@ import android.view.Display
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.gms.ads.*
 
 
@@ -19,14 +20,14 @@ class InlineBannerAdManager {
 
     var adView: AdView? = null
 
-    fun loadBannerAd(context: Activity?, adContainerView: FrameLayout?, shimmerFrameLayout: TextView) {
+    fun loadBannerAd(adId:String,context: Activity?, adContainerView: FrameLayout?, shimmerFrameLayout: ShimmerFrameLayout) {
         if (!Constants.isPurchased()) {
             context?.let {
                 Log.e(BANNER_MANAGER_TAG, "LoadNewBannerAd")
 
                 if (adView == null) {
                     adView = AdView(context).apply {
-                        adUnitId = Constants.inlineBannerId
+                        adUnitId = adId
                         setAdSize(getAdSize(context))
                     }
                 }

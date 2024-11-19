@@ -5,12 +5,13 @@ import androidx.appcompat.app.AlertDialog
 import com.climax.ads.R
 import com.climax.ads.databinding.ExitNative1Binding
 import com.climax.ads.databinding.ExitNative2Binding
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 
 
 
-fun  Activity?.exit1(exit:()->Unit) {
+fun  Activity?.exit1(adId:String,exit:()->Unit) {
     var dialogBinding = ExitNative1Binding.inflate(this!!.layoutInflater)
     val exitDialog: AlertDialog = MaterialAlertDialogBuilder(
         this,
@@ -27,20 +28,37 @@ fun  Activity?.exit1(exit:()->Unit) {
     dialogBinding.cancelButton.setOnClickListener {
         exitDialog.dismiss()
     }
+    showLargeNative(adId, R.layout.exit_native1_adcontent,
+        dialogBinding.layout.adRoot,dialogBinding.layout.adContainer,dialogBinding.layout.shimmerViewContainer,false,true,{
+
+        },{
+
+        },{
+
+        })
 }
 
-fun  Activity?.exit2(exit:()->Unit) {
+fun  Activity?.exit2(adId:String,exit:()->Unit) {
     var dialogBinding = ExitNative2Binding.inflate(this!!.layoutInflater)
-    val exitDialog: AlertDialog = MaterialAlertDialogBuilder(
-        this,
-        R.style.MyRounded_MaterialComponents_MaterialAlertDialog
+    val exitDialog = BottomSheetDialog(
+        this
     )
-        .setView(dialogBinding.root)
-        .show()
+
+    exitDialog.setContentView(dialogBinding.root)
 
     dialogBinding.exitButton.setOnClickListener {
         exitDialog.dismiss()
         exit()
 
     }
+
+    showLargeNative(adId, R.layout.exit_native2_adcontent,
+        dialogBinding.layout.adRoot,dialogBinding.layout.adContainer,dialogBinding.layout.shimmerViewContainer,false,true,{
+
+        },{
+
+        },{
+
+        })
+    exitDialog.show()
 }

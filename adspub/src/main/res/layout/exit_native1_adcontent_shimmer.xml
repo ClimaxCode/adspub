@@ -32,16 +32,20 @@
                     android:layout_height="wrap_content"
                     app:cardBackgroundColor="@color/screen_bg"
                     app:cardCornerRadius="@dimen/_4sdp"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:strokeColor="@color/main_color"
+                    app:strokeWidth="2dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
+                        android:background="@drawable/green_outline"
                         android:layout_height="match_parent">
 
-                        <com.google.android.gms.ads.nativead.MediaView
+                        <View
                             android:id="@+id/ad_media"
-                            android:layout_width="200dp"
-                            android:layout_height="120dp"
+                            android:layout_width="130dp"
+                            android:background="#FFD0D3D5"
+                            android:layout_height="100dp"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="@dimen/_8sdp"
@@ -49,28 +53,20 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
 
-                        <androidx.cardview.widget.CardView
+                        <View
                             android:id="@+id/ad"
                             android:layout_width="26dp"
                             android:layout_height="18dp"
                             android:layout_marginStart="@dimen/_8sdp"
-                            app:cardBackgroundColor="#FFC000"
+                            android:background="#FFD0D3D5"
                             app:cardCornerRadius="@dimen/_6sdp"
                             app:layout_constraintStart_toEndOf="@+id/ad_media"
                             app:layout_constraintTop_toTopOf="@+id/ad_media"
                             app:strokeColor="@color/black"
                             app:strokeWidth="1dp">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:gravity="center"
-                                android:text="AD"
-                                android:textAllCaps="true"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/_6sdp" />
-                        </androidx.cardview.widget.CardView>
+
+                        </View>
 
 
                         <LinearLayout
@@ -85,10 +81,11 @@
                             app:layout_constraintStart_toStartOf="@+id/ad"
                             app:layout_constraintTop_toBottomOf="@+id/ad">
 
-                            <TextView
+                            <View
                                 android:id="@+id/ad_headline"
+                                android:background="#FFD0D3D5"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="20dp"
                                 android:ellipsize="end"
                                 android:maxLines="1"
                                 android:textColor="@color/black"
@@ -116,12 +113,12 @@
                                 android:stepSize="0.5"
                                 android:visibility="gone" />
 
-                            <TextView
+                            <View
                                 android:id="@+id/ad_body"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:background="#FFD0D3D5"
+                                android:layout_height="20dp"
                                 android:layout_marginTop="@dimen/_8sdp"
-                                android:layout_marginEnd="@dimen/_4sdp"
                                 android:ellipsize="end"
                                 android:maxLines="2"
                                 android:textColor="@color/txt_color"
@@ -151,13 +148,13 @@
 
                         </LinearLayout>
 
-                        <com.google.android.material.button.MaterialButton
+                        <View
                             android:id="@+id/ad_call_to_action"
                             android:layout_width="0dp"
                             android:layout_height="@dimen/_34sdp"
                             android:layout_marginTop="8dp"
+                            android:background="#FFD0D3D5"
                             android:layout_marginBottom="16dp"
-                            android:background="@drawable/ads_action_btn2"
                             android:gravity="center"
                             android:text="@string/install"
                             android:textColor="@color/white"

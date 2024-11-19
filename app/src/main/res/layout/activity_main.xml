@@ -1,19 +1,210 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:fillViewport="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Native Ads"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/full_native"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Full Native"
+            app:layout_constraintEnd_toStartOf="@+id/buttonexit2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <Button
+            android:id="@+id/native1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Native Style 1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/full_native"
+            app:layout_constraintTop_toTopOf="@+id/full_native" />
+
+
+        <Button
+            android:id="@+id/native2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Native Style 2"
+            app:layout_constraintEnd_toEndOf="@+id/full_native"
+            app:layout_constraintStart_toStartOf="@+id/full_native"
+            app:layout_constraintTop_toBottomOf="@+id/full_native" />
+
+        <Button
+            android:id="@+id/native3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Native Style 3"
+            app:layout_constraintEnd_toEndOf="@+id/native1"
+            app:layout_constraintStart_toStartOf="@+id/native1"
+            app:layout_constraintTop_toBottomOf="@+id/full_native" />
+
+        <Button
+            android:id="@+id/native4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Native Style 4"
+            app:layout_constraintEnd_toEndOf="@+id/full_native"
+            app:layout_constraintStart_toStartOf="@+id/full_native"
+            app:layout_constraintTop_toBottomOf="@+id/native2" />
+
+        <Button
+            android:id="@+id/native5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Native Style 5"
+            app:layout_constraintEnd_toEndOf="@+id/native3"
+            app:layout_constraintStart_toStartOf="@+id/native3"
+            app:layout_constraintTop_toBottomOf="@+id/native3" />
+
+        <Button
+            android:id="@+id/native6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Native Style 6"
+            app:layout_constraintEnd_toEndOf="@+id/native4"
+            app:layout_constraintStart_toStartOf="@+id/native4"
+            app:layout_constraintTop_toBottomOf="@+id/native4" />
+
+        <Button
+            android:id="@+id/buttonexit1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="Exit Style 1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/buttonexit2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/buttonexit2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="Exit Style 2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/buttonexit1" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:text="Banner Ads"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/native6" />
+
+        <Button
+            android:id="@+id/inline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Inline Banner"
+            app:layout_constraintEnd_toStartOf="@+id/buttonexit2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <Button
+            android:id="@+id/collapsible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Collapsible Banner"
+            app:layout_constraintEnd_toEndOf="@+id/adaptive"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/inline"
+            app:layout_constraintTop_toBottomOf="@+id/inline" />
+
+
+
+        <Button
+            android:id="@+id/adaptive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Adaptive Banner"
+            app:layout_constraintEnd_toEndOf="@+id/small"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/small"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+
+        <Button
+            android:id="@+id/small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Small Native"
+            app:layout_constraintEnd_toEndOf="@+id/native3"
+            app:layout_constraintStart_toStartOf="@+id/native3"
+            app:layout_constraintTop_toTopOf="@+id/native6" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Interstial Ads"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/collapsible" />
+
+        <Button
+            android:id="@+id/inter1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="PreLoaded"
+            app:layout_constraintEnd_toStartOf="@+id/buttonexit2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <Button
+            android:id="@+id/inter2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OnDemandLoad"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/buttonexit1"
+            app:layout_constraintTop_toTopOf="@+id/inter1" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content">
 
                 <include
-                    layout="@layout/exit_native2_shimmer"
+                    layout="@layout/exit_native1_adcontent_shimmer"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
