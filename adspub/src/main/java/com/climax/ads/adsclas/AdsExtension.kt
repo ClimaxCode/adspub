@@ -1,4 +1,4 @@
-package com.climax.ads.ads
+package com.climax.ads.adsclas
 
 import android.app.Activity
 import android.app.Dialog
@@ -18,19 +18,20 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.climax.ads.R
+import com.climax.ads.adsclas.Constants.ADS_INITIALIZATION_COMPLETED
+import com.climax.ads.adsclas.Constants.OTHER_AD_DISPLAYED
+import com.climax.ads.adsclas.Constants.appOpen
+import com.climax.ads.adsclas.Constants.clickCount
+import com.climax.ads.adsclas.Constants.interstitial
+import com.climax.ads.adsclas.Constants.interstitialAdCount
+import com.climax.ads.adsclas.Constants.largeNative
+import com.climax.ads.adsclas.Constants.native
+import com.climax.ads.adsclas.Constants.rewarded
+import com.climax.ads.adsclas.Constants.showFullNative
+import com.climax.ads.adsclas.Constants.smallNative
 import com.google.android.gms.ads.MobileAds
 import com.google.android.material.textview.MaterialTextView
-import com.climax.ads.ads.Constants.ADS_INITIALIZATION_COMPLETED
-import com.climax.ads.ads.Constants.OTHER_AD_DISPLAYED
-import com.climax.ads.ads.Constants.appOpen
-import com.climax.ads.ads.Constants.clickCount
-import com.climax.ads.ads.Constants.interstitial
-import com.climax.ads.ads.Constants.interstitialAdCount
-import com.climax.ads.ads.Constants.largeNative
-import com.climax.ads.ads.Constants.native
-import com.climax.ads.ads.Constants.rewarded
-import com.climax.ads.ads.Constants.showFullNative
-import com.climax.ads.ads.Constants.smallNative
+
 
 
 /* AppOpen Ad Extension functions*/

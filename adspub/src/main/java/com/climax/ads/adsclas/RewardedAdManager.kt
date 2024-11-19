@@ -1,9 +1,9 @@
-package com.climax.ads.ads
+package com.climax.ads.adsclas
 
 import android.content.Context
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.climax.ads.ads.helpers.RewardedInterstitialCallback
+import com.climax.ads.adsclas.helpers.RewardedInterstitialCallback
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.rewarded.RewardItem
 import com.google.android.gms.ads.rewarded.RewardedAd

@@ -1,4 +1,4 @@
-package com.climax.ads.ads.enums
+package com.climax.ads.adsclas.enums
 
 enum class AdState {
     LOAD,

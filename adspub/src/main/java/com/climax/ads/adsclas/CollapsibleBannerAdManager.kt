@@ -1,4 +1,4 @@
-package com.climax.ads.ads
+package com.climax.ads.adsclas
 
 import android.app.Activity
 import android.os.Build
@@ -8,7 +8,6 @@ import android.util.Log
 import android.view.Display
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import com.climax.ads.ads.hide
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.ads.mediation.admob.AdMobAdapter
 

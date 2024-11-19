@@ -1,4 +1,4 @@
-package com.climax.ads.ads
+package com.climax.ads.adsclas
 
 import android.app.Activity
 import android.app.Application
@@ -9,8 +9,7 @@ import android.os.Looper
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
-
-import com.climax.ads.ads.Constants.appIsForeground
+import com.climax.ads.adsclas.Constants.appIsForeground
 
 
 class AppObserver(
@@ -44,7 +43,7 @@ class AppObserver(
         if (!Constants.isPurchased()) {
             mCurrentActivity?.let {
             //    if (it !is LauncherActivity && !Constants.isOpenLocationDialog && it !is PremiumScreen ) {
-                if (it !is LauncherActivity && !Constants.isOpenLocationDialog  ) {
+                if (it !is LauncherActivity && !Constants.isOpenLocationDialog) {
                     Handler(Looper.getMainLooper()).postDelayed({
                         it.showAppOpen(0L, onShowAdCompletedAction = {})
                     }, 1000L)

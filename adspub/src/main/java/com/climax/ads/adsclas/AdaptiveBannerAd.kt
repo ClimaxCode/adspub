@@ -1,4 +1,4 @@
-package com.climax.ads.ads
+package com.climax.ads.adsclas
 
 import android.content.Context
 import android.util.DisplayMetrics

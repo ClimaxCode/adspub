@@ -1,9 +1,9 @@
-package com.climax.ads.ads
+package com.climax.ads.adsclas
 
 import android.app.Activity
 import android.app.Dialog
 import android.util.Log
-import com.climax.ads.ads.enums.AdState
+import com.climax.ads.adsclas.enums.AdState
 
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest

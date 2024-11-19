@@ -1,6 +1,6 @@
-package com.climax.ads.ads.helpers
+package com.climax.ads.adsclas.helpers
 
-import com.climax.ads.ads.Constants
+import com.climax.ads.adsclas.Constants
 
 
 interface RewardedInterstitialCallback {
