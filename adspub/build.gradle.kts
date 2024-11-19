@@ -29,6 +29,9 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+    viewBinding {
+        enable = true
+    }
     kotlinOptions {
         jvmTarget = "17"
     }
@@ -69,14 +72,6 @@ afterEvaluate {
                             url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
                         }
                     }
-
-//                developers {
-//                    developer {
-//                        id.set("ClimaxCode")
-//                        name.set("Climax Code")
-//                        email.set("youremail@example.com")
-//                    }
-//                }
 
                     scm {
                         connection.set("scm:git:git://github.com/ClimaxCode/adspub.git")
