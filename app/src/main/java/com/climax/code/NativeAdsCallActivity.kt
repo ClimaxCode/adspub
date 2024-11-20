@@ -17,6 +17,7 @@ class NativeAdsCallActivity : AppCompatActivity() {
 
         if (intent.getStringExtra("style").equals("one")){
             binding.one.visibility = View.VISIBLE
+
             callNativeAd("ca-app-pub-3940256099942544/1044960115","large",false,true,{},{},{})
         } else   if (intent.getStringExtra("style").equals("two")){
             binding.two.visibility = View.VISIBLE
