@@ -19,7 +19,7 @@
         android:layout_height="wrap_content">
 
         <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/shimmer_view_container"
+            android:id="@+id/shimmerExit2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -47,7 +47,7 @@
         </com.facebook.shimmer.ShimmerFrameLayout>
 
         <FrameLayout
-            android:id="@+id/ad_container"
+            android:id="@+id/adContainere2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"

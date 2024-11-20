@@ -308,14 +308,14 @@ class NativeLarge {
                     container?.hide()
                     frameLayout.hide()
                     shimmerFrameLayout.hide()
-                    Log.d("nativeAd", "onAdFailedToLoad: ")
+                    Log.d("nativeAdssd", "onAdFailedToLoad: ")
                 }
 
                 override fun onAdLoaded() {
                     super.onAdLoaded()
                     adState = AdState.LOADED
                     isLoadNativeAd = true
-                    Log.d("nativeAd", "onAdLoaded: ")
+                    Log.d("nativeAdssd", "onAdLoaded: ")
                 }
 
                 override fun onAdImpression() {

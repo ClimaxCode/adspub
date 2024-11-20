@@ -1,6 +1,7 @@
 package com.climax.ads.adsclas
 
 import android.app.Activity
+import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import com.climax.ads.R
 import com.climax.ads.databinding.ExitNative1Binding
@@ -9,9 +10,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 
-
-
-fun  Activity?.exit1(adId:String,exit:()->Unit) {
+fun Activity?.exit1(adId: String, exit: () -> Unit) {
     var dialogBinding = ExitNative1Binding.inflate(this!!.layoutInflater)
     val exitDialog: AlertDialog = MaterialAlertDialogBuilder(
         this,
@@ -29,16 +28,26 @@ fun  Activity?.exit1(adId:String,exit:()->Unit) {
         exitDialog.dismiss()
     }
     showLargeNative(adId, R.layout.exit_native1_adcontent,
-        dialogBinding.layout.adRoot,dialogBinding.layout.adContainer,dialogBinding.layout.shimmerViewContainer,false,true,{
+        dialogBinding.layout.adRoot,dialogBinding.layout.adContainere1,dialogBinding.layout.shimmerExit1,false,true,{
 
         },{
 
         },{
 
         })
+
+//    this.callNativeAd(adId, "exit1", false, true,
+//        {
+//            Log.d("adss", "onCreate: loaded")
+//        }, {
+//            Log.d("adss", "onCreate: failes")
+//        }, {
+//
+//        })
+
 }
 
-fun  Activity?.exit2(adId:String,exit:()->Unit) {
+fun Activity?.exit2(adId: String, exit: () -> Unit) {
     var dialogBinding = ExitNative2Binding.inflate(this!!.layoutInflater)
     val exitDialog = BottomSheetDialog(
         this
@@ -53,12 +62,23 @@ fun  Activity?.exit2(adId:String,exit:()->Unit) {
     }
 
     showLargeNative(adId, R.layout.exit_native2_adcontent,
-        dialogBinding.layout.adRoot,dialogBinding.layout.adContainer,dialogBinding.layout.shimmerViewContainer,false,true,{
+        dialogBinding.layout.adRoot,dialogBinding.layout.adContainere2,dialogBinding.layout.shimmerExit2,false,true,{
 
         },{
 
         },{
 
         })
+
+//    this.callNativeAd(adId, "exit2", false, true,
+//        {
+//            Log.d("adss", "onCreate: loaded")
+//        }, {
+//            Log.d("adss", "onCreate: failes")
+//        }, {
+//
+//        })
+
+
     exitDialog.show()
 }

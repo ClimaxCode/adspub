@@ -29,17 +29,20 @@ import com.climax.ads.adsclas.Constants.native
 import com.climax.ads.adsclas.Constants.rewarded
 import com.climax.ads.adsclas.Constants.showFullNative
 import com.climax.ads.adsclas.Constants.smallNative
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.gms.ads.MobileAds
 import com.google.android.material.textview.MaterialTextView
 
 
-
 /* AppOpen Ad Extension functions*/
-fun Activity?.loadAppOpen(appOpenId:String= Constants.splashAppOpenId, onShowAdCompletedAction: ((Boolean) -> Unit)?=null) {
+fun Activity?.loadAppOpen(
+    appOpenId: String = Constants.splashAppOpenId,
+    onShowAdCompletedAction: ((Boolean) -> Unit)? = null
+) {
     this?.let {
         if (!Constants.isPurchased()) {
-            appOpen.loadAd(this,appOpenId,onShowAdCompletedAction)
-        }else{
+            appOpen.loadAd(this, appOpenId, onShowAdCompletedAction)
+        } else {
             onShowAdCompletedAction?.invoke(false)
         }
     }
@@ -86,14 +89,14 @@ fun Activity?.checkAndShowInterstitial(
     onInterstitialFailed: (() -> Unit)
 ) {
 
-   Log.d("zh", "checkAndShowInterstitial: checkAppOpen ${Constants.isAppOpenShowed}")
-   // Log.d("zh", "checkAndShowInterstitial: onlyShowAdmob ${onlyShowAdMob}")
-   if (!Constants.isAppOpenShowed) {
+    Log.d("zh", "checkAndShowInterstitial: checkAppOpen ${Constants.isAppOpenShowed}")
+    // Log.d("zh", "checkAndShowInterstitial: onlyShowAdmob ${onlyShowAdMob}")
+    if (!Constants.isAppOpenShowed) {
         if (!onlyShowAdMob) {
             Log.e("ads", "checkAndShowInterstitial $interstitialAdCount")
 
         } else {
-         Log.e("ads", "checkAndShowInterstitial admob")
+            Log.e("ads", "checkAndShowInterstitial admob")
             showInterstitial(
                 interstitialAdId,
                 preLoad,
@@ -102,10 +105,10 @@ fun Activity?.checkAndShowInterstitial(
                 onInterstitialFailed
             )
         }
-   } else {
+    } else {
         Log.e("ads", "Last ad was App Open")
         Constants.isAppOpenShowed = false
-        onInterstitialFailed?.invoke()
+        onInterstitialFailed.invoke()
     }
 
 }
@@ -120,7 +123,10 @@ fun Activity?.checkAndShowInterstitialConvertorScreen(
     onInterstitialFailed: (() -> Unit)
 ) {
 
-    Log.d("zh", "checkAndShowInterstitialConvertorScreen: intersAdConvertScreenCount ${Constants.intersAdConvertScreenCount}")
+    Log.d(
+        "zh",
+        "checkAndShowInterstitialConvertorScreen: intersAdConvertScreenCount ${Constants.intersAdConvertScreenCount}"
+    )
     // Log.d("zh", "checkAndShowInterstitial: onlyShowAdmob ${onlyShowAdMob}")
     if (!Constants.isAppOpenShowed) {
         if (!onlyShowAdMob) {
@@ -133,7 +139,7 @@ fun Activity?.checkAndShowInterstitialConvertorScreen(
                         interstitialAdId,
                         preLoad,
                         waitingTime,
-                        onShowAdCompletedAction ={
+                        onShowAdCompletedAction = {
                             onShowAdCompletedAction.invoke()
                         },
                         onInterstitialFailed = {
@@ -142,7 +148,7 @@ fun Activity?.checkAndShowInterstitialConvertorScreen(
                     )
 
                 } else {
-                    onInterstitialFailed?.invoke()
+                    onInterstitialFailed.invoke()
                 }
             } else {
                 //   Constants.interstitialAdCount++
@@ -155,11 +161,10 @@ fun Activity?.checkAndShowInterstitialConvertorScreen(
     } else {
         Log.e("ads", "Last ad was App Open")
         Constants.isAppOpenShowed = false
-        onInterstitialFailed?.invoke()
+        onInterstitialFailed.invoke()
     }
 
 }
-
 
 
 /* interstitial Ad Extension functions*/
@@ -218,8 +223,7 @@ fun Activity.loadPreInterstitial(interstitialAdId: String) {
 }
 
 
-
-fun Activity.hideNavigationBar(){
+fun Activity.hideNavigationBar() {
     window.decorView.systemUiVisibility = (
             View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                     or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
@@ -228,7 +232,7 @@ fun Activity.hideNavigationBar(){
 
 fun canLoadInterstitialAd(): Boolean {
     Log.e("InterstitialNew", "canLoadInterstitialAd count is : ${clickCount}")
-    Constants.clickCount?.let {
+    clickCount.let {
         var newCount = it + 1
         return newCount % 3 == 0
     }
@@ -326,24 +330,113 @@ fun Activity?.preLoadNativeAd(
         smallNative.preLoadNative(this)
     }
 }
+
 fun Activity?.preLoadLargeNativeAd(nativeAdId: String) {
     this?.let {
         if (!Constants.isPurchased() && isNetworkAvailable()) {
-            Log.e("Aqeel","Pre load exit Native")
-            largeNative.preLoadNative(it,nativeAdId)
+            Log.e("Aqeel", "Pre load exit Native")
+            largeNative.preLoadNative(it, nativeAdId)
         }
     }
 }
 
+fun Activity?.callNativeAd(
+
+    nativeAdId: String,
+    nativeAdtype: String,
+    preLoad: Boolean = false,
+    loadNewAd: Boolean = true,
+    actionLoaded: () -> Unit,
+    actionFailed: () -> Unit,
+    tryToShowAgain: (Boolean) -> Unit
+) {
+
+    var type: Int = 0
+    var frameLayout:FrameLayout? =null
+    var shimmer:ShimmerFrameLayout? =null
+    Log.d("Ads", "callNativeAd: $nativeAdtype")
+    when (nativeAdtype) {
+        "large" -> {
+            type = R.layout.full_native
+            frameLayout =  this?.findViewById(R.id.adContainer)!!
+            shimmer=  this.findViewById(R.id.shimmmmer)!!
+        }
+
+        "1" -> {
+            type = R.layout.native1
+            frameLayout =  this?.findViewById(R.id.adContainer1)!!
+            shimmer=  this.findViewById(R.id.shimmer1)!!
+        }
+
+        "2" -> {
+            type = R.layout.native2
+            frameLayout =  this?.findViewById(R.id.adContainer2)!!
+            shimmer=  this.findViewById(R.id.shimmer2)!!
+        }
+
+        "3" -> {
+            type = R.layout.native3
+            frameLayout =  this?.findViewById(R.id.adContainer3)!!
+            shimmer=  this.findViewById(R.id.shimmer3)!!
+        }
+
+        "4" -> {
+            type = R.layout.native4
+            frameLayout =  this?.findViewById(R.id.adContainer4)!!
+            shimmer=  this.findViewById(R.id.shimmer4)!!
+        }
+
+        "5" -> {
+            type = R.layout.native5
+            frameLayout =  this?.findViewById(R.id.adContainer5)!!
+            shimmer=  this.findViewById(R.id.shimmer5)!!
+        }
+
+        "6" -> {
+            type = R.layout.native6
+            frameLayout =  this?.findViewById(R.id.adContainer6)!!
+            shimmer=  this.findViewById(R.id.shimmer6)!!
+        }
+
+        "small" -> {
+            type = R.layout.small_native
+            frameLayout =  this?.findViewById(R.id.adContainers)!!
+            shimmer=  this.findViewById(R.id.shimmers)!!
+        }
+//        "exit1" ->{
+//            type = R.layout.exit_native1_adcontent
+//            frameLayout =  this?.findViewById(R.id.adContainere1)!!
+//            shimmer=  this.findViewById(R.id.shimmerExit1)!!
+//        }
+//        "exit2"->{
+//            type = R.layout.exit_native2_adcontent
+//            frameLayout =  this?.findViewById(R.id.adContainere2)!!
+//            shimmer=  this.findViewById(R.id.shimmerExit2)!!
+//        }
+    }
+    Log.d("Ads", "callNativeAd: $type")
+    showLargeNative(
+        nativeAdId,
+        type,
+        this?.findViewById(R.id.ad_root),
+       frameLayout!!,
+        shimmer!!,
+        preLoad,
+        loadNewAd,
+        actionLoaded,
+        actionFailed,
+        tryToShowAgain
+    )
+}
 
 fun Activity?.showLargeNative(
-    nativeAdId:String,
+    nativeAdId: String,
     nativeAdLayout: Int,
     container: ConstraintLayout?,
     frameLayout: FrameLayout,
     shimmerFrameLayout: FrameLayout,
     preLoad: Boolean = false,
-    loadNewAd:Boolean=true,
+    loadNewAd: Boolean = true,
     actionLoaded: () -> Unit,
     actionFailed: () -> Unit,
     tryToShowAgain: (Boolean) -> Unit,
@@ -362,7 +455,7 @@ fun Activity?.showLargeNative(
                 actionFailed,
                 tryToShowAgain
             )
-            if (preLoad) largeNative.preLoadNative(this,nativeAdId)
+            if (preLoad) largeNative.preLoadNative(this, nativeAdId)
         } else {
             container?.hide()
             frameLayout.hide()
@@ -404,7 +497,7 @@ fun Activity.createLoadingDialog(text: String) = Dialog(this).apply {
     requestWindowFeature(Window.FEATURE_NO_TITLE)
     setCancelable(false)
     window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-   // val binding = LoadingviewBinding.inflate(layoutInflater)
+    // val binding = LoadingviewBinding.inflate(layoutInflater)
 //    setContentView(binding.root)
     setContentView(R.layout.load_ad_dialog)
     findViewById<MaterialTextView>(R.id.loadingTxt).text = text
@@ -447,8 +540,8 @@ fun Activity?.showShowFullNative(
 fun Activity?.preLoadFullNativeAd(nativeAdId: String) {
     this?.let {
         if (!Constants.isPurchased() && isNetworkAvailable()) {
-            Log.e("Aqeel","Pre load exit Native")
-            showFullNative.preLoadNative(it,nativeAdId)
+            Log.e("Aqeel", "Pre load exit Native")
+            showFullNative.preLoadNative(it, nativeAdId)
         }
     }
 }
@@ -500,14 +593,17 @@ fun Activity?.showRewarded(
     }
 }
 
-fun Activity?.preLoadRewardedVideo(showLoadingDialog: Boolean=false,onRewardedAdLoaded: ((Boolean) -> Unit)?) {
+fun Activity?.preLoadRewardedVideo(
+    showLoadingDialog: Boolean = false,
+    onRewardedAdLoaded: ((Boolean) -> Unit)?
+) {
     if (!Constants.isPurchased()) {
         this?.let {
-            rewarded.loadRewarded(this,showLoadingDialog,onRewardedAdLoaded)
-        }?:run {
+            rewarded.loadRewarded(this, showLoadingDialog, onRewardedAdLoaded)
+        } ?: run {
             onRewardedAdLoaded?.invoke(false)
         }
-    }else onRewardedAdLoaded?.invoke(true)
+    } else onRewardedAdLoaded?.invoke(true)
 }
 
 
@@ -527,7 +623,9 @@ fun AlertDialog.dismissLoadingDialog() {
         this.dismiss()
     }
 }
-class OnSingleClickListener(private val isAdmobClick: Boolean,private val block: () -> Unit) : View.OnClickListener {
+
+class OnSingleClickListener(private val isAdmobClick: Boolean, private val block: () -> Unit) :
+    View.OnClickListener {
 
     companion object {
         private var lastClickTime = 0L
@@ -538,9 +636,9 @@ class OnSingleClickListener(private val isAdmobClick: Boolean,private val block:
             return
         }
 //        checkAndUpdateClickCount()
-        if(!isAdmobClick){
-            if(Constants.isAppOpenShowed){
-                Constants.isAppOpenShowed =false
+        if (!isAdmobClick) {
+            if (Constants.isAppOpenShowed) {
+                Constants.isAppOpenShowed = false
             }
         }
         lastClickTime = SystemClock.elapsedRealtime()
@@ -548,10 +646,12 @@ class OnSingleClickListener(private val isAdmobClick: Boolean,private val block:
         block()
     }
 }
-fun View.setOnSingleClickListener(isAdmobClick:Boolean=false, block: () -> Unit) {
 
-    setOnClickListener(OnSingleClickListener(isAdmobClick,block))
+fun View.setOnSingleClickListener(isAdmobClick: Boolean = false, block: () -> Unit) {
+
+    setOnClickListener(OnSingleClickListener(isAdmobClick, block))
 }
+
 fun Activity.openUrl(appUri: Uri) {
     try {
         startActivity(Intent(Intent.ACTION_VIEW, appUri))

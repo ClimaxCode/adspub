@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <include
-            android:id="@+id/layout"
+            android:id="@+id/layout1"
             layout="@layout/full_screen_native_layout"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +39,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <include
-            android:id="@+id/layout1"
+            android:id="@+id/layout"
             layout="@layout/native1_layout"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
