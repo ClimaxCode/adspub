@@ -19,16 +19,16 @@ class BannerActivity : AppCompatActivity() {
 
         if (intent.getStringExtra("style").equals("collap")) {
            binding.collap.visibility  = View.VISIBLE
-           this.collapsibleBanner("ca-app-pub-3940256099942544/9214589741",binding.smallBannerLayout.bannerAdLayout,binding.smallBannerLayout.shimmerViewContainer)
+           this.collapsibleBanner("ca-app-pub-3940256099942544/9214589741")
 
         } else if (intent.getStringExtra("style").equals("inline")) {
             binding.large.visibility  = View.VISIBLE
-            this.inlineBanner("ca-app-pub-3940256099942544/9214589741",binding.inlineBannerLayout.bannerAdLayout,binding.inlineBannerLayout.shimmerViewContainer)
+            this.inlineBanner("ca-app-pub-3940256099942544/9214589741")
 
         }
         else if (intent.getStringExtra("style").equals("adaptive")) {
             binding.collap.visibility  = View.VISIBLE
-            this.adaptiveBanner("ca-app-pub-3940256099942544/9214589741",binding.smallBannerLayout.bannerAdLayout,binding.smallBannerLayout.shimmerViewContainer)
+            this.adaptiveBanner("ca-app-pub-3940256099942544/9214589741")
 
         }
 

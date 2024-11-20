@@ -22,7 +22,7 @@
             android:layout_height="match_parent">
 
             <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/shimmer_view_container"
+                android:id="@+id/shimmerInline"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -50,7 +50,7 @@
             </com.facebook.shimmer.ShimmerFrameLayout>
 
             <FrameLayout
-                android:id="@+id/bannerAdLayout"
+                android:id="@+id/bannerAdLayoutinline"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
