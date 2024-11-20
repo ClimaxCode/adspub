@@ -7,6 +7,9 @@ import com.climax.ads.adsclas.checkAndShowInterstitial
 import com.climax.ads.adsclas.exit1
 import com.climax.ads.adsclas.exit2
 import com.climax.ads.adsclas.loadPreInterstitial
+import com.climax.ads.adsclas.preLoadLargeNativeAd
+import com.climax.ads.adsclas.preLoadNativeAd
+import com.climax.ads.adsclas.showNative
 import com.climax.code.databinding.ActivityMainBinding
 
 
@@ -49,7 +52,11 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("style", "three")
             startActivity(intent)
 
+
+
         }
+        preLoadLargeNativeAd("ca-app-pub-3940256099942544/1044960115")
+
         binding.native3.setOnClickListener {
             var intent = Intent(this, NativeAdsCallActivity::class.java)
             intent.putExtra("style", "four")
@@ -106,12 +113,12 @@ class MainActivity : AppCompatActivity() {
                 true,
                 0,
                 onShowAdCompletedAction = {
-                    var intent = Intent(this@MainActivity, InterstitalActivity::class.java)
+                    var intent = Intent(this@MainActivity, OnBoardingActivity::class.java)
                     intent.putExtra("failed", false)
                     startActivity(intent)
                 },
                 onInterstitialFailed = {
-                    var intent = Intent(this@MainActivity, InterstitalActivity::class.java)
+                    var intent = Intent(this@MainActivity, OnBoardingActivity::class.java)
                     intent.putExtra("failed", true)
                     startActivity(intent)
                 })

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Ads</string>
+    <string name="install">Install</string>
+    <string name="loading">Loading</string>
+    <string name="exit_app">Exit App</string>
+    <string name="are_you_to_exit">Are you sure you want to exit app</string>
+    <string name="title">Title</string>
+    <string name="des1">This is Description</string>
+<string name="txt_onboard1">View Status</string>
+<string name="txt_desc_onBoard1">Open Whatsapp and View  Friends Statuses</string>
+<string name="txt_onboard2">Download and Share</string>
+<string name="txt_onboard3">All In One</string>
+<string name="txt_desc_onBoard2">Open Status Saver app to download and share  Friends Statuses</string>
+<string name="txt_desc_onBoard3">Status Saver, Chat Locker, Direct Message and Web Scan</string>
+</resources>

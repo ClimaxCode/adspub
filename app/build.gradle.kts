@@ -56,6 +56,8 @@ dependencies {
     implementation(libs.sdp.android)
     implementation(libs.ssp.android)
     implementation(libs.shimmer)
+    implementation("com.tbuonomo:dotsindicator:5.0")
     implementation(project(":adspub"))
+    implementation(project(":customizations"))
 
 }

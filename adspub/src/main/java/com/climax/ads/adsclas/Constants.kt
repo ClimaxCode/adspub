@@ -110,6 +110,7 @@ object Constants {
     var tempCollapsibleBannerAdId = ""
     var isShowFullScreenNativeAd = true
     var fullScreenNativeId = ""
+    var onBoardingFullScreenNativeId= ""
 
     var exitAppNativeAdId = ""
     var settingNativeAdId = ""

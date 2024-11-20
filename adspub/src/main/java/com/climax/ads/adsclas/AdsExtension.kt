@@ -243,9 +243,9 @@ fun canLoadInterstitialAd(): Boolean {
 /* native Ads implementation */
 
 fun Activity?.showNative(
+    nativeAdId: String,
     nativeAdLayout: Int,
     container: ConstraintLayout?,
-    nativeAdId: String,
     frameLayout: FrameLayout,
     shimmerFrameLayout: FrameLayout,
     preLoad: Boolean = false,
