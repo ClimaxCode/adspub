@@ -362,37 +362,37 @@ fun Activity?.callNativeAd(
             shimmer=  this.findViewById(R.id.shimmmmer)!!
         }
 
-        "1" -> {
+        "native1" -> {
             type = R.layout.native1
             frameLayout =  this?.findViewById(R.id.adContainer1)!!
             shimmer=  this.findViewById(R.id.shimmer1)!!
         }
 
-        "2" -> {
+        "native2" -> {
             type = R.layout.native2
             frameLayout =  this?.findViewById(R.id.adContainer2)!!
             shimmer=  this.findViewById(R.id.shimmer2)!!
         }
 
-        "3" -> {
+        "native3" -> {
             type = R.layout.native3
             frameLayout =  this?.findViewById(R.id.adContainer3)!!
             shimmer=  this.findViewById(R.id.shimmer3)!!
         }
 
-        "4" -> {
+        "native4" -> {
             type = R.layout.native4
             frameLayout =  this?.findViewById(R.id.adContainer4)!!
             shimmer=  this.findViewById(R.id.shimmer4)!!
         }
 
-        "5" -> {
+        "native5" -> {
             type = R.layout.native5
             frameLayout =  this?.findViewById(R.id.adContainer5)!!
             shimmer=  this.findViewById(R.id.shimmer5)!!
         }
 
-        "6" -> {
+        "native6" -> {
             type = R.layout.native6
             frameLayout =  this?.findViewById(R.id.adContainer6)!!
             shimmer=  this.findViewById(R.id.shimmer6)!!
@@ -402,6 +402,10 @@ fun Activity?.callNativeAd(
             type = R.layout.small_native
             frameLayout =  this?.findViewById(R.id.adContainers)!!
             shimmer=  this.findViewById(R.id.shimmers)!!
+        }
+
+        else -> {
+          return
         }
 //        "exit1" ->{
 //            type = R.layout.exit_native1_adcontent

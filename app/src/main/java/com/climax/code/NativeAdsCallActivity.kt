@@ -21,7 +21,7 @@ class NativeAdsCallActivity : AppCompatActivity() {
             callNativeAd("ca-app-pub-3940256099942544/1044960115","large",false,true,{},{},{})
         } else   if (intent.getStringExtra("style").equals("two")){
             binding.two.visibility = View.VISIBLE
-            callNativeAd("ca-app-pub-3940256099942544/1044960115","1",false,true,
+            callNativeAd("ca-app-pub-3940256099942544/1044960115","native1",false,true,
                 {
                     Log.d("adss", "onCreate: loaded")
                 },{
@@ -33,27 +33,27 @@ class NativeAdsCallActivity : AppCompatActivity() {
         else   if (intent.getStringExtra("style").equals("three")){
             binding.three.visibility = View.VISIBLE
 
-            callNativeAd("ca-app-pub-3940256099942544/1044960115","2",false,true,{},{},{})
+            callNativeAd("ca-app-pub-3940256099942544/1044960115","native2",false,true,{},{},{})
         }
         else   if (intent.getStringExtra("style").equals("four")){
             binding.four.visibility = View.VISIBLE
 
-            callNativeAd("ca-app-pub-3940256099942544/1044960115","3",false,true,{},{},{})
+            callNativeAd("ca-app-pub-3940256099942544/1044960115","native3",false,true,{},{},{})
         }
         else   if (intent.getStringExtra("style").equals("five")){
             binding.five.visibility = View.VISIBLE
 
-            callNativeAd("ca-app-pub-3940256099942544/1044960115","4",false,true,{},{},{})
+            callNativeAd("ca-app-pub-3940256099942544/1044960115","native4",false,true,{},{},{})
         }
         else   if (intent.getStringExtra("style").equals("six")){
             binding.six.visibility = View.VISIBLE
 
-            callNativeAd("ca-app-pub-3940256099942544/1044960115","5",false,true,{},{},{})
+            callNativeAd("ca-app-pub-3940256099942544/1044960115","native5",false,true,{},{},{})
         }
         else   if (intent.getStringExtra("style").equals("seven")){
             binding.seven.visibility = View.VISIBLE
 
-            callNativeAd("ca-app-pub-3940256099942544/1044960115","6",false,true,{},{},{})
+            callNativeAd("ca-app-pub-3940256099942544/1044960115","native6",false,true,{},{},{})
         }
         else   if (intent.getStringExtra("style").equals("eight")){
             binding.eight .visibility = View.VISIBLE
