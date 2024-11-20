@@ -36,7 +36,7 @@ import com.google.android.material.textview.MaterialTextView
 
 /* AppOpen Ad Extension functions*/
 fun Activity?.loadAppOpen(
-    appOpenId: String = Constants.splashAppOpenId,
+    appOpenId: String ,
     onShowAdCompletedAction: ((Boolean) -> Unit)? = null
 ) {
     this?.let {

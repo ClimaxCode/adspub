@@ -26,27 +26,27 @@ class AppOpen {
     var lastAppOpenId: String = ""
 
     init {
-        Log.e("Splash","init App Open")
+        Log.e("AppOpen","init App Open")
         adState= AdState.LOAD
     }
     fun loadAd(
         activity: Activity,
-        appOpenId: String = Constants.splashAppOpenId,
+        appOpenId: String,
         onShowAdCompletedAction: ((Boolean) -> Unit)? = null
     ) {
-        Log.e("Splash", "start loadAd")
+        Log.e("AppOpen", "start loadAd")
         lastAppOpenId = appOpenId
         if (isAdAvailable()) {
-            Log.e("Splash", "callback from isAdAvailable")
+            Log.e("AppOpen", "callback from isAdAvailable")
             onShowAdCompletedAction?.invoke(true)
             return
         }
         if (AdState.LOADING == adState) {
-            Log.e("Splash", "callback from AdState.LOADING")
+            Log.e("AppOpen", "callback from AdState.LOADING")
             onShowAdCompletedAction?.invoke(false)
             return
         }
-        Log.e("AppOpen", "Loading New App Open Ad - ${Constants.splashAppOpenId}")
+      //  Log.e("AppOpen", "Loading New App Open Ad - ${Constants.splashAppOpenId}")
         adState = AdState.LOADING
         val request = AdRequest.Builder().build()
         AppOpenAd.load(
@@ -58,7 +58,7 @@ class AppOpen {
                 override fun onAdLoaded(ad: AppOpenAd) {
 
                     Log.e("", "onAdLoaded")
-                    Log.e("Splash", "callback from onAdLoaded")
+                    Log.e("AppOpen", "callback from onAdLoaded")
                     Constants.isSplashAppOpenFail = false
                     appOpenAd = ad
                     adState = AdState.LOADED
@@ -68,7 +68,7 @@ class AppOpen {
 
                 override fun onAdFailedToLoad(loadAdError: LoadAdError) {
                     Log.e("AppOpen", "onAdFailedToLoad")
-                    Log.e("Splash", "callback from onAdFailedToLoad")
+                    Log.e("AppOpen", "callback from onAdFailedToLoad")
                     Constants.isSplashAppOpenFail = true
                     adState = AdState.FAILED
                     onShowAdCompletedAction?.invoke(false)

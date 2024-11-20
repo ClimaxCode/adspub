@@ -6,6 +6,8 @@ import android.app.LauncherActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
@@ -14,16 +16,28 @@ import com.climax.ads.adsclas.Constants.appIsForeground
 
 class AppObserver(
     private val appOpen: AppOpen,
+    private val adId:String,
+     var activitys:String
 ) : LifecycleEventObserver,
     Application.ActivityLifecycleCallbacks {
 
     private var mCurrentActivity: Activity? = null
-
     private fun onBackgroundEntered() {
+
+        mCurrentActivity.toString()
         mCurrentActivity?.let {
-            if (it !is LauncherActivity && !Constants.isOpenLocationDialog) {
-                it.loadAppOpen(Constants.onResumeAppOpenId)
+            if (!mCurrentActivity.toString().contains(activitys) && !Constants.isOpenLocationDialog) {
+                it.loadAppOpen(adId)
             }
+
+
+            var tr= false
+            if (mCurrentActivity.toString().contains(activitys)){
+                tr = true
+            }else{tr = false}
+
+                Log.d("appppopeen", "onBackgroundEntered:${mCurrentActivity.toString().split("@")[0]
+                } == com.climax.code.${activitys}  $tr")
            /* if (it is HomeScreenActivity) {
                 if (!it.isShowLocation) {
                     it.loadAppOpen(Constants.onResumeAppOpenId)
@@ -43,7 +57,7 @@ class AppObserver(
         if (!Constants.isPurchased()) {
             mCurrentActivity?.let {
             //    if (it !is LauncherActivity && !Constants.isOpenLocationDialog && it !is PremiumScreen ) {
-                if (it !is LauncherActivity && !Constants.isOpenLocationDialog) {
+                if (!mCurrentActivity.toString().contains(activitys) && !Constants.isOpenLocationDialog) {
                     Handler(Looper.getMainLooper()).postDelayed({
                         it.showAppOpen(0L, onShowAdCompletedAction = {})
                     }, 1000L)

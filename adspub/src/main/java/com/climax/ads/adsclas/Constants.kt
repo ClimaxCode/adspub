@@ -61,7 +61,7 @@ object Constants {
     var isControlOnboardingScreen = 1
     var isControlFullScreeNative = 0
 
-    var splashAppOpenId = ""
+    var splashAppOpenIdff = ""
 
     var isShowSplashNativeOrBanner = true
     var onResumeAppOpenId = ""
