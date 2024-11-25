@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ProcessLifecycleOwner
 import com.climax.ads.adsclas.AppObserver
+import com.climax.ads.adsclas.AppOpen
 import com.climax.ads.adsclas.Constants
 import com.climax.code.onBoarding.OnboardingItem
 import com.climax.code.utils.ConstantsCustomizations.onBoardingItemsList
@@ -16,7 +17,7 @@ class App : Application() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         appObserver = AppObserver(
-            appOpen = Constants.appOpen,
+            appOpen = AppOpen(),
             "ca-app-pub-3940256099942544/9257395921",
             "MainActivity"
         )
@@ -29,24 +30,39 @@ class App : Application() {
         setonBoarding_Bg_Color = getColor(R.color.white)
         onBoardingItemsList.add(
             OnboardingItem(
-                getString(R.string.txt_onboard1),
+               "1",
                 getString(R.string.txt_desc_onBoard1),
                 R.drawable.img1
             )
         )
         onBoardingItemsList.add(
             OnboardingItem(
-                getString(R.string.exit_app),
+               "2",
                 getString(R.string.txt_desc_onBoard2),
                 R.drawable.img1
             )
         )
         onBoardingItemsList.add(
             OnboardingItem(
-                getString(R.string.txt_onboard3),
+              "3",
                 getString(R.string.txt_desc_onBoard3),
                 R.drawable.img1
             )
         )
+
+        onBoardingItemsList.add(
+            OnboardingItem(
+              "4",
+                getString(R.string.txt_desc_onBoard3),
+                R.drawable.img1
+            )
+        )
+//        onBoardingItemsList.add(
+//            OnboardingItem(
+//                "5",
+//                getString(R.string.txt_desc_onBoard3),
+//                R.drawable.img1
+//            )
+//        )
     }
 }

@@ -47,9 +47,9 @@ class FullNativeAdFragment : Fragment() {
             it.showLargeNative(
                 Constants.onBoardingFullScreenNativeId,
                 com.climax.ads.R.layout.full_native,
-                binding.adRoot,
-                binding.adContainer,
-                binding.shimmmmer,
+                binding.adRoots,
+                binding.adContainers,
+                binding.shimmmmers,
                 false,false,{},
                 {}, {})
        }

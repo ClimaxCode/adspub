@@ -12,16 +12,15 @@ import com.climax.ads.adsclas.hideNavigationBar
 import com.climax.ads.adsclas.show
 import com.climax.code.databinding.ActivityOnBoardingBinding
 import com.climax.code.onBoarding.OnboardingFragmentStateAdapter
+import com.climax.code.utils.ConstantsCustomizations.onBoardingFullNativeAtIndex
+import com.climax.code.utils.ConstantsCustomizations.onBoardingItemsList
 
 class OnBoardingActivity : AppCompatActivity() {
     private val binding by lazy {
         ActivityOnBoardingBinding.inflate(layoutInflater)
     }
     private lateinit var sharedPreferences: SharedPreferences
-    private val showAllFragments: Boolean by lazy {
-        val someVariable = 1
-        someVariable == 1
-    }
+    private var showFullNative: Boolean = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +37,8 @@ class OnBoardingActivity : AppCompatActivity() {
         setupViewPager()
 
         binding.next.setOnClickListener {
-            val maxItem = if (showAllFragments) 4 else 3
+            val maxItem =
+                if (showFullNative) onBoardingItemsList.size + 1 else onBoardingItemsList.size
             if (binding.viewPager.currentItem + 1 < maxItem) {
                 binding.viewPager.currentItem += 1
             } else {
@@ -81,7 +81,9 @@ class OnBoardingActivity : AppCompatActivity() {
 
 
     private fun setupViewPager() {
-        val adapter = OnboardingFragmentStateAdapter(this, showAllFragments)
+        showFullNative = false
+        onBoardingFullNativeAtIndex = 2
+        val adapter = OnboardingFragmentStateAdapter(this, showFullNative)
         binding.viewPager.adapter = adapter
         binding.dotsIndicator.attachTo(binding.viewPager)
         binding.dotsIndicator.selectedDotColor = getColor(R.color.main_color)
@@ -94,7 +96,9 @@ class OnBoardingActivity : AppCompatActivity() {
                 super.onPageScrolled(position, positionOffset, positionOffsetPixels)
                 if (position == 3) binding.btnSkip.visibility =
                     View.INVISIBLE else binding.btnSkip.visibility = View.VISIBLE
-                if (position == 2) {
+
+
+                if (showFullNative && position == onBoardingFullNativeAtIndex) {
                     hideBottomViews()
                 } else {
                     showBottomViews()

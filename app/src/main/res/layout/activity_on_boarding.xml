@@ -90,7 +90,7 @@
         app:dotsWidthFactor="1.5"
         app:layout_constraintBottom_toBottomOf="@+id/swapingLayout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewPager"
+        app:layout_constraintTop_toTopOf="@+id/swapingLayout"
         app:progressMode="true"
         app:selectedDotColor="@color/main_color" />
 

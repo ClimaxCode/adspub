@@ -3,6 +3,7 @@ package com.climax.code
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.climax.ads.adsclas.Constants
 import com.climax.ads.adsclas.checkAndShowInterstitial
 import com.climax.ads.adsclas.exit1
 import com.climax.ads.adsclas.exit2
@@ -11,6 +12,12 @@ import com.climax.ads.adsclas.preLoadLargeNativeAd
 import com.climax.ads.adsclas.preLoadNativeAd
 import com.climax.ads.adsclas.showNative
 import com.climax.code.databinding.ActivityMainBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class MainActivity : AppCompatActivity() {
@@ -22,6 +29,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         clicks()
+
+
 
     }
 
@@ -146,4 +155,6 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
+
 }

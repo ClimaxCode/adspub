@@ -7,8 +7,8 @@ object Constants {
     const val FB_TAG = "fb_inter"
     var isSplashAppOpenFail = false
     var isBannerLoaded = false
- var isOpenLocationDialog = false
-    const val KEY_PANGLE_APP_ID="8495093"
+    var isOpenLocationDialog = false
+    const val KEY_PANGLE_APP_ID = "8495093"
     var FBTAG: String = "facebook_native"
 
     var inlineBannerId = ""
@@ -57,7 +57,7 @@ object Constants {
     var isLoadedAdInters = false
     var isLoadedAdIntersPangle = false
     var scannerWaitingTimer: Long = 4000
-    var canShowRateUsDialog=false
+    var canShowRateUsDialog = false
     var isControlOnboardingScreen = 1
     var isControlFullScreeNative = 0
 
@@ -101,7 +101,7 @@ object Constants {
     var languageNativeAd = ""
     var createThemeNativeAd = ""
     var enableKeyboardNativeAd = ""
-   var showHomeThemeCounter = 0
+    var showHomeThemeCounter = 0
     var isShowCreateOwnInters = false
     var onboardingNativeAdId = ""
 
@@ -110,7 +110,7 @@ object Constants {
     var tempCollapsibleBannerAdId = ""
     var isShowFullScreenNativeAd = true
     var fullScreenNativeId = ""
-    var onBoardingFullScreenNativeId= ""
+    var onBoardingFullScreenNativeId = ""
 
     var exitAppNativeAdId = ""
     var settingNativeAdId = ""
@@ -138,11 +138,9 @@ object Constants {
     var rewarded = Rewarded()
 
 
-
-
     /* pangle interstitial ad id */
 
-    var pangleInterstitialId  = ""
+    var pangleInterstitialId = ""
     var pangleNativeId = ""
 
 }
