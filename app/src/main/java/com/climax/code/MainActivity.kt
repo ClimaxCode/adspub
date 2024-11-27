@@ -142,12 +142,12 @@ class MainActivity : AppCompatActivity() {
                 5000,
                 onShowAdCompletedAction = {
 
-                    var intent = Intent(this@MainActivity, InterstitalActivity::class.java)
+                    var intent = Intent(this@MainActivity, RecyclerViewActivity::class.java)
                     intent.putExtra("failed", false)
                     startActivity(intent)
                 },
                 onInterstitialFailed = {
-                    var intent = Intent(this@MainActivity, InterstitalActivity::class.java)
+                    var intent = Intent(this@MainActivity, RecyclerViewActivity::class.java)
                     intent.putExtra("failed", true)
                     startActivity(intent)
                 })
