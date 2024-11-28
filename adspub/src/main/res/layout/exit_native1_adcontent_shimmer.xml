@@ -38,7 +38,7 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:background="@drawable/green_outline"
+                        android:background="@drawable/green_outlinewe"
                         android:layout_height="match_parent">
 
                         <View
