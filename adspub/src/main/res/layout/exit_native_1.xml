@@ -47,7 +47,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/black_outline_button"
+            android:background="@drawable/green_outline_button"
             android:text="EXIT"
             android:paddingVertical="@dimen/_8sdp"
             android:foreground="?attr/selectableItemBackground"
@@ -63,7 +63,7 @@
             android:foreground="?attr/selectableItemBackground"
             android:layout_weight="1"
             android:layout_marginStart="@dimen/_20sdp"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/main_color"
             android:text="CANCEL"
             android:textColor="#FFFFFF"/>
     </LinearLayout>
