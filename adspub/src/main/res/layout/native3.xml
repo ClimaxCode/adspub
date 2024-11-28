@@ -172,6 +172,7 @@
                     android:layout_height="@dimen/_32sdp"
                     android:layout_marginHorizontal="@dimen/_8sdp"
                     android:layout_marginTop="8dp"
+                    android:backgroundTint="@color/Adscolor"
                     android:layout_marginBottom="@dimen/_6sdp"
                     android:background="@drawable/ads_action_btn2"
                     android:gravity="center"

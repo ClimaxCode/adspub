@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Ads" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+         <item name="colorPrimary">@color/Adscolor</item>
     </style>
 
     <style name="Theme.Ads" parent="Base.Theme.Ads" />
@@ -26,5 +26,9 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSizeTopLeft">10dp</item>
         <item name="cornerSizeTopRight">10dp</item>
+    </style>
+
+    <style name="adsbuttonColor">
+        <item name="android:background">@color/Adscolor</item>
     </style>
 </resources>

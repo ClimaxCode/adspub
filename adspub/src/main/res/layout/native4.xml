@@ -146,6 +146,7 @@
                         android:id="@+id/ad_call_to_action"
                         android:layout_width="90dp"
                         android:layout_height="@dimen/_28sdp"
+                        android:backgroundTint="@color/Adscolor"
                         android:layout_marginHorizontal="@dimen/_8sdp"
                         android:background="@drawable/ads_action_btn2"
                         android:gravity="center"

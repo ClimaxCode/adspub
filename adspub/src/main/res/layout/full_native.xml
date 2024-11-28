@@ -126,6 +126,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/ads_action_btn2"
+                android:backgroundTint="@color/Adscolor"
                 android:gravity="center"
                 android:text="@string/install"
                 android:textColor="@color/white"

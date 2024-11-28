@@ -164,6 +164,7 @@
                             android:background="@drawable/ads_action_btn2"
                             android:gravity="center"
                             android:text="@string/install"
+                            android:backgroundTint="@color/Adscolor"
                             android:textColor="@color/white"
                             android:textSize="@dimen/_12ssp"
                             app:layout_constraintBottom_toBottomOf="parent"
