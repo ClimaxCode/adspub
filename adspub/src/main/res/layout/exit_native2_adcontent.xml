@@ -32,6 +32,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardCornerRadius="@dimen/_12sdp"
+                    app:strokeWidth="0dp"
+                    android:layout_margin="1dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -170,7 +172,7 @@
                     app:layout_constraintStart_toStartOf="@+id/ad"
                     app:layout_constraintTop_toBottomOf="@+id/linearL" />
 
-                <androidx.appcompat.widget.AppCompatButton
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/ad_call_to_action"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_32sdp"
