@@ -167,7 +167,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/linearL" />
 
                 <View
-                    android:id="@+id/ad_call_to_action"
+                    android:id="@+id/ad_call_to_actionn"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_32sdp"
                     android:layout_marginTop="12dp"

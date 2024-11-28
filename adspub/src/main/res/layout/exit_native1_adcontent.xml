@@ -10,6 +10,7 @@
         android:layout_margin="@dimen/_2sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/green_outline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -39,7 +40,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/green_outline">
+                       >
 
                         <com.google.android.gms.ads.nativead.MediaView
                             android:id="@+id/ad_media"
@@ -154,7 +155,7 @@
 
                         </LinearLayout>
 
-                        <com.google.android.material.button.MaterialButton
+                        <androidx.appcompat.widget.AppCompatButton
                             android:id="@+id/ad_call_to_action"
                             android:layout_width="0dp"
                             android:layout_height="@dimen/_34sdp"

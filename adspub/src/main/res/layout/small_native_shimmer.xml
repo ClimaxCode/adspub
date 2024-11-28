@@ -154,7 +154,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <View
-                    android:id="@+id/ad_call_to_action"
+                    android:id="@+id/ad_call_to_actions"
                     android:layout_width="90dp"
                     android:layout_height="@dimen/_32sdp"
                     android:layout_marginHorizontal="@dimen/_8sdp"

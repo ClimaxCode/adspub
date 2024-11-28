@@ -172,7 +172,7 @@
                     app:layout_constraintStart_toStartOf="@+id/ad"
                     app:layout_constraintTop_toBottomOf="@+id/linearL" />
 
-                <com.google.android.material.button.MaterialButton
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/ad_call_to_action"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_32sdp"

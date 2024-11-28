@@ -1,10 +1,12 @@
 package com.climax.ads.adsclas
 
 import androidx.lifecycle.MutableLiveData
+import com.climax.ads.R
 
 object Constants {
 
     const val FB_TAG = "fb_inter"
+    var adsButtonColor= R.color.red
     var isSplashAppOpenFail = false
     var isBannerLoaded = false
     var isOpenLocationDialog = false

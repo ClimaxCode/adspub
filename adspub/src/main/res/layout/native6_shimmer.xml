@@ -154,7 +154,7 @@
                         </LinearLayout>
 
                         <View
-                            android:id="@+id/ad_call_to_action"
+                            android:id="@+id/ad_call_to_actions"
                             android:layout_width="0dp"
                             android:layout_height="@dimen/_34sdp"
                             android:background="#FFD0D3D5"
