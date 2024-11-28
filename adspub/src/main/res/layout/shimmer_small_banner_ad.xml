@@ -59,7 +59,7 @@
         <View
             android:id="@+id/ad_body"
             android:layout_width="0dp"
-            android:layout_height="@dimen/_20sdp"
+            android:layout_height="@dimen/_18sdp"
             android:layout_marginTop="8dp"
             android:background="#FFD0D3D5"
             app:layout_constraintEnd_toEndOf="@+id/ad_headline"
