@@ -127,7 +127,7 @@
                                 android:id="@+id/ad_body"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_8sdp"
+                                android:layout_marginTop="@dimen/_4sdp"
                                 android:layout_marginEnd="@dimen/_4sdp"
                                 android:ellipsize="end"
                                 android:maxLines="2"

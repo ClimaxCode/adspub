@@ -73,6 +73,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/black"
+                                android:singleLine="true"
                                 android:textSize="16sp"
                                 android:textStyle="bold" />
 
@@ -134,6 +135,7 @@
                             android:maxLines="1"
                             android:textColor="#585858"
                             android:textSize="@dimen/_8ssp"
+                            android:singleLine="true"
                             android:visibility="visible"
                             app:layout_constraintEnd_toEndOf="@+id/linearL"
                             app:layout_constraintStart_toStartOf="parent"

@@ -88,6 +88,7 @@
                         android:id="@+id/ad_headline"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:singleLine="true"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -149,6 +150,7 @@
                     android:layout_marginTop="5dp"
                     android:ellipsize="end"
                     android:maxLines="1"
+                    android:singleLine="true"
                     android:textColor="#585858"
                     android:textSize="@dimen/_8ssp"
                     android:visibility="visible"

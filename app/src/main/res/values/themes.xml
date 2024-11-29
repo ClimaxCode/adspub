@@ -17,4 +17,12 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">10dp</item>
     </style>
+    <style name="AdTheme">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowExitAnimation">@null</item>
+        <item name="android:windowEnterAnimation">@null</item>
+    </style>
+
+
 </resources>
