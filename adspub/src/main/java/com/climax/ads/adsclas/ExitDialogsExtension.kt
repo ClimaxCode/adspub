@@ -18,7 +18,7 @@ fun Activity?.exit1(adId: String, exit: () -> Unit) {
     )
         .setView(dialogBinding.root)
         .show()
-
+    exitDialog.window?.setDimAmount(0.7f)
     dialogBinding.exitButton.setOnClickListener {
         exitDialog.dismiss()
         exit()
