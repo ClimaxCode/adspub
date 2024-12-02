@@ -68,6 +68,7 @@ class AdaptiveBannerAd(var context: Context) {
 
                 override fun onAdFailedToLoad(adError: LoadAdError) {
                     Log.d(TAG, "onAdFailedToLoad: ")
+                    loadingText.visibility = View.GONE
                     onShowAdCompletedAction?.invoke(false)
                 }
 
@@ -77,6 +78,7 @@ class AdaptiveBannerAd(var context: Context) {
 
                 override fun onAdLoaded() {
                     Log.d(TAG, "onAdLoaded: ")
+                    loadingText.visibility = View.GONE
                     onShowAdCompletedAction?.invoke(true)
                 }
 
@@ -87,7 +89,7 @@ class AdaptiveBannerAd(var context: Context) {
         } else {
             onShowAdCompletedAction?.invoke(false)
             adLayout.visibility = View.GONE
-          //  containerLayout.visibility = View.GONE
+            //  containerLayout.visibility = View.GONE
             loadingText.visibility = View.GONE
 
         }
