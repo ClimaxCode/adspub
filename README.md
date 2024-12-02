@@ -1,6 +1,6 @@
 
 
-# AndModuleAds
+# Ads Module
 
 	maven { url 'https://jitpack.io' }
 
