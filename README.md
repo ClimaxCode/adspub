@@ -29,8 +29,7 @@
     activity.loadPreInterstitial("InterstitalAdId") // only In preload scenrio 
 
 ### Show Interstistal
-
-   this.checkAndShowInterstitial(
+	activity.checkAndShowInterstitial(
                 true,
                 "InterstitalAdId",
                 true,
