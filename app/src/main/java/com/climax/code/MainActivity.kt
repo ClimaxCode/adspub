@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
 
     fun clicks() {
         binding.buttonexit1.setOnClickListener {
-            this.exit1("ca-app-pub-3940256099942544/2247696110",R.color.adsBlye,R.color.main_color) {
+            this.exit1("ca-app-pub-3940256099942544/2247696110",R.color.main_color,R.color.main_color) {
             }
         }
         binding.buttonexit2.setOnClickListener {
