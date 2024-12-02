@@ -22,3 +22,26 @@
             ProcessLifecycleOwner.get().lifecycle.addObserver(it)
             this.registerActivityLifecycleCallbacks(it)
         }
+
+## Interstital Ads
+
+### Preload Interstistal
+    activity.loadPreInterstitial("InterstitalAdId") // only In preload scenrio 
+
+### Show Interstistal
+
+   this.checkAndShowInterstitial(
+                true,
+                "InterstitalAdId",
+                true,
+                0, // timein millis to show loader
+                onShowAdCompletedAction = {
+                    var intent = Intent(this@MainActivity, OnBoardingActivity::class.java)
+                    intent.putExtra("failed", false)
+                    startActivity(intent)
+                },
+                onInterstitialFailed = {
+                    var intent = Intent(this@MainActivity, OnBoardingActivity::class.java)
+                    intent.putExtra("failed", true)
+                    startActivity(intent)
+                })
