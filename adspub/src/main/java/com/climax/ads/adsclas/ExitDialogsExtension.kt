@@ -1,8 +1,9 @@
 package com.climax.ads.adsclas
 
 import android.app.Activity
-import android.util.Log
+import android.content.res.ColorStateList
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import com.climax.ads.R
 import com.climax.ads.databinding.ExitNative1Binding
 import com.climax.ads.databinding.ExitNative2Binding
@@ -10,7 +11,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 
-fun Activity?.exit1(adId: String, exit: () -> Unit) {
+fun Activity?.exit1(adId: String, adButtonColor: Int,exitButtonColor:Int, exit: () -> Unit) {
     var dialogBinding = ExitNative1Binding.inflate(this!!.layoutInflater)
     val exitDialog: AlertDialog = MaterialAlertDialogBuilder(
         this,
@@ -27,27 +28,32 @@ fun Activity?.exit1(adId: String, exit: () -> Unit) {
     dialogBinding.cancelButton.setOnClickListener {
         exitDialog.dismiss()
     }
-    showLargeNative(adId, R.layout.exit_native1_adcontent,
-        dialogBinding.layout.adRoot,dialogBinding.layout.adContainere1,dialogBinding.layout.shimmerExit1,false,true,{
+    showLargeNative(adId,
+        R.layout.exit_native1_adcontent,
+        dialogBinding.layout.adRoot,
+        dialogBinding.layout.adContainere1,
+        dialogBinding.layout.shimmerExit1,
+        false,
+        true,
+        {
 
-        },{
+        },
+        {
 
-        },{
+        },
+        {
 
-        })
+        },
+        adButtonColor
+    )
+    val tintColor = ContextCompat.getColor(this,exitButtonColor)
 
-//    this.callNativeAd(adId, "exit1", false, true,
-//        {
-//            Log.d("adss", "onCreate: loaded")
-//        }, {
-//            Log.d("adss", "onCreate: failes")
-//        }, {
-//
-//        })
+// Apply the background tint
+    dialogBinding.cancelButton.backgroundTintList = ColorStateList.valueOf(tintColor)
 
 }
 
-fun Activity?.exit2(adId: String, exit: () -> Unit) {
+fun Activity?.exit2(adId: String, adButtonColor: Int, exit: () -> Unit) {
     var dialogBinding = ExitNative2Binding.inflate(this!!.layoutInflater)
     val exitDialog = BottomSheetDialog(
         this
@@ -61,14 +67,24 @@ fun Activity?.exit2(adId: String, exit: () -> Unit) {
 
     }
 
-    showLargeNative(adId, R.layout.exit_native2_adcontent,
-        dialogBinding.layout.adRoot,dialogBinding.layout.adContainere2,dialogBinding.layout.shimmerExit2,false,true,{
+    showLargeNative(adId,
+        R.layout.exit_native2_adcontent,
+        dialogBinding.layout.adRoot,
+        dialogBinding.layout.adContainere2,
+        dialogBinding.layout.shimmerExit2,
+        false,
+        true,
+        {
 
-        },{
+        },
+        {
 
-        },{
+        },
+        {
 
-        })
+        },
+        adButtonColor
+    )
 
 //    this.callNativeAd(adId, "exit2", false, true,
 //        {

@@ -6,12 +6,13 @@ import com.climax.ads.R
 object Constants {
 
     const val FB_TAG = "fb_inter"
-    var adsButtonColor= R.color.red
+    var adsButtonColor= R.color.Adscolor
     var isSplashAppOpenFail = false
     var isBannerLoaded = false
     var isOpenLocationDialog = false
     const val KEY_PANGLE_APP_ID = "8495093"
     var FBTAG: String = "facebook_native"
+    var isOnClickAnyAd= false
 
     var inlineBannerId = ""
     var fbNativeAdId = ""

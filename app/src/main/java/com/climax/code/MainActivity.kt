@@ -36,11 +36,11 @@ class MainActivity : AppCompatActivity() {
 
     fun clicks() {
         binding.buttonexit1.setOnClickListener {
-            this.exit1("ca-app-pub-3940256099942544/2247696110") {
+            this.exit1("ca-app-pub-3940256099942544/2247696110",R.color.red,R.color.main_color) {
             }
         }
         binding.buttonexit2.setOnClickListener {
-            this.exit2("ca-app-pub-3940256099942544/2247696110") {
+            this.exit2("ca-app-pub-3940256099942544/2247696110",R.color.text_color_green) {
 
             }
         }

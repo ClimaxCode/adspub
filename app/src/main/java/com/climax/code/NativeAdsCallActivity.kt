@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.climax.ads.R
 import com.climax.ads.adsclas.callNativeAd
 import com.climax.code.databinding.ActivityNativeAdsCallBinding
 
@@ -19,7 +20,7 @@ class NativeAdsCallActivity : AppCompatActivity() {
         if (intent.getStringExtra("style").equals("one")) {
             binding.one.visibility = View.VISIBLE
 
-                   callNativeAd("ca-app-pub-3940256099942544/1044960115","large",false,true,{},{},{})
+                   callNativeAd("ca-app-pub-3940256099942544/1044960115","large",false,true,{},{},{},R.color.red)
         } else if (intent.getStringExtra("style").equals("two")) {
             binding.two.visibility = View.VISIBLE
             callNativeAd("ca-app-pub-3940256099942544/1044960115", "native1", false, true,
@@ -29,7 +30,7 @@ class NativeAdsCallActivity : AppCompatActivity() {
                     Log.d("adss", "onCreate: failes")
                 }, {
 
-                })
+                },R.color.button_active)
 
 
         } else if (intent.getStringExtra("style").equals("three")) {
@@ -42,7 +43,7 @@ class NativeAdsCallActivity : AppCompatActivity() {
                 true,
                 {},
                 {},
-                {})
+                {},R.color.red)
         } else if (intent.getStringExtra("style").equals("four")) {
             binding.four.visibility = View.VISIBLE
 
@@ -53,7 +54,7 @@ class NativeAdsCallActivity : AppCompatActivity() {
                 true,
                 {},
                 {},
-                {})
+                {},R.color.black)
         } else if (intent.getStringExtra("style").equals("five")) {
             binding.five.visibility = View.VISIBLE
 
@@ -64,7 +65,7 @@ class NativeAdsCallActivity : AppCompatActivity() {
                 true,
                 {},
                 {},
-                {})
+                {},R.color.red)
         } else if (intent.getStringExtra("style").equals("six")) {
             binding.six.visibility = View.VISIBLE
 
@@ -75,7 +76,7 @@ class NativeAdsCallActivity : AppCompatActivity() {
                 true,
                 {},
                 {},
-                {})
+                {},R.color.red)
         } else if (intent.getStringExtra("style").equals("seven")) {
             binding.seven.visibility = View.VISIBLE
 
@@ -86,10 +87,10 @@ class NativeAdsCallActivity : AppCompatActivity() {
                 true,
                 {},
                 {},
-                {})
+                {},R.color.red)
         } else if (intent.getStringExtra("style").equals("eight")) {
             binding.eight.visibility = View.VISIBLE
-            callNativeAd("ca-app-pub-3940256099942544/1044960115", "small", false, true, {}, {}, {})
+            callNativeAd("ca-app-pub-3940256099942544/1044960115", "small", false, true, {}, {}, {},R.color.red)
         }
 
 

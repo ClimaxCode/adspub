@@ -73,7 +73,7 @@ class MixedGridAdapter(
                     false,
                     { },
                     { },
-                    { }
+                    { },R.color.Adscolor
                 )
             }
         }

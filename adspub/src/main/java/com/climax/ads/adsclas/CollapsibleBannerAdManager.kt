@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.Display
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import com.climax.ads.adsclas.Constants.isOnClickAnyAd
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.ads.mediation.admob.AdMobAdapter
 
@@ -68,6 +69,11 @@ class CollapsibleBannerAdManager {
 
                     override fun onAdOpened() {
                         super.onAdOpened()
+                    }
+
+                    override fun onAdClicked() {
+                        super.onAdClicked()
+                        isOnClickAnyAd = true
                     }
                 }
 

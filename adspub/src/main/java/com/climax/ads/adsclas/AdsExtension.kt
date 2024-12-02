@@ -24,6 +24,7 @@ import com.climax.ads.adsclas.Constants.appOpen
 import com.climax.ads.adsclas.Constants.clickCount
 import com.climax.ads.adsclas.Constants.interstitial
 import com.climax.ads.adsclas.Constants.interstitialAdCount
+import com.climax.ads.adsclas.Constants.isOnClickAnyAd
 import com.climax.ads.adsclas.Constants.largeNative
 import com.climax.ads.adsclas.Constants.native
 import com.climax.ads.adsclas.Constants.rewarded
@@ -36,7 +37,7 @@ import com.google.android.material.textview.MaterialTextView
 
 /* AppOpen Ad Extension functions*/
 fun Activity?.loadAppOpen(
-    appOpenId: String ,
+    appOpenId: String,
     onShowAdCompletedAction: ((Boolean) -> Unit)? = null
 ) {
     this?.let {
@@ -57,12 +58,17 @@ fun Activity?.showAppOpen(
         if (!Constants.isPurchased()) {
             Log.e("AppOpen", "Ext showAppOpen ${!OTHER_AD_DISPLAYED}")
             if (!OTHER_AD_DISPLAYED && Constants.appIsForeground) {
-                appOpen.showAppOpenAd(
-                    this,
-                    waitingTime,
-                    onShowAdCompletedAction,
-                    showLoadingDialog
-                )
+                if (!isOnClickAnyAd) {
+                    appOpen.showAppOpenAd(
+                        this,
+                        waitingTime,
+                        onShowAdCompletedAction,
+                        showLoadingDialog
+                    )
+                }else{
+                    isOnClickAnyAd= false
+                }
+
             } else {
                 onShowAdCompletedAction.invoke()
             }
@@ -348,64 +354,65 @@ fun Activity?.callNativeAd(
     loadNewAd: Boolean = true,
     actionLoaded: () -> Unit,
     actionFailed: () -> Unit,
-    tryToShowAgain: (Boolean) -> Unit
+    tryToShowAgain: (Boolean) -> Unit,
+    actionButtonColor: Int
 ) {
 
     var type: Int = 0
-    var frameLayout:FrameLayout? =null
-    var shimmer:ShimmerFrameLayout? =null
+    var frameLayout: FrameLayout? = null
+    var shimmer: ShimmerFrameLayout? = null
     Log.d("Ads", "callNativeAd: $nativeAdtype")
     when (nativeAdtype) {
         "large" -> {
             type = R.layout.full_native
-            frameLayout =  this?.findViewById(R.id.adContainer)!!
-            shimmer=  this.findViewById(R.id.shimmmmer)!!
+            frameLayout = this?.findViewById(R.id.adContainer)!!
+            shimmer = this.findViewById(R.id.shimmmmer)!!
         }
 
         "native1" -> {
             type = R.layout.native1
-            frameLayout =  this?.findViewById(R.id.adContainer1)!!
-            shimmer=  this.findViewById(R.id.shimmer1)!!
+            frameLayout = this?.findViewById(R.id.adContainer1)!!
+            shimmer = this.findViewById(R.id.shimmer1)!!
         }
 
         "native2" -> {
             type = R.layout.native2
-            frameLayout =  this?.findViewById(R.id.adContainer2)!!
-            shimmer=  this.findViewById(R.id.shimmer2)!!
+            frameLayout = this?.findViewById(R.id.adContainer2)!!
+            shimmer = this.findViewById(R.id.shimmer2)!!
         }
 
         "native3" -> {
             type = R.layout.native3
-            frameLayout =  this?.findViewById(R.id.adContainer3)!!
-            shimmer=  this.findViewById(R.id.shimmer3)!!
+            frameLayout = this?.findViewById(R.id.adContainer3)!!
+            shimmer = this.findViewById(R.id.shimmer3)!!
         }
 
         "native4" -> {
             type = R.layout.native4
-            frameLayout =  this?.findViewById(R.id.adContainer4)!!
-            shimmer=  this.findViewById(R.id.shimmer4)!!
+            frameLayout = this?.findViewById(R.id.adContainer4)!!
+            shimmer = this.findViewById(R.id.shimmer4)!!
         }
 
         "native5" -> {
             type = R.layout.native5
-            frameLayout =  this?.findViewById(R.id.adContainer5)!!
-            shimmer=  this.findViewById(R.id.shimmer5)!!
+            frameLayout = this?.findViewById(R.id.adContainer5)!!
+            shimmer = this.findViewById(R.id.shimmer5)!!
         }
 
         "native6" -> {
             type = R.layout.native6
-            frameLayout =  this?.findViewById(R.id.adContainer6)!!
-            shimmer=  this.findViewById(R.id.shimmer6)!!
+            frameLayout = this?.findViewById(R.id.adContainer6)!!
+            shimmer = this.findViewById(R.id.shimmer6)!!
         }
 
         "small" -> {
             type = R.layout.small_native
-            frameLayout =  this?.findViewById(R.id.adContainers)!!
-            shimmer=  this.findViewById(R.id.shimmers)!!
+            frameLayout = this?.findViewById(R.id.adContainers)!!
+            shimmer = this.findViewById(R.id.shimmers)!!
         }
 
         else -> {
-          return
+            return
         }
 //        "exit1" ->{
 //            type = R.layout.exit_native1_adcontent
@@ -422,14 +429,15 @@ fun Activity?.callNativeAd(
     showLargeNative(
         nativeAdId,
         type,
-        this?.findViewById(R.id.ad_root),
-       frameLayout!!,
-        shimmer!!,
+        this.findViewById(R.id.ad_root),
+        frameLayout,
+        shimmer,
         preLoad,
         loadNewAd,
         actionLoaded,
         actionFailed,
-        tryToShowAgain
+        tryToShowAgain,
+        actionButtonColor
     )
 }
 
@@ -444,6 +452,7 @@ fun Activity?.showLargeNative(
     actionLoaded: () -> Unit,
     actionFailed: () -> Unit,
     tryToShowAgain: (Boolean) -> Unit,
+    actionButtonColor: Int
 ) {
     this?.let {
         if (!Constants.isPurchased() && isNetworkAvailable()) {
@@ -457,7 +466,8 @@ fun Activity?.showLargeNative(
                 loadNewAd,
                 actionLoaded,
                 actionFailed,
-                tryToShowAgain
+                tryToShowAgain,
+                actionButtonColor
             )
             if (preLoad) largeNative.preLoadNative(this, nativeAdId)
         } else {

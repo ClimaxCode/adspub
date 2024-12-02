@@ -8,6 +8,7 @@ import android.view.Display
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import com.climax.ads.adsclas.Constants.isBannerLoaded
+import com.climax.ads.adsclas.Constants.isOnClickAnyAd
 import com.facebook.shimmer.ShimmerFrameLayout
 
 
@@ -64,6 +65,11 @@ class BannerAdManagerWithActivity {
 
                     override fun onAdOpened() {
                         super.onAdOpened()
+                    }
+
+                    override fun onAdClicked() {
+                        super.onAdClicked()
+                        isOnClickAnyAd = true
                     }
                 }
 

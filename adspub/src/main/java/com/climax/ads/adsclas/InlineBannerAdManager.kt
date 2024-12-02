@@ -9,6 +9,7 @@ import android.view.Display
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
+import com.climax.ads.adsclas.Constants.isOnClickAnyAd
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.gms.ads.*
 
@@ -65,6 +66,11 @@ class InlineBannerAdManager {
 
                             override fun onAdOpened() {
                                 super.onAdOpened()
+                            }
+
+                            override fun onAdClicked() {
+                                super.onAdClicked()
+                                isOnClickAnyAd = true
                             }
                         }
                     }
