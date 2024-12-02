@@ -35,12 +35,27 @@
                 true,
                 0, // timein millis to show loader
                 onShowAdCompletedAction = {
-                    var intent = Intent(this@MainActivity, OnBoardingActivity::class.java)
-                    intent.putExtra("failed", false)
-                    startActivity(intent)
+                 // your logic after ad is dismissed
                 },
                 onInterstitialFailed = {
-                    var intent = Intent(this@MainActivity, OnBoardingActivity::class.java)
-                    intent.putExtra("failed", true)
-                    startActivity(intent)
+                   // your logic if ad failed to show
                 })
+
+# Banner Ads
+## Inline Banner
+### Add this xml code
+	<androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/large"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <include
+            android:id="@+id/inline_banner_layout"
+            layout="@layout/inline_banner" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+### Call the inline banner
+	  activity.collapsibleBanner("BannerId")
