@@ -32,6 +32,7 @@ object Constants {
 
     var bannerAd = CollapsibleBannerAd()
 
+
     var isFailGeneratedBtn = false
     var isLanguageClick = false
     var isGeneratedScreenItem = false
