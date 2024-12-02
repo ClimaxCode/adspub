@@ -1,5 +1,6 @@
 package com.climax.ads.adsclas
 
+
 import android.app.Activity
 import android.content.Context
 import android.content.res.ColorStateList
@@ -8,24 +9,24 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.Button
+import android.widget.FrameLayout
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.climax.ads.R
 import com.climax.ads.adsclas.Constants.isLoadNativeAd
 import com.climax.ads.adsclas.Constants.isOnClickAnyAd
 import com.climax.ads.adsclas.enums.AdState
-
-
-import com.google.android.gms.ads.nativead.NativeAd
-import com.google.android.gms.ads.nativead.NativeAdOptions
-import com.google.android.gms.ads.nativead.NativeAdView
-
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdLoader
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.VideoOptions
+import com.google.android.gms.ads.nativead.NativeAd
+import com.google.android.gms.ads.nativead.NativeAdOptions
+import com.google.android.gms.ads.nativead.NativeAdView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -35,7 +36,7 @@ class NativeLarge {
     private var nativeAd: NativeAd? = null
     private var adState = AdState.LOAD
     private var checkTimeOut = true
-    var lastNativeAdId:String= Constants.languageNativeAdId
+    var lastNativeAdId: String = Constants.languageNativeAdId
     private val countDownTimer = object : CountDownTimer(15000, 1000) {
         override fun onTick(millisUntilFinished: Long) {
             checkTimeOut = false
@@ -53,13 +54,13 @@ class NativeLarge {
         container: ConstraintLayout?,
         frameLayout: FrameLayout,
         shimmerFrameLayout: FrameLayout,
-        loadNewAd:Boolean=true,
+        loadNewAd: Boolean = true,
         actionLoaded: (() -> Unit)? = null,
         actionFailed: (() -> Unit)? = null,
         tryToShowAgain: ((Boolean) -> Unit)? = null,
-        actionButtonColor:Int
+        actionButtonColor: Int
     ) {
-        lastNativeAdId=nativeAdId
+        lastNativeAdId = nativeAdId
 
         when (adState) {
             AdState.LOAD -> loadNative(
@@ -68,19 +69,20 @@ class NativeLarge {
                 nativeAdLayout,
                 container,
                 frameLayout,
-                shimmerFrameLayout
+                shimmerFrameLayout, {}, {}, actionButtonColor
             )
+
             AdState.LOADED -> {
-                if(loadNewAd){
+                if (loadNewAd) {
                     loadNative(
                         activity,
                         lastNativeAdId,
                         nativeAdLayout,
                         container,
                         frameLayout,
-                        shimmerFrameLayout
+                        shimmerFrameLayout, {}, {}, actionButtonColor
                     )
-                }else{
+                } else {
                     populateNativeAdView(
                         activity,
                         nativeAdLayout,
@@ -93,9 +95,11 @@ class NativeLarge {
                 }
 
             }
+
             AdState.LOADING -> {
                 tryToShowAgain?.invoke(true)
             }
+
             AdState.FAILED -> loadNative(
                 activity,
                 lastNativeAdId,
@@ -107,10 +111,11 @@ class NativeLarge {
                 actionFailed,
                 actionButtonColor
             )
+
             AdState.SHOWN_FAILED -> {}
             AdState.SHOWING -> {}
             AdState.IMPRESSION -> {
-                if(loadNewAd){
+                if (loadNewAd) {
                     populateNativeAdView(
                         activity,
                         nativeAdLayout,
@@ -131,7 +136,7 @@ class NativeLarge {
                         actionFailed,
                         actionButtonColor
                     )
-                }else{
+                } else {
                     if (checkTimeOut) {
                         loadNative(
                             activity,
@@ -158,6 +163,7 @@ class NativeLarge {
                 }
 
             }
+
             AdState.DISMISSED -> {}
             AdState.AD_CLICKED -> loadNative(
                 activity,
@@ -181,7 +187,7 @@ class NativeLarge {
         shimmerFrameLayout: FrameLayout,
         actionLoaded: (() -> Unit)? = null,
         actionFailed: (() -> Unit)? = null,
-        actionButtonColor:Int
+        actionButtonColor: Int
     ) {
 
         Log.d("FAHAD", "precheckTimeOut: $checkTimeOut")
@@ -198,6 +204,7 @@ class NativeLarge {
                 actionFailed,
                 actionButtonColor
             )
+
             AdState.LOADED -> {
                 adState = AdState.SHOWING
                 populateNativeAdView(
@@ -210,6 +217,7 @@ class NativeLarge {
                     actionButtonColor
                 )
             }
+
             AdState.LOADING -> {}
             AdState.FAILED -> loadNative(
                 activity,
@@ -222,6 +230,7 @@ class NativeLarge {
                 actionFailed,
                 actionButtonColor
             )
+
             AdState.SHOWN_FAILED -> {}
             AdState.SHOWING -> {
                 adState = AdState.SHOWING
@@ -239,6 +248,7 @@ class NativeLarge {
                     actionLoaded?.invoke()
                 }
             }
+
             AdState.IMPRESSION -> {
                 if (checkTimeOut) {
                     loadNative(
@@ -269,6 +279,7 @@ class NativeLarge {
                     }
                 }
             }
+
             AdState.DISMISSED -> {}
             AdState.AD_CLICKED -> loadNative(
                 activity,
@@ -286,14 +297,14 @@ class NativeLarge {
 
     private fun loadNative(
         activity: Activity,
-        nativeAdId:String,
+        nativeAdId: String,
         nativeAdLayout: Int,
         container: ConstraintLayout?,
         frameLayout: FrameLayout,
         shimmerFrameLayout: FrameLayout,
         actionLoaded: (() -> Unit)? = null,
         actionFailed: (() -> Unit)? = null,
-                actionButtonColor:Int = R.color.Adscolor
+        actionButtonColor: Int
     ) {
         val videoOptions = VideoOptions.Builder().build()
         val adOptions = NativeAdOptions.Builder().setVideoOptions(videoOptions).build()
@@ -346,7 +357,7 @@ class NativeLarge {
 
                 override fun onAdClicked() {
                     super.onAdClicked()
-                    isOnClickAnyAd= true
+                    isOnClickAnyAd = true
                     adState = AdState.AD_CLICKED
                 }
             })
@@ -411,14 +422,14 @@ class NativeLarge {
         container: ConstraintLayout?,
         frameLayout: FrameLayout,
         shimmerFrameLayout: FrameLayout,
-        actionButtonColor:Int
+        actionButtonColor: Int
     ) {
         CoroutineScope(Dispatchers.Main).launch {
             nativeAd?.let {
                 val inflater =
                     activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
                 val mainAdView = inflater.inflate(nativeAdLayout, null)
-                val adView=mainAdView.findViewById<NativeAdView>(R.id.ad_view)
+                val adView = mainAdView.findViewById<NativeAdView>(R.id.ad_view)
                 // Set the media view.
                 adView.mediaView = adView.findViewById(R.id.ad_media)
 
@@ -426,7 +437,7 @@ class NativeLarge {
                 adView.headlineView = adView.findViewById(R.id.ad_headline)
                 adView.bodyView = adView.findViewById(R.id.ad_body)
                 adView.callToActionView = adView.findViewById(R.id.ad_call_to_action)
-                val tintColor = ContextCompat.getColor(activity,actionButtonColor)
+                val tintColor = ContextCompat.getColor(activity, actionButtonColor)
 
 // Apply the background tint
                 adView.callToActionView!!.backgroundTintList = ColorStateList.valueOf(tintColor)
