@@ -276,3 +276,45 @@
 
 ### Call the Native Ad
 	callNativeAd("Native Id","native6 ",Preload Ad (Boolean Value),Load New Ad (Boolean Value),{actionLoaded},{actionFailed},{tryToShowAgain},Pass Button Color)
+
+
+## Small Native
+![alt text](https://github.com/ClimaxCode/adspub/blob/main/screenshots/small%20native.png?raw=true)
+### Add this code to XML
+	    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include
+            android:id="@+id/layout1"
+             layout="@layout/small_native_layout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+### Call the Native Ad
+	callNativeAd("Native Id","small",Preload Ad (Boolean Value),Load New Ad (Boolean Value),{actionLoaded},{actionFailed},{tryToShowAgain},Pass Button Color)
+
+
+
+# Exit Dialogs
+## Exit Dialog Style 1
+![alt text](https://github.com/ClimaxCode/adspub/blob/main/screenshots/exit1.png?raw=true)
+### Call the code 
+	  this.exit1("Native ID",Ads Button Color,Exit Button Color) {
+// on exit button click
+            }
+
+## Exit Dialog Style 2
+![alt text](https://github.com/ClimaxCode/adspub/blob/main/screenshots/exit2.png?raw=true)
+### Call the code 
+	  this.exit2("Native ID",Ads Button Color) {
+// on exit button click
+            }
