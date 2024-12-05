@@ -7,6 +7,20 @@
 
 	  implementation 'com.github.ClimaxCode.adspub:adspub:latest_version'
 
+### Add this to Manifest
+ 	<activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:theme="@style/AdTheme"
+            tools:replace="android:theme" />
+### Add this to theme style
+	<style name="AdTheme">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowExitAnimation">@null</item>
+        <item name="android:windowEnterAnimation">@null</item>
+    </style>
+
+
 ## AppOpen Ads
 
 ### Create Application Class and add this code 
