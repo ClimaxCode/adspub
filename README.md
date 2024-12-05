@@ -338,7 +338,7 @@
         
         setupViewPager()
 
-### 3.create setupViewPager Fucntion
+### 3.create setupViewPager Function
 	  private var showFullNative: Boolean = false
  	private fun setupViewPager() {
   	showFullNative = false
