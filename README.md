@@ -7,6 +7,7 @@
 
 	  implementation 'com.github.ClimaxCode.adspub:adspub:latest_version'
 
+### To show Black background on AppOpen Ad
 ### Add this to Manifest
  	<activity
             android:name="com.google.android.gms.ads.AdActivity"
