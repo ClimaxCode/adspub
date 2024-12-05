@@ -309,12 +309,12 @@
 ![alt text](https://github.com/ClimaxCode/adspub/blob/main/screenshots/exit1.png?raw=true)
 ### Call the code 
 	  this.exit1("Native ID",Ads Button Color,Exit Button Color) {
-// on exit button click
+	// on exit button click
             }
 
 ## Exit Dialog Style 2
 ![alt text](https://github.com/ClimaxCode/adspub/blob/main/screenshots/exit2.png?raw=true)
 ### Call the code 
 	  this.exit2("Native ID",Ads Button Color) {
-// on exit button click
+	// on exit button click
             }
