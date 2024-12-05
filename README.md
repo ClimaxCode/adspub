@@ -124,6 +124,7 @@
 	callNativeAd("Native Id","large",Preload Ad (Boolean Value),Load New Ad (Boolean Value),{actionLoaded},{actionFailed},{tryToShowAgain},Pass Button Color)
   
 ## Native Type 1
+![alt text](https://github.com/ClimaxCode/adspub/blob/main/screenshots/native%201.png?raw=true)
 ### Add this code to XML
 	    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -145,3 +146,29 @@
 
 ### Call the Native Ad
 	callNativeAd("Native Id","native1",Preload Ad (Boolean Value),Load New Ad (Boolean Value),{actionLoaded},{actionFailed},{tryToShowAgain},Pass Button Color)
+
+
+## Native Type 2
+![alt text](https://github.com/ClimaxCode/adspub/blob/main/screenshots/native%202.png?raw=true)
+### Add this code to XML
+	    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include
+            android:id="@+id/layout1"
+            layout="@layout/native2_layout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+### Call the Native Ad
+	callNativeAd("Native Id","native2",Preload Ad (Boolean Value),Load New Ad (Boolean Value),{actionLoaded},{actionFailed},{tryToShowAgain},Pass Button Color)
+
