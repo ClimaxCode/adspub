@@ -100,6 +100,7 @@
 
 # Native Ads
 ## Full Native
+![alt text](https://github.com/ClimaxCode/adspub/blob/main/screenshots/full%20native.jpg?raw=true)
 ### Add this code to XML
 	    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
