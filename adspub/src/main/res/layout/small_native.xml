@@ -165,7 +165,7 @@
                     android:backgroundTint="@color/Adscolor"
                     android:layout_height="@dimen/_32sdp"
                     android:layout_marginHorizontal="@dimen/_8sdp"
-                    android:background="@drawable/ads_action_btn2"
+                    android:background="@drawable/ads_action_btn"
                     android:gravity="center"
                     android:text="@string/install"
                     android:textColor="@color/white"

@@ -81,8 +81,8 @@ class OnBoardingActivity : AppCompatActivity() {
 
 
     private fun setupViewPager() {
-        showFullNative = false
-        onBoardingFullNativeAtIndex = 2
+        showFullNative = true
+        onBoardingFullNativeAtIndex = 3
         val adapter = OnboardingFragmentStateAdapter(this, showFullNative)
         binding.viewPager.adapter = adapter
         binding.dotsIndicator.attachTo(binding.viewPager)
