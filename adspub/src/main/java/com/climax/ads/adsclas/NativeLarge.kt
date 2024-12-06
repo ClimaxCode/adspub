@@ -16,6 +16,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.climax.ads.R
+import com.climax.ads.adsclas.Constants.isFirst
 import com.climax.ads.adsclas.Constants.isLoadNativeAd
 import com.climax.ads.adsclas.Constants.isOnClickAnyAd
 import com.climax.ads.adsclas.enums.AdState
@@ -55,7 +56,7 @@ class NativeLarge {
         frameLayout: FrameLayout,
         shimmerFrameLayout: FrameLayout,
         loadNewAd: Boolean = true,
-        actionLoaded: (() -> Unit)? = null,
+        actionLoaded: () -> Unit ,
         actionFailed: (() -> Unit)? = null,
         tryToShowAgain: ((Boolean) -> Unit)? = null,
         actionButtonColor: Int
@@ -185,7 +186,7 @@ class NativeLarge {
         container: ConstraintLayout,
         frameLayout: FrameLayout,
         shimmerFrameLayout: FrameLayout,
-        actionLoaded: (() -> Unit)? = null,
+        actionLoaded: () -> Unit,
         actionFailed: (() -> Unit)? = null,
         actionButtonColor: Int
     ) {
@@ -295,6 +296,7 @@ class NativeLarge {
         }
     }
 
+
     private fun loadNative(
         activity: Activity,
         nativeAdId: String,
@@ -302,12 +304,14 @@ class NativeLarge {
         container: ConstraintLayout?,
         frameLayout: FrameLayout,
         shimmerFrameLayout: FrameLayout,
-        actionLoaded: (() -> Unit)? = null,
+        actionLoaded: () -> Unit?,
         actionFailed: (() -> Unit)? = null,
         actionButtonColor: Int
     ) {
         val videoOptions = VideoOptions.Builder().build()
         val adOptions = NativeAdOptions.Builder().setVideoOptions(videoOptions).build()
+
+
 
         val adLoader = AdLoader.Builder(
             activity,
@@ -345,9 +349,12 @@ class NativeLarge {
 
                 override fun onAdLoaded() {
                     super.onAdLoaded()
+
                     adState = AdState.LOADED
                     isLoadNativeAd = true
-                    Log.d("nativeAdssd", "onAdLoaded: ")
+
+                    Log.d("nativeAdssd", "onAdLoaded: sdsd")
+
                 }
 
                 override fun onAdImpression() {

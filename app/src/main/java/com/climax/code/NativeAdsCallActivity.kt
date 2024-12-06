@@ -20,7 +20,8 @@ class NativeAdsCallActivity : AppCompatActivity() {
         if (intent.getStringExtra("style").equals("one")) {
             binding.one.visibility = View.VISIBLE
 
-            callNativeAd("ca-app-pub-3940256099942544/1044960115","large",false,true,{},{},{},R.color.red)
+            callNativeAd("ca-app-pub-3940256099942544/1044960115","large",false,true,{
+                Log.d("adss", "onCreate: loaded")},{},{},R.color.red)
         } else if (intent.getStringExtra("style").equals("two")) {
             binding.two.visibility = View.VISIBLE
             callNativeAd("ca-app-pub-3940256099942544/1044960115", "native1", false, true,
@@ -41,8 +42,8 @@ class NativeAdsCallActivity : AppCompatActivity() {
                 "native2",
                 false,
                 true,
-                {},
-                {},
+                {   Log.d("adss", "onCreate: loaded")},
+                { Log.d("adss", "onCreate: failes")},
                 {},R.color.red)
         } else if (intent.getStringExtra("style").equals("four")) {
             binding.four.visibility = View.VISIBLE
@@ -52,8 +53,8 @@ class NativeAdsCallActivity : AppCompatActivity() {
                 "native3",
                 false,
                 true,
-                {},
-                {},
+                { Log.d("adss", "onCreate: loaded")},
+                { Log.d("adss", "onCreate: failes")},
                 {},R.color.black)
         } else if (intent.getStringExtra("style").equals("five")) {
             binding.five.visibility = View.VISIBLE
@@ -63,8 +64,8 @@ class NativeAdsCallActivity : AppCompatActivity() {
                 "native4",
                 false,
                 true,
-                {},
-                {},
+                { Log.d("adss", "onCreate: loaded")},
+                { Log.d("adss", "onCreate: failes")},
                 {},R.color.red)
         } else if (intent.getStringExtra("style").equals("six")) {
             binding.six.visibility = View.VISIBLE
@@ -74,7 +75,7 @@ class NativeAdsCallActivity : AppCompatActivity() {
                 "native5",
                 false,
                 true,
-                {},
+                {Log.d("adss", "onCreate: loaded")},
                 {},
                 {},R.color.red)
         } else if (intent.getStringExtra("style").equals("seven")) {
@@ -85,7 +86,7 @@ class NativeAdsCallActivity : AppCompatActivity() {
                 "native6",
                 false,
                 true,
-                {},
+                {Log.d("adss", "onCreate: loaded")},
                 {},
                 {},R.color.red)
         } else if (intent.getStringExtra("style").equals("eight")) {

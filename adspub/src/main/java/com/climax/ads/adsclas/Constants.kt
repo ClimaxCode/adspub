@@ -23,7 +23,7 @@ object Constants {
 
     var isPurchasedLiveData = MutableLiveData(false)
     fun isPurchased() = isPurchasedLiveData.value ?: false
-
+    var isFirst=true
 
     var interstitial = Interstitial()
     var appOpen = AppOpen()

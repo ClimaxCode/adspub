@@ -27,7 +27,7 @@ class App : Application() {
         }
 
         Constants.onBoardingFullScreenNativeId = "ca-app-pub-3940256099942544/1044960115"
-        setonBoarding_Bg_Color = getColor(R.color.white)
+        setonBoarding_Bg_Color = getColor(com.climax.code.R.color.white)
         onBoardingItemsList.add(
             OnboardingItem(
                "1",
