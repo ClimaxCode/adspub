@@ -51,7 +51,7 @@ class FullNativeAdFragment : Fragment() {
                 binding.adContainers,
                 binding.shimmmmers,
                 false,false,{},
-                {}, {}, com.climax.ads.R.color.Adscolor)
+                {}, {},Constants.fullNativeButtonColor)
        }
 
 //        activity?.let {

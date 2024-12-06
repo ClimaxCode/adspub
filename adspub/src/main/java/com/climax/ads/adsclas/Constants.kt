@@ -1,5 +1,6 @@
 package com.climax.ads.adsclas
 
+import android.widget.Button
 import androidx.lifecycle.MutableLiveData
 import com.climax.ads.R
 
@@ -115,6 +116,7 @@ object Constants {
     var isShowFullScreenNativeAd = true
     var fullScreenNativeId = ""
     var onBoardingFullScreenNativeId = ""
+    var fullNativeButtonColor = R.color.Adscolor
 
     var exitAppNativeAdId = ""
     var settingNativeAdId = ""
