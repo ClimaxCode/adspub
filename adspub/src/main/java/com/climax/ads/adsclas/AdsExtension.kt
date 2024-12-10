@@ -97,7 +97,7 @@ fun Activity?.checkAndShowInterstitial(
 
     Log.d("zh", "checkAndShowInterstitial: checkAppOpen ${Constants.isAppOpenShowed}")
     // Log.d("zh", "checkAndShowInterstitial: onlyShowAdmob ${onlyShowAdMob}")
-    if (!Constants.isAppOpenShowed) {
+    if (!Constants.isAppOpenShowed && isNetworkAvailable()) {
         if (!onlyShowAdMob) {
             Log.e("ads", "checkAndShowInterstitial $interstitialAdCount")
 
