@@ -59,7 +59,7 @@ class NativeLarge {
         frameLayout: FrameLayout,
         shimmerFrameLayout: FrameLayout,
         loadNewAd: Boolean = true,
-        actionLoaded: ((Boolean) -> Unit) ,
+        actionLoaded: (() -> Unit) ,
         actionFailed: (() -> Unit)? = null,
         tryToShowAgain: ((Boolean) -> Unit)? = null,
         actionButtonColor: Int,
@@ -201,7 +201,7 @@ class NativeLarge {
         container: ConstraintLayout,
         frameLayout: FrameLayout,
         shimmerFrameLayout: FrameLayout,
-        actionLoaded: (Boolean) -> Unit,
+        actionLoaded: () -> Unit,
         actionFailed: (() -> Unit)? = null,
         actionButtonColor: Int,
         actionButtonTextColor: Int,
@@ -269,7 +269,7 @@ class NativeLarge {
                         bgColor
                     )
                 }.invokeOnCompletion {
-                    actionLoaded?.invoke(true)
+                    actionLoaded?.invoke()
                 }
             }
 
@@ -302,7 +302,7 @@ class NativeLarge {
                             bgColor
                         )
                     }.invokeOnCompletion {
-                        actionLoaded?.invoke(true)
+                        actionLoaded?.invoke()
                     }
                 }
             }
@@ -332,7 +332,7 @@ class NativeLarge {
         container: ConstraintLayout?,
         frameLayout: FrameLayout,
         shimmerFrameLayout: FrameLayout,
-        actionLoaded: ((Boolean) -> Unit),
+        actionLoaded: (() -> Unit),
         actionFailed: (() -> Unit)? = null,
         actionButtonColor: Int,
         actionButtonTextColor: Int,
@@ -368,7 +368,7 @@ class NativeLarge {
                     bgColor
                 )
                 isNewAddLoaded = false
-                actionLoaded?.invoke(true)
+                actionLoaded?.invoke()
             }
             .withAdListener(object : AdListener() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {
@@ -383,7 +383,7 @@ class NativeLarge {
                 override fun onAdLoaded() {
                     super.onAdLoaded()
                     isNewAddLoaded = false
-                    actionLoaded?.invoke(true)
+                    actionLoaded?.invoke()
                     adState = AdState.LOADED
                     isLoadNativeAd = true
                     Log.d("nativeAdssd", "onAdLoaded: sdsd")
