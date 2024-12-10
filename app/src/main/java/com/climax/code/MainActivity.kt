@@ -39,6 +39,8 @@ class MainActivity : AppCompatActivity() {
                         false,
                         false,
                         onShowAdCompletedAction = {
+                            this.exit1("ca-app-pub-3940256099942544/2247696110",R.color.main_color,R.color.white,R.color.main_color,R.color.sub_color) {
+                            }
 //                            binding.proViewBtn.visibility = View.GONE
 //                            binding.watchAdViewBtn.visibility = View.GONE
 //                            appliedSelectedFont()
@@ -59,8 +61,8 @@ class MainActivity : AppCompatActivity() {
                     ).show()
                 }
             }
-//            this.exit1("ca-app-pub-3940256099942544/2247696110",R.color.main_color,R.color.white,R.color.main_color,R.color.sub_color) {
-//            }
+            this.exit1("ca-app-pub-3940256099942544/2247696110",R.color.main_color,R.color.white,R.color.main_color,R.color.sub_color) {
+            }
         }
         binding.buttonexit2.setOnClickListener {
             this.exit2("ca-app-pub-3940256099942544/2247696110",R.color.text_color_green,R.color.txt_color,R.color.sub_color) {
