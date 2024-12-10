@@ -10,13 +10,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.core.content.ContextCompat
-import com.climax.ads.R
 import com.climax.ads.adsclas.AdaptiveBannerAd
-import com.climax.ads.adsclas.helpers.adaptiveBanner
 import com.climax.ads.adsclas.invisible
-import com.climax.ads.adsclas.isNetworkAvailable
 import com.climax.ads.adsclas.setOnSingleClickListener
 import com.climax.ads.adsclas.show
 import com.climax.code.databinding.RateAppLayoutBinding
@@ -37,9 +33,9 @@ class RateAppDialogFragment : BottomSheetDialogFragment() {
     companion object {
         fun newInstance(
             image: Int,
-            title:String,
-            exitTitle:String,
-            adId:String,
+            title: String,
+            exitTitle: String,
+            adId: String,
             dialogType: String?,
             onActionExit: (() -> Unit)? = null,
             onActionFeedback: (() -> Unit)? = null,
@@ -108,7 +104,17 @@ class RateAppDialogFragment : BottomSheetDialogFragment() {
         binding.txtRateEx.text = title
         binding.imgRateIcon.setImageResource(image!!)
         binding.btnExit.text = exitTitle
+        if (adId == "" || !isNetworkAvailable()) {
+            binding.nativead.visibility = View.GONE
+        } else {
+            binding.nativead.visibility = View.VISIBLE
+            var admobBannerAdManager = AdaptiveBannerAd(requireContext())
+            admobBannerAdManager.loadAdaptiveBanner(
+                adId!!, view.findViewById(R.id.bannerAdLayouteate),
+                view.findViewById(R.id.shimmerBannerrate)!!
 
+            )
+        }
     }
 
     fun setAdDialogInteractionListener(listener: OnRateAppExitClickListeners) {
@@ -125,23 +131,21 @@ class RateAppDialogFragment : BottomSheetDialogFragment() {
 
     private fun setupClickListeners() {
 
-        if (adId =="" || !isNetworkAvailable()){
-            binding.nativead.visibility =View.GONE
-        }else{
-            binding.nativead.visibility =View.VISIBLE
-            var admobBannerAdManager = AdaptiveBannerAd(requireContext())
-            admobBannerAdManager.loadAdaptiveBanner(
-                adId!!,
-                binding.bannerAdLayouteate,
-                binding.shimmerBannerrate
+
+        binding.btnRateus.setBackgroundTintList(
+            ContextCompat.getColorStateList(
+                requireContext(),
+                ConstantsCustomizations.buttonColorRate
             )
-        }
-
-
-        binding.btnRateus.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), ConstantsCustomizations.buttonColorRate));
-        binding.btnRateus.setBackgroundTintMode(PorterDuff.Mode.SRC_IN);
-        binding.btnFeedback.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), ConstantsCustomizations.buttonColorRate));
-        binding.btnFeedback.setBackgroundTintMode(PorterDuff.Mode.SRC_IN);
+        )
+        binding.btnRateus.setBackgroundTintMode(PorterDuff.Mode.SRC_IN)
+        binding.btnFeedback.setBackgroundTintList(
+            ContextCompat.getColorStateList(
+                requireContext(),
+                ConstantsCustomizations.buttonColorRate
+            )
+        )
+        binding.btnFeedback.setBackgroundTintMode(PorterDuff.Mode.SRC_IN)
         binding.btnRateus.setOnClickListener {
 
             dialog?.dismiss()
@@ -263,9 +267,11 @@ class RateAppDialogFragment : BottomSheetDialogFragment() {
         adJob?.cancel()
         //  listener?.onCancelAd(dialogType = dialogType)
     }
+
     fun isNetworkAvailable(): Boolean {
-        this?.let {
-            val cm = requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?
+        this.let {
+            val cm =
+                requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?
             val networkCapabilities = cm?.activeNetwork ?: return false
             val actNw = cm.getNetworkCapabilities(networkCapabilities) ?: return false
             return when {
