@@ -36,6 +36,7 @@ fun Activity?.inlineBanner(
 fun Activity?.adaptiveBanner(
     adId: String
 ) {
+
     var admobBannerAdManager = AdaptiveBannerAd(this!!)
     admobBannerAdManager.loadAdaptiveBanner(
         adId,

@@ -23,7 +23,7 @@ class CollapsibleBannerAd() {
 
     fun loadBanner(context: Context,id :String,adContainerView: FrameLayout,shimmerFrameLayout: ShimmerFrameLayout) {
 
-        if(!Constants.isPurchased()) {
+        if(!Constants.isPurchased() && context.isNetworkAvailable()) {
             adView = AdView(context)
 
             val adLayoutParams = FrameLayout.LayoutParams(
