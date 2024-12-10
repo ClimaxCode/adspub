@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity() {
 //            startActivity(intent)
 
             val rateAppDialog = RateAppDialogFragment.newInstance(
-                image = com.climax.ads.R.drawable.group_1, title = "Exit", exitTitle = "Later",
+                image = com.climax.ads.R.drawable.group_1, title = "Exit", exitTitle = "Later","ca-app-pub-3940256099942544/9214589741",
                 dialogType = "reward_type",
                 onActionExit = {
                     // Action to perform when the dialog triggers this function

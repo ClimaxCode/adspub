@@ -1,7 +1,10 @@
 package com.climax.code
 
+import android.content.Context
 import android.content.DialogInterface
 import android.graphics.PorterDuff
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,6 +16,7 @@ import com.climax.ads.R
 import com.climax.ads.adsclas.AdaptiveBannerAd
 import com.climax.ads.adsclas.helpers.adaptiveBanner
 import com.climax.ads.adsclas.invisible
+import com.climax.ads.adsclas.isNetworkAvailable
 import com.climax.ads.adsclas.setOnSingleClickListener
 import com.climax.ads.adsclas.show
 import com.climax.code.databinding.RateAppLayoutBinding
@@ -28,12 +32,14 @@ class RateAppDialogFragment : BottomSheetDialogFragment() {
     private var image: Int? = null
     private var title: String? = null
     private var exitTitle: String? = null
+    private var adId: String? = null
 
     companion object {
         fun newInstance(
             image: Int,
             title:String,
             exitTitle:String,
+            adId:String,
             dialogType: String?,
             onActionExit: (() -> Unit)? = null,
             onActionFeedback: (() -> Unit)? = null,
@@ -46,6 +52,7 @@ class RateAppDialogFragment : BottomSheetDialogFragment() {
             rateAppDialogFragment.image = image
             rateAppDialogFragment.title = title
             rateAppDialogFragment.exitTitle = exitTitle
+            rateAppDialogFragment.adId = adId
             rateAppDialogFragment.onActionExit = onActionExit
             rateAppDialogFragment.onActionFeedback = onActionFeedback
             rateAppDialogFragment.onActionRateus = onActionRateus
@@ -118,12 +125,19 @@ class RateAppDialogFragment : BottomSheetDialogFragment() {
 
     private fun setupClickListeners() {
 
-        var admobBannerAdManager = AdaptiveBannerAd(requireContext())
-        admobBannerAdManager.loadAdaptiveBanner(
-            "ca-app-pub-3940256099942544/9214589741",
-            binding.bannerAdLayout,
-          binding.shimmerBanner
-        )
+        if (adId =="" || !isNetworkAvailable()){
+            binding.nativead.visibility =View.GONE
+        }else{
+            binding.nativead.visibility =View.VISIBLE
+            var admobBannerAdManager = AdaptiveBannerAd(requireContext())
+            admobBannerAdManager.loadAdaptiveBanner(
+                adId!!,
+                binding.bannerAdLayout,
+                binding.shimmerBanner
+            )
+        }
+
+
         binding.btnRateus.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), ConstantsCustomizations.buttonColorRate));
         binding.btnRateus.setBackgroundTintMode(PorterDuff.Mode.SRC_IN);
         binding.btnFeedback.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), ConstantsCustomizations.buttonColorRate));
@@ -248,6 +262,21 @@ class RateAppDialogFragment : BottomSheetDialogFragment() {
         dialog?.dismiss()
         adJob?.cancel()
         //  listener?.onCancelAd(dialogType = dialogType)
+    }
+    fun isNetworkAvailable(): Boolean {
+        this?.let {
+            val cm = requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?
+            val networkCapabilities = cm?.activeNetwork ?: return false
+            val actNw = cm.getNetworkCapabilities(networkCapabilities) ?: return false
+            return when {
+                actNw.hasTransport(NetworkCapabilities.TRANSPORT_VPN) -> true
+                actNw.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+                actNw.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                actNw.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
+                else -> true
+            }
+        }
+        return false
     }
 
 }
