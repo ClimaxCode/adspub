@@ -11,7 +11,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 
-fun Activity?.exit1(adId: String, adButtonColor: Int,exitButtonColor:Int, exit: () -> Unit) {
+fun Activity?.exit1(adId: String, adButtonColor: Int,buttonTextColor:Int,exitButtonColor:Int,bgColor:Int, exit: () -> Unit) {
     var dialogBinding = ExitNative1Binding.inflate(this!!.layoutInflater)
     val exitDialog: AlertDialog = MaterialAlertDialogBuilder(
         this,
@@ -44,7 +44,7 @@ fun Activity?.exit1(adId: String, adButtonColor: Int,exitButtonColor:Int, exit: 
         {
 
         },
-        adButtonColor
+        adButtonColor,buttonTextColor,bgColor
     )
     val tintColor = ContextCompat.getColor(this,exitButtonColor)
 
@@ -53,7 +53,7 @@ fun Activity?.exit1(adId: String, adButtonColor: Int,exitButtonColor:Int, exit: 
 
 }
 
-fun Activity?.exit2(adId: String, adButtonColor: Int, exit: () -> Unit) {
+fun Activity?.exit2(adId: String, adButtonColor: Int,buttonTextColor:Int,bgColor:Int, exit: () -> Unit) {
     var dialogBinding = ExitNative2Binding.inflate(this!!.layoutInflater)
     val exitDialog = BottomSheetDialog(
         this
@@ -83,7 +83,7 @@ fun Activity?.exit2(adId: String, adButtonColor: Int, exit: () -> Unit) {
         {
 
         },
-        adButtonColor
+        adButtonColor,buttonTextColor,bgColor
     )
 
 //    this.callNativeAd(adId, "exit2", false, true,

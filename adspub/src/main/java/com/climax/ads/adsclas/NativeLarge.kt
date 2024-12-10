@@ -13,11 +13,14 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatButton
+import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.climax.ads.R
 import com.climax.ads.adsclas.Constants.isFirst
 import com.climax.ads.adsclas.Constants.isLoadNativeAd
+import com.climax.ads.adsclas.Constants.isNewAddLoaded
 import com.climax.ads.adsclas.Constants.isOnClickAnyAd
 import com.climax.ads.adsclas.enums.AdState
 import com.google.android.gms.ads.AdListener
@@ -56,10 +59,12 @@ class NativeLarge {
         frameLayout: FrameLayout,
         shimmerFrameLayout: FrameLayout,
         loadNewAd: Boolean = true,
-        actionLoaded: () -> Unit ,
+        actionLoaded: ((Boolean) -> Unit) ,
         actionFailed: (() -> Unit)? = null,
         tryToShowAgain: ((Boolean) -> Unit)? = null,
-        actionButtonColor: Int
+        actionButtonColor: Int,
+        actionButtonTextColor: Int,
+        bgColor: Int
     ) {
         lastNativeAdId = nativeAdId
 
@@ -70,7 +75,7 @@ class NativeLarge {
                 nativeAdLayout,
                 container,
                 frameLayout,
-                shimmerFrameLayout, {}, {}, actionButtonColor
+                shimmerFrameLayout, {}, {}, actionButtonColor, actionButtonTextColor,bgColor
             )
 
             AdState.LOADED -> {
@@ -81,7 +86,7 @@ class NativeLarge {
                         nativeAdLayout,
                         container,
                         frameLayout,
-                        shimmerFrameLayout, {}, {}, actionButtonColor
+                        shimmerFrameLayout, {}, {}, actionButtonColor,actionButtonTextColor,bgColor
                     )
                 } else {
                     populateNativeAdView(
@@ -91,7 +96,9 @@ class NativeLarge {
                         container,
                         frameLayout,
                         shimmerFrameLayout,
-                        actionButtonColor
+                        actionButtonColor,
+                        actionButtonTextColor,
+                        bgColor
                     )
                 }
 
@@ -110,7 +117,8 @@ class NativeLarge {
                 shimmerFrameLayout,
                 actionLoaded,
                 actionFailed,
-                actionButtonColor
+                actionButtonColor,
+                actionButtonTextColor,bgColor
             )
 
             AdState.SHOWN_FAILED -> {}
@@ -124,7 +132,9 @@ class NativeLarge {
                         container,
                         frameLayout,
                         shimmerFrameLayout,
-                        actionButtonColor
+                        actionButtonColor,
+                        actionButtonTextColor,
+                        bgColor
                     )
                     loadNative(
                         activity,
@@ -135,7 +145,8 @@ class NativeLarge {
                         shimmerFrameLayout,
                         actionLoaded,
                         actionFailed,
-                        actionButtonColor
+                        actionButtonColor,
+                        actionButtonTextColor,bgColor
                     )
                 } else {
                     if (checkTimeOut) {
@@ -148,7 +159,8 @@ class NativeLarge {
                             shimmerFrameLayout,
                             actionLoaded,
                             actionFailed,
-                            actionButtonColor
+                            actionButtonColor,
+                            actionButtonTextColor,bgColor
                         )
                     } else {
                         populateNativeAdView(
@@ -158,7 +170,9 @@ class NativeLarge {
                             container,
                             frameLayout,
                             shimmerFrameLayout,
-                            actionButtonColor
+                            actionButtonColor,
+                            actionButtonTextColor,
+                            bgColor
                         )
                     }
                 }
@@ -175,7 +189,8 @@ class NativeLarge {
                 shimmerFrameLayout,
                 actionLoaded,
                 actionFailed,
-                actionButtonColor
+                actionButtonColor,
+                actionButtonTextColor,bgColor
             )
         }
     }
@@ -186,9 +201,11 @@ class NativeLarge {
         container: ConstraintLayout,
         frameLayout: FrameLayout,
         shimmerFrameLayout: FrameLayout,
-        actionLoaded: () -> Unit,
+        actionLoaded: (Boolean) -> Unit,
         actionFailed: (() -> Unit)? = null,
-        actionButtonColor: Int
+        actionButtonColor: Int,
+        actionButtonTextColor: Int,
+        bgColor:Int
     ) {
 
         Log.d("FAHAD", "precheckTimeOut: $checkTimeOut")
@@ -203,7 +220,8 @@ class NativeLarge {
                 shimmerFrameLayout,
                 actionLoaded,
                 actionFailed,
-                actionButtonColor
+                actionButtonColor,
+                actionButtonTextColor,bgColor
             )
 
             AdState.LOADED -> {
@@ -215,7 +233,9 @@ class NativeLarge {
                     container,
                     frameLayout,
                     shimmerFrameLayout,
-                    actionButtonColor
+                    actionButtonColor,
+                    actionButtonTextColor,
+                    bgColor
                 )
             }
 
@@ -229,7 +249,8 @@ class NativeLarge {
                 shimmerFrameLayout,
                 actionLoaded,
                 actionFailed,
-                actionButtonColor
+                actionButtonColor,
+                actionButtonTextColor,bgColor
             )
 
             AdState.SHOWN_FAILED -> {}
@@ -244,9 +265,11 @@ class NativeLarge {
                         frameLayout,
                         shimmerFrameLayout,
                         actionButtonColor,
+                        actionButtonTextColor,
+                        bgColor
                     )
                 }.invokeOnCompletion {
-                    actionLoaded?.invoke()
+                    actionLoaded?.invoke(true)
                 }
             }
 
@@ -261,7 +284,8 @@ class NativeLarge {
                         shimmerFrameLayout,
                         actionLoaded,
                         actionFailed,
-                        actionButtonColor
+                        actionButtonColor,
+                        actionButtonTextColor,bgColor
                     )
                 } else {
                     adState = AdState.SHOWING
@@ -273,10 +297,12 @@ class NativeLarge {
                             container,
                             frameLayout,
                             shimmerFrameLayout,
-                            actionButtonColor
+                            actionButtonColor,
+                            actionButtonTextColor,
+                            bgColor
                         )
                     }.invokeOnCompletion {
-                        actionLoaded?.invoke()
+                        actionLoaded?.invoke(true)
                     }
                 }
             }
@@ -291,10 +317,12 @@ class NativeLarge {
                 shimmerFrameLayout,
                 actionLoaded,
                 actionFailed,
-                actionButtonColor
+                actionButtonColor,
+                actionButtonTextColor,bgColor
             )
         }
     }
+
 
 
     private fun loadNative(
@@ -304,9 +332,11 @@ class NativeLarge {
         container: ConstraintLayout?,
         frameLayout: FrameLayout,
         shimmerFrameLayout: FrameLayout,
-        actionLoaded: () -> Unit?,
+        actionLoaded: ((Boolean) -> Unit),
         actionFailed: (() -> Unit)? = null,
-        actionButtonColor: Int
+        actionButtonColor: Int,
+        actionButtonTextColor: Int,
+        bgColor:Int
     ) {
         val videoOptions = VideoOptions.Builder().build()
         val adOptions = NativeAdOptions.Builder().setVideoOptions(videoOptions).build()
@@ -333,9 +363,12 @@ class NativeLarge {
                     container,
                     frameLayout,
                     shimmerFrameLayout,
-                    actionButtonColor
+                    actionButtonColor,
+                    actionButtonTextColor,
+                    bgColor
                 )
-                actionLoaded?.invoke()
+                isNewAddLoaded = false
+                actionLoaded?.invoke(true)
             }
             .withAdListener(object : AdListener() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {
@@ -349,10 +382,10 @@ class NativeLarge {
 
                 override fun onAdLoaded() {
                     super.onAdLoaded()
-
+                    isNewAddLoaded = false
+                    actionLoaded?.invoke(true)
                     adState = AdState.LOADED
                     isLoadNativeAd = true
-
                     Log.d("nativeAdssd", "onAdLoaded: sdsd")
 
                 }
@@ -429,7 +462,9 @@ class NativeLarge {
         container: ConstraintLayout?,
         frameLayout: FrameLayout,
         shimmerFrameLayout: FrameLayout,
-        actionButtonColor: Int
+        actionButtonColor: Int,
+        actionButtonTextColor: Int,
+        bgColor: Int
     ) {
         CoroutineScope(Dispatchers.Main).launch {
             nativeAd?.let {
@@ -437,6 +472,17 @@ class NativeLarge {
                     activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
                 val mainAdView = inflater.inflate(nativeAdLayout, null)
                 val adView = mainAdView.findViewById<NativeAdView>(R.id.ad_view)
+                try {
+                    var parent_bg = adView.findViewById<CardView>(R.id.bg_card)
+                    val tintCardColor = ContextCompat.getColor(activity, bgColor)
+                    parent_bg.setCardBackgroundColor( ColorStateList.valueOf(tintCardColor))
+
+                }catch (e:Exception){
+                    var parent_bg = adView.findViewById<ConstraintLayout>(R.id.bg_card)
+                    val tintCardColor = ContextCompat.getColor(activity, bgColor)
+                    parent_bg.backgroundTintList= ( ColorStateList.valueOf(tintCardColor))
+                }
+
                 // Set the media view.
                 adView.mediaView = adView.findViewById(R.id.ad_media)
 
@@ -448,6 +494,8 @@ class NativeLarge {
 
 // Apply the background tint
                 adView.callToActionView!!.backgroundTintList = ColorStateList.valueOf(tintColor)
+                adView.findViewById<AppCompatButton>(R.id.ad_call_to_action).setTextColor(ContextCompat.getColor(activity, actionButtonTextColor))
+                adView.findViewById<AppCompatButton>(R.id.ad_call_to_action).isSelected= true
 
                 adView.iconView = adView.findViewById(R.id.ad_app_icon)
 //                adView.priceView = adView.findViewById(R.id.ad_price)

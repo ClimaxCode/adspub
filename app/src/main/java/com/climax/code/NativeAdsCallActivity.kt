@@ -21,7 +21,7 @@ class NativeAdsCallActivity : AppCompatActivity() {
             binding.one.visibility = View.VISIBLE
 
             callNativeAd("ca-app-pub-3940256099942544/1044960115","large",false,true,{
-                Log.d("adss", "onCreate: loaded")},{},{},R.color.red)
+                Log.d("adss", "onCreate: loaded")},{},{},R.color.red,R.color.sub_color,R.color.sub_color)
         } else if (intent.getStringExtra("style").equals("two")) {
             binding.two.visibility = View.VISIBLE
             callNativeAd("ca-app-pub-3940256099942544/1044960115", "native1", false, true,
@@ -31,7 +31,7 @@ class NativeAdsCallActivity : AppCompatActivity() {
                     Log.d("adss", "onCreate: failes")
                 }, {
 
-                },R.color.button_active)
+                },R.color.button_active,R.color.sub_color,R.color.sub_color)
 
 
         } else if (intent.getStringExtra("style").equals("three")) {
@@ -44,7 +44,7 @@ class NativeAdsCallActivity : AppCompatActivity() {
                 true,
                 {   Log.d("adss", "onCreate: loaded")},
                 { Log.d("adss", "onCreate: failes")},
-                {},R.color.red)
+                {},R.color.red,R.color.black,R.color.sub_color)
         } else if (intent.getStringExtra("style").equals("four")) {
             binding.four.visibility = View.VISIBLE
 
@@ -55,7 +55,7 @@ class NativeAdsCallActivity : AppCompatActivity() {
                 true,
                 { Log.d("adss", "onCreate: loaded")},
                 { Log.d("adss", "onCreate: failes")},
-                {},R.color.black)
+                {},R.color.black,R.color.sub_color,R.color.dialogtxt)
         } else if (intent.getStringExtra("style").equals("five")) {
             binding.five.visibility = View.VISIBLE
 
@@ -66,7 +66,7 @@ class NativeAdsCallActivity : AppCompatActivity() {
                 true,
                 { Log.d("adss", "onCreate: loaded")},
                 { Log.d("adss", "onCreate: failes")},
-                {},R.color.red)
+                {},R.color.red,R.color.black ,R.color.sub_color)
         } else if (intent.getStringExtra("style").equals("six")) {
             binding.six.visibility = View.VISIBLE
 
@@ -77,7 +77,7 @@ class NativeAdsCallActivity : AppCompatActivity() {
                 true,
                 {Log.d("adss", "onCreate: loaded")},
                 {},
-                {},R.color.red)
+                {},R.color.red,R.color.sub_color,R.color.sub_color)
         } else if (intent.getStringExtra("style").equals("seven")) {
             binding.seven.visibility = View.VISIBLE
 
@@ -88,10 +88,10 @@ class NativeAdsCallActivity : AppCompatActivity() {
                 true,
                 {Log.d("adss", "onCreate: loaded")},
                 {},
-                {},R.color.red)
+                {},R.color.red,R.color.sub_color,R.color.button_active)
         } else if (intent.getStringExtra("style").equals("eight")) {
             binding.eight.visibility = View.VISIBLE
-            callNativeAd("ca-app-pub-3940256099942544/1044960115", "small", false, true, {}, {}, {},R.color.red)
+            callNativeAd("ca-app-pub-3940256099942544/1044960115", "small", false, true, {}, {}, {},R.color.red,R.color.sub_color,R.color.sub_color)
         }
 
 

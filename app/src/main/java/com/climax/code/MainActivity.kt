@@ -2,22 +2,16 @@ package com.climax.code
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.climax.ads.adsclas.Constants
 import com.climax.ads.adsclas.checkAndShowInterstitial
 import com.climax.ads.adsclas.exit1
 import com.climax.ads.adsclas.exit2
 import com.climax.ads.adsclas.loadPreInterstitial
 import com.climax.ads.adsclas.preLoadLargeNativeAd
-import com.climax.ads.adsclas.preLoadNativeAd
-import com.climax.ads.adsclas.showNative
+import com.climax.ads.adsclas.preLoadRewardedVideos
+import com.climax.ads.adsclas.showRewarded
 import com.climax.code.databinding.ActivityMainBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.isActive
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 
 class MainActivity : AppCompatActivity() {
@@ -36,11 +30,40 @@ class MainActivity : AppCompatActivity() {
 
     fun clicks() {
         binding.buttonexit1.setOnClickListener {
-            this.exit1("ca-app-pub-3940256099942544/2247696110",R.color.main_color,R.color.main_color) {
+            preLoadRewardedVideos(this@MainActivity,"ca-app-pub-3940256099942544/5224354917", showLoadingDialog = true) {
+                if (it) {
+                    showRewarded(
+                        false,
+                        waitingTime = 8000L,
+                        "ca-app-pub-3940256099942544/5224354917",
+                        false,
+                        false,
+                        onShowAdCompletedAction = {
+//                            binding.proViewBtn.visibility = View.GONE
+//                            binding.watchAdViewBtn.visibility = View.GONE
+//                            appliedSelectedFont()
+//                            isShowInterstitialsAd = true
+                        },
+                        onFailedAdAction = {
+                            Toast.makeText(
+                                this@MainActivity,
+                                "Currently Reward is not Available. Try again",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        })
+                } else {
+                    Toast.makeText(
+                        this@MainActivity,
+                        "Currently Reward is not Available. Try again",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
+//            this.exit1("ca-app-pub-3940256099942544/2247696110",R.color.main_color,R.color.white,R.color.main_color,R.color.sub_color) {
+//            }
         }
         binding.buttonexit2.setOnClickListener {
-            this.exit2("ca-app-pub-3940256099942544/2247696110",R.color.text_color_green) {
+            this.exit2("ca-app-pub-3940256099942544/2247696110",R.color.text_color_green,R.color.txt_color,R.color.sub_color) {
 
             }
         }

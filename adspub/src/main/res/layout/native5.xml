@@ -32,6 +32,7 @@
                     android:layout_height="wrap_content"
                     app:cardBackgroundColor="@color/screen_bg"
                     app:cardCornerRadius="@dimen/_4sdp"
+                    android:id="@+id/bg_card"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <androidx.constraintlayout.widget.ConstraintLayout

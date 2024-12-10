@@ -75,7 +75,7 @@ class OnBoardingActivity : AppCompatActivity() {
             false,
             {},
             {},
-            {},R.color.red)
+            {},R.color.red,R.color.white,R.color.main_color)
 
     }
 

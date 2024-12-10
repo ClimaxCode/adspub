@@ -14,6 +14,7 @@ object Constants {
     const val KEY_PANGLE_APP_ID = "8495093"
     var FBTAG: String = "facebook_native"
     var isOnClickAnyAd= false
+    var isNewAddLoaded= false
 
     var inlineBannerId = ""
     var fbNativeAdId = ""
@@ -117,6 +118,8 @@ object Constants {
     var fullScreenNativeId = ""
     var onBoardingFullScreenNativeId = ""
     var fullNativeButtonColor = R.color.Adscolor
+    var fullNativeButtonTextColor = R.color.white
+    var fullNativeBGColor = R.color.white
 
     var exitAppNativeAdId = ""
     var settingNativeAdId = ""

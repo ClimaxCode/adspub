@@ -31,6 +31,7 @@
                     android:layout_height="wrap_content"
                     app:cardBackgroundColor="@color/screen_bg"
                     app:cardCornerRadius="@dimen/_4sdp"
+
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -40,6 +41,9 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
+                        android:id="@+id/bg_card"
+                        android:background="@color/white"
+                        android:backgroundTint="@color/white"
                         android:layout_height="match_parent">
 
                         <com.google.android.gms.ads.nativead.MediaView

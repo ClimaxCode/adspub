@@ -73,7 +73,7 @@ class MixedGridAdapter(
                     false,
                     { },
                     { },
-                    { },R.color.Adscolor
+                    { },R.color.Adscolor, com.climax.code.R.color.white,R.color.sub_color
                 )
             }
         }

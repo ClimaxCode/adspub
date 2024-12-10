@@ -65,8 +65,8 @@ fun Activity?.showAppOpen(
                         onShowAdCompletedAction,
                         showLoadingDialog
                     )
-                }else{
-                    isOnClickAnyAd= false
+                } else {
+                    isOnClickAnyAd = false
                 }
 
             } else {
@@ -352,10 +352,12 @@ fun Activity?.callNativeAd(
     nativeAdtype: String,
     preLoad: Boolean = false,
     loadNewAd: Boolean = true,
-    actionLoaded: () -> Unit,
+    actionLoaded: ((Boolean) -> Unit),
     actionFailed: () -> Unit,
     tryToShowAgain: (Boolean) -> Unit,
-    actionButtonColor: Int
+    actionButtonColor: Int,
+    actionButtonTextColor: Int,
+    bgColor: Int
 ) {
 
     var type: Int = 0
@@ -437,7 +439,9 @@ fun Activity?.callNativeAd(
         actionLoaded,
         actionFailed,
         tryToShowAgain,
-        actionButtonColor
+        actionButtonColor,
+        actionButtonTextColor,
+        bgColor
     )
 }
 
@@ -449,10 +453,12 @@ fun Activity?.showLargeNative(
     shimmerFrameLayout: FrameLayout,
     preLoad: Boolean = false,
     loadNewAd: Boolean = true,
-    actionLoaded: () -> Unit,
+    actionLoaded: (Boolean) -> Unit,
     actionFailed: () -> Unit,
     tryToShowAgain: (Boolean) -> Unit,
-    actionButtonColor: Int
+    actionButtonColor: Int,
+    actionButtonTextColor: Int,
+    bgColor: Int
 ) {
     this?.let {
         if (!Constants.isPurchased() && isNetworkAvailable()) {
@@ -467,7 +473,9 @@ fun Activity?.showLargeNative(
                 actionLoaded,
                 actionFailed,
                 tryToShowAgain,
-                actionButtonColor
+                actionButtonColor,
+                actionButtonTextColor,
+                bgColor
             )
             if (preLoad) largeNative.preLoadNative(this, nativeAdId)
         } else {
@@ -572,11 +580,10 @@ fun View.show() {
     this.visibility = View.VISIBLE
 }
 
-
-/* rewarded ad extension functions */
 fun Activity?.showRewarded(
     preLoad: Boolean = false,
-    waitingTime: Long = 5000L,
+    waitingTime: Long = 8000L,
+    adId: String,
     dontShowAnyDialog: Boolean = false,
     showSavingDialog: Boolean = false,
     onShowAdCompletedAction: () -> Unit,
@@ -585,9 +592,10 @@ fun Activity?.showRewarded(
     if (!Constants.isPurchased()) {
         this?.let {
             if (isNetworkAvailable()) {
-                if (!OTHER_AD_DISPLAYED) {
+                if (ADS_INITIALIZATION_COMPLETED) {
                     rewarded.showRewarded(
                         this,
+                        adId,
                         preLoad,
                         waitingTime,
                         showSavingDialog,
@@ -596,6 +604,7 @@ fun Activity?.showRewarded(
                         onFailedAdAction
                     )
                 } else {
+                    MobileAds.initialize(application) { ADS_INITIALIZATION_COMPLETED = true }
                     onFailedAdAction.invoke()
                 }
             } else onFailedAdAction.invoke()
@@ -607,18 +616,33 @@ fun Activity?.showRewarded(
     }
 }
 
-fun Activity?.preLoadRewardedVideo(
+fun Activity?.preLoadRewardedVideos(
+    activity: Activity,
+    adId:String,
     showLoadingDialog: Boolean = false,
     onRewardedAdLoaded: ((Boolean) -> Unit)?
 ) {
     if (!Constants.isPurchased()) {
         this?.let {
-            rewarded.loadRewarded(this, showLoadingDialog, onRewardedAdLoaded)
+            rewarded.loadRewarded(activity,adId, showLoadingDialog, onRewardedAdLoaded)
         } ?: run {
             onRewardedAdLoaded?.invoke(false)
         }
     } else onRewardedAdLoaded?.invoke(true)
 }
+
+//fun Activity?.preLoadRewardedVideo(
+//    showLoadingDialog: Boolean = false,
+//    onRewardedAdLoaded: ((Boolean) -> Unit)?
+//) {
+//    if (!Constants.isPurchased()) {
+//        this?.let {
+//            rewarded.loadRewarded(this, showLoadingDialog, onRewardedAdLoaded)
+//        } ?: run {
+//            onRewardedAdLoaded?.invoke(false)
+//        }
+//    } else onRewardedAdLoaded?.invoke(true)
+//}
 
 
 fun AppCompatActivity.showLoadingDialog(): AlertDialog {

@@ -51,7 +51,7 @@ class FullNativeAdFragment : Fragment() {
                 binding.adContainers,
                 binding.shimmmmers,
                 false,false,{},
-                {}, {},Constants.fullNativeButtonColor)
+                {}, {},Constants.fullNativeButtonColor,Constants.fullNativeButtonTextColor,Constants.fullNativeBGColor)
        }
 
 //        activity?.let {

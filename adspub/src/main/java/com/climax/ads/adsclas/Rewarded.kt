@@ -5,14 +5,12 @@ import android.app.Dialog
 import android.util.Log
 import com.climax.ads.adsclas.Constants.OTHER_AD_DISPLAYED
 import com.climax.ads.adsclas.enums.AdState
-
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.rewarded.RewardedAd
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
-
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -31,6 +29,7 @@ class Rewarded {
     private var isRewardGranted = false
     fun loadRewarded(
         activity: Activity,
+        adId:String,
         showLoadingDialog: Boolean = false,
         onRewardedAdLoaded: ((Boolean) -> Unit)?
     ) {
@@ -57,7 +56,7 @@ class Rewarded {
             adState = AdState.LOADING
 
             RewardedAd.load(activity,
-                Constants.REWARDED_VIDEO_ADMOB_ID,
+                adId,
                 adRequest,
                 object : RewardedAdLoadCallback() {
                     override fun onAdFailedToLoad(adError: LoadAdError) {
@@ -69,7 +68,7 @@ class Rewarded {
                     }
 
                     override fun onAdLoaded(rewardedAd: RewardedAd) {
-                        Log.d("RewardedVideo", "onAdLoaded:")
+                        Log.d("RewardedVideo", "onAdLoaded:12")
                         adState = AdState.LOADED
                         mRewardedAd = rewardedAd
                         dismissLoadingDialog(activity)
@@ -97,13 +96,14 @@ class Rewarded {
 
     private fun loadRewardedWithWaiting(
         activity: Activity, preLoad: Boolean,
+        adId:String
     ) {
         mRewardedAd?.let { } ?: run {
             val adRequest = AdRequest.Builder().build()
             adState = AdState.LOADING
 
             RewardedAd.load(activity,
-                Constants.REWARDED_VIDEO_ADMOB_ID,
+                adId,
                 adRequest,
                 object : RewardedAdLoadCallback() {
                     override fun onAdFailedToLoad(adError: LoadAdError) {
@@ -158,12 +158,14 @@ class Rewarded {
 
     fun showRewarded(
         activity: Activity,
+        adId: String,
         preLoad: Boolean,
         waitingTime: Long,
         showSavingDialog: Boolean,
         dontShowAnyDialog: Boolean,
         onShowAdCompletedAction: (() -> Unit)?,
         onFailedAdAction: () -> Unit,
+
     ) {
         try {
             this@Rewarded.preLoad = preLoad
@@ -212,7 +214,7 @@ class Rewarded {
                         }
                     }
                 }
-                loadRewardedWithWaiting(activity, preLoad)
+                loadRewardedWithWaiting(activity, preLoad, adId)
                 action = onShowAdCompletedAction
                 userWaitingJob = CoroutineScope(Dispatchers.Main).launch {
                     delay(waitingTime)

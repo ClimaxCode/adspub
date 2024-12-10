@@ -339,7 +339,7 @@
 ### Step to add on Boarding Screen
 ### 1. Create onBoarding Activity
 ### 2. Add the Below Code in onCreate 
-
+ 	Constants.fullNativeButtonColor = ContextCompat.getColor(this,R.color.AdsButton)
 	  com.climax.ads.adsclas.Constants.onBoardingFullScreenNativeId =
            "Full Native ID" //only add if you want to show full native 
         setonBoarding_Bg_Color = Color for background
