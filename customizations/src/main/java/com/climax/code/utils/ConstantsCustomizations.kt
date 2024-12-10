@@ -8,4 +8,7 @@ object ConstantsCustomizations {
     var setonBoarding_Bg_Color:Int = R.color.white
     var onBoardingFullNativeAtIndex= 2
 
+    var filledStarDrawable=R.drawable.filled_star
+    var unfilledStarDrawable=R.drawable.unfilled_star
+    var buttonColorRate=R.color.main_color
 }

@@ -25,12 +25,15 @@ class MainActivity : AppCompatActivity() {
         clicks()
 
 
-
     }
 
     fun clicks() {
         binding.buttonexit1.setOnClickListener {
-            preLoadRewardedVideos(this@MainActivity,"ca-app-pub-3940256099942544/5224354917", showLoadingDialog = true) {
+            preLoadRewardedVideos(
+                this@MainActivity,
+                "ca-app-pub-3940256099942544/5224354917",
+                showLoadingDialog = true
+            ) {
                 if (it) {
                     showRewarded(
                         false,
@@ -39,7 +42,13 @@ class MainActivity : AppCompatActivity() {
                         false,
                         false,
                         onShowAdCompletedAction = {
-                            this.exit1("ca-app-pub-3940256099942544/2247696110",R.color.main_color,R.color.white,R.color.main_color,R.color.sub_color) {
+                            this.exit1(
+                                "ca-app-pub-3940256099942544/2247696110",
+                                R.color.main_color,
+                                R.color.white,
+                                R.color.main_color,
+                                R.color.sub_color
+                            ) {
                             }
 //                            binding.proViewBtn.visibility = View.GONE
 //                            binding.watchAdViewBtn.visibility = View.GONE
@@ -64,15 +73,42 @@ class MainActivity : AppCompatActivity() {
 
         }
         binding.buttonexit2.setOnClickListener {
-            this.exit2("ca-app-pub-3940256099942544/2247696110",R.color.text_color_green,R.color.txt_color,R.color.sub_color) {
+            this.exit2(
+                "ca-app-pub-3940256099942544/2247696110",
+                R.color.text_color_green,
+                R.color.txt_color,
+                R.color.sub_color
+            ) {
 
             }
         }
         binding.fullNative.setOnClickListener {
-            var intent = Intent(this, NativeAdsCallActivity::class.java)
-            intent.putExtra("style", "one")
-            startActivity(intent)
+//            var intent = Intent(this, NativeAdsCallActivity::class.java)
+//            intent.putExtra("style", "one")
+//            startActivity(intent)
 
+            val rateAppDialog = RateAppDialogFragment.newInstance(
+                image = com.climax.ads.R.drawable.group_1, title = "Exit", exitTitle = "Later",
+                dialogType = "reward_type",
+                onActionExit = {
+                    // Action to perform when the dialog triggers this function
+                    // Log.d("RateAppDialog", "User completed action!")
+                    Toast.makeText(this, "Action Completed!", Toast.LENGTH_SHORT).show()
+                },
+                onActionFeedback = {
+                    // Action to perform when the dialog triggers this function
+                    // Log.d("RateAppDialog", "User completed action!")
+                    Toast.makeText(this, "Action Completed!", Toast.LENGTH_SHORT).show()
+                },
+                onActionRateus = {
+                    // Action to perform when the dialog triggers this function
+                    // Log.d("RateAppDialog", "User completed action!")
+                    Toast.makeText(this, "Action Completed!", Toast.LENGTH_SHORT).show()
+                }
+            )
+
+// Show the dialog
+            rateAppDialog.show(supportFragmentManager, RateAppDialogFragment.AD_DIALOG_TAG)
         }
         binding.native1.setOnClickListener {
             var intent = Intent(this, NativeAdsCallActivity::class.java)
@@ -84,7 +120,6 @@ class MainActivity : AppCompatActivity() {
             var intent = Intent(this, NativeAdsCallActivity::class.java)
             intent.putExtra("style", "three")
             startActivity(intent)
-
 
 
         }

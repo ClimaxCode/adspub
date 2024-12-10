@@ -14,4 +14,10 @@
     <string name="txt_desc_onBoard3">Status Saver, Chat Locker, Direct Message and Web Scan</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="thanks_for_using_birthday" >Thanks for using Birthday</string>
+    <string name="dsfsf">We really appreciate you taking the time to rate us.</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="exit">Exit</string>
+    <string name="feedback">Feedback</string>
+    <string name="the_best_we_could_have">The best we could have</string>
 </resources>
