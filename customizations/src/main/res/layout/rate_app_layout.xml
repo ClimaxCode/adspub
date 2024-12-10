@@ -286,7 +286,7 @@
                         android:layout_height="match_parent">
 
                         <com.facebook.shimmer.ShimmerFrameLayout
-                            android:id="@+id/shimmerBanner"
+                            android:id="@+id/shimmerBannerrate"
 
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -314,7 +314,7 @@
                         </com.facebook.shimmer.ShimmerFrameLayout>
 
                         <FrameLayout
-                            android:id="@+id/bannerAdLayout"
+                            android:id="@+id/bannerAdLayouteate"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent" />
                     </androidx.constraintlayout.widget.ConstraintLayout>

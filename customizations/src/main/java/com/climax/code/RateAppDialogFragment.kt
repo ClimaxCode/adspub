@@ -132,8 +132,8 @@ class RateAppDialogFragment : BottomSheetDialogFragment() {
             var admobBannerAdManager = AdaptiveBannerAd(requireContext())
             admobBannerAdManager.loadAdaptiveBanner(
                 adId!!,
-                binding.bannerAdLayout,
-                binding.shimmerBanner
+                binding.bannerAdLayouteate,
+                binding.shimmerBannerrate
             )
         }
 
