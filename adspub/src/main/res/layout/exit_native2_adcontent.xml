@@ -28,28 +28,30 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/ad_media_bg"
+<!--                <androidx.cardview.widget.CardView-->
+<!--                    android:id="@+id/ad_media_bg"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    app:cardCornerRadius="@dimen/_12sdp"-->
+<!--                    app:strokeWidth="0dp"-->
+<!--                    app:cardBackgroundColor="@android:color/transparent"-->
+<!--                    android:layout_margin="1dp"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent">-->
+
+                <com.google.android.gms.ads.nativead.MediaView
+                    android:id="@+id/ad_media"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="@dimen/_12sdp"
-                    app:strokeWidth="0dp"
-                    android:layout_margin="1dp"
+                    android:layout_height="140dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    <com.google.android.gms.ads.nativead.MediaView
-                        android:id="@+id/ad_media"
-                        android:layout_width="match_parent"
-                        android:layout_height="140dp"
-                        android:layout_gravity="center_horizontal"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </com.google.android.material.card.MaterialCardView>
-
+            <!--/  </androidx.cardview.widget.CardView>
+-->
                 <ImageView
                     android:id="@+id/ad_app_icon"
                     android:layout_width="38dp"
@@ -62,7 +64,7 @@
                     android:paddingBottom="5dp"
                     android:visibility="visible"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ad_media_bg"
+                    app:layout_constraintTop_toBottomOf="@+id/ad_media"
                     tools:ignore="ContentDescription" />
 
 
@@ -106,6 +108,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
+                        android:singleLine="true"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -165,6 +168,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:ellipsize="end"
+                    android:singleLine="true"
                     android:maxLines="1"
                     android:textColor="#585858"
                     android:textSize="@dimen/_8ssp"
