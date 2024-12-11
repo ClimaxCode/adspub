@@ -20,6 +20,7 @@ import androidx.core.content.ContextCompat
 import com.climax.ads.R
 import com.climax.ads.adsclas.Constants.isFirst
 import com.climax.ads.adsclas.Constants.isLoadNativeAd
+import com.climax.ads.adsclas.Constants.isNativeAdfailed
 import com.climax.ads.adsclas.Constants.isNewAddLoaded
 import com.climax.ads.adsclas.Constants.isOnClickAnyAd
 import com.climax.ads.adsclas.enums.AdState
@@ -377,6 +378,7 @@ class NativeLarge {
                     container?.hide()
                     frameLayout.hide()
                     shimmerFrameLayout.hide()
+                    isNativeAdfailed= true
                     Log.d("nativeAdssd", "onAdFailedToLoad: ")
                 }
 
@@ -386,6 +388,7 @@ class NativeLarge {
                     actionLoaded?.invoke()
                     adState = AdState.LOADED
                     isLoadNativeAd = true
+                    isNativeAdfailed= false
                     Log.d("nativeAdssd", "onAdLoaded: sdsd")
 
                 }
@@ -434,11 +437,13 @@ class NativeLarge {
                 override fun onAdFailedToLoad(adError: LoadAdError) {
                     adState = AdState.FAILED
                     actionFailed?.invoke()
+                    isNativeAdfailed=true
                 }
 
                 override fun onAdLoaded() {
                     super.onAdLoaded()
                     adState = AdState.LOADED
+                    isNativeAdfailed=false
                 }
 
                 override fun onAdImpression() {

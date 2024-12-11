@@ -15,6 +15,7 @@ object Constants {
     var FBTAG: String = "facebook_native"
     var isOnClickAnyAd= false
     var isNewAddLoaded= false
+    var isNativeAdfailed= false
 
     var inlineBannerId = ""
     var fbNativeAdId = ""

@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.climax.ads.R
+import com.climax.ads.adsclas.Constants.isNativeAdfailed
 import com.climax.ads.adsclas.callNativeAd
 import com.climax.code.databinding.ActivityNativeAdsCallBinding
 
@@ -17,14 +18,17 @@ class NativeAdsCallActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        Log.d("Logg", "onCreate: $isNativeAdfailed")
         if (intent.getStringExtra("style").equals("one")) {
             binding.one.visibility = View.VISIBLE
 
-            callNativeAd("ca-app-pub-3940256099942544/1044960115","large",false,true,{
+
+
+            callNativeAd("ca-app-pub-3940256099942544/","large",false,true,{
                 Log.d("adss", "onCreate: loaded")},{},{},R.color.red,R.color.sub_color,R.color.sub_color)
         } else if (intent.getStringExtra("style").equals("two")) {
             binding.two.visibility = View.VISIBLE
-            callNativeAd("ca-app-pub-3940256099942544/1044960115", "native1", false, true,
+            callNativeAd("ca-app-pub-3940256099942544/", "native1", false, true,
                 {
                     Log.d("adss", "onCreate: loaded")
                 }, {
@@ -38,7 +42,7 @@ class NativeAdsCallActivity : AppCompatActivity() {
             binding.three.visibility = View.VISIBLE
 
             callNativeAd(
-                "ca-app-pub-3940256099942544/1044960115",
+                "ca-app-pub-3940256099942544/",
                 "native2",
                 false,
                 true,
@@ -49,7 +53,7 @@ class NativeAdsCallActivity : AppCompatActivity() {
             binding.four.visibility = View.VISIBLE
 
             callNativeAd(
-                "ca-app-pub-3940256099942544/1044960115",
+                "ca-app-pub-/1044960115",
                 "native3",
                 false,
                 true,
