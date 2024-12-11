@@ -88,7 +88,7 @@ class NativeAdsCallActivity : AppCompatActivity() {
                 true,
                 {Log.d("adss", "onCreate: loaded")},
                 {},
-                {},R.color.red,R.color.sub_color,R.color.button_active)
+                {},R.color.red,R.color.sub_color,R.color.ads_bg)
         } else if (intent.getStringExtra("style").equals("eight")) {
             binding.eight.visibility = View.VISIBLE
             callNativeAd("ca-app-pub-3940256099942544/1044960115", "small", false, true, {}, {}, {},R.color.red,R.color.sub_color,R.color.sub_color)
