@@ -34,7 +34,7 @@ class Interstitial {
         Log.e("InterstitialNew", "Creating interstitial class")
     }
 
-    fun loadInterstitial(context: Activity, interstitialAdId: String) {
+    fun loadInterstitial(context: Activity, interstitialAdId: String,onShowAdCompletedAction: ((Boolean) -> Unit)? = null) {
         if (interstitialAdId.isNotEmpty()) lastInterstitialAdId = interstitialAdId
         if (adState == AdState.LOADING) return
         mInterstitialAd?.let {
@@ -53,6 +53,7 @@ class Interstitial {
                         adState = AdState.FAILED
                         mInterstitialAd = null
                         isFailInterstitialAd = true
+                        onShowAdCompletedAction?.invoke(false)
 
                     }
 
@@ -62,6 +63,7 @@ class Interstitial {
                         adState = AdState.LOADED
                         mInterstitialAd = interstitialAd
                         isFailInterstitialAd = false
+                        onShowAdCompletedAction?.invoke(true)
 
                     }
                 })

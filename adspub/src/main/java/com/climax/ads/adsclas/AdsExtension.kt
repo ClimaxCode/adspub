@@ -48,6 +48,12 @@ fun Activity?.loadAppOpen(
         }
     }
 }
+fun Activity.loadPreInterstitialSplash(interstitialAdId: String,onShowAdCompletedAction: ((Boolean) -> Unit)? = null) {
+    if (!Constants.isPurchased()) {
+        interstitial.loadInterstitial(this, interstitialAdId,onShowAdCompletedAction)
+    }
+}
+
 
 fun Activity?.showAppOpen(
     waitingTime: Long = 0L,
@@ -100,7 +106,6 @@ fun Activity?.checkAndShowInterstitial(
     if (!Constants.isAppOpenShowed && isNetworkAvailable()) {
         if (!onlyShowAdMob) {
             Log.e("ads", "checkAndShowInterstitial $interstitialAdCount")
-
         } else {
             Log.e("ads", "checkAndShowInterstitial admob")
             showInterstitial(
@@ -111,6 +116,7 @@ fun Activity?.checkAndShowInterstitial(
                 onInterstitialFailed
             )
         }
+
     } else {
         Log.e("ads", "Last ad was App Open")
         Constants.isAppOpenShowed = false
