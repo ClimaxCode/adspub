@@ -136,7 +136,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 ### Call the Native Ad
-	activity.callNativeAd("Native Id","large",Preload Ad (Boolean Value),Load New Ad (Boolean Value),{actionLoaded},{actionFailed},{tryToShowAgain},Pass Button Color)
+	activity.callNativeAd("Native Id","large",Preload Ad (Boolean Value),Load New Ad (Boolean Value),{actionLoaded},{actionFailed},{tryToShowAgain},Pass Button Color,Pass Button Text Color, Pass Background Color)
   
 ## Native Type 1
 ![alt text](https://github.com/ClimaxCode/adspub/blob/main/screenshots/native%201.png?raw=true)
@@ -160,7 +160,8 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 ### Call the Native Ad
-	activity.callNativeAd("Native Id","native1",Preload Ad (Boolean Value),Load New Ad (Boolean Value),{actionLoaded},{actionFailed},{tryToShowAgain},Pass Button Color)
+	activity.callNativeAd("Native Id","native1",Preload Ad (Boolean Value),Load New Ad (Boolean Value),{actionLoaded},{actionFailed},{tryToShowAgain},Pass Button Color,Pass Button Text Color, Pass Background Color)
+  
 
 
 ## Native Type 2
@@ -185,7 +186,8 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 ### Call the Native Ad
-	activity.callNativeAd("Native Id","native2",Preload Ad (Boolean Value),Load New Ad (Boolean Value),{actionLoaded},{actionFailed},{tryToShowAgain},Pass Button Color)
+	activity.callNativeAd("Native Id","native2",Preload Ad (Boolean Value),Load New Ad (Boolean Value),{actionLoaded},{actionFailed},{tryToShowAgain},Pass Button Color,Pass Button Text Color, Pass Background Color)
+  
 
 
 
@@ -211,7 +213,8 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 ### Call the Native Ad
-	activity.callNativeAd("Native Id","native3",Preload Ad (Boolean Value),Load New Ad (Boolean Value),{actionLoaded},{actionFailed},{tryToShowAgain},Pass Button Color)
+	activity.callNativeAd("Native Id","native3",Preload Ad (Boolean Value),Load New Ad (Boolean Value),{actionLoaded},{actionFailed},{tryToShowAgain},Pass Button Color,Pass Button Text Color, Pass Background Color)
+  
 
 
 
@@ -238,7 +241,8 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 ### Call the Native Ad
-	activity.callNativeAd("Native Id","native4",Preload Ad (Boolean Value),Load New Ad (Boolean Value),{actionLoaded},{actionFailed},{tryToShowAgain},Pass Button Color)
+	activity.callNativeAd("Native Id","native4",Preload Ad (Boolean Value),Load New Ad (Boolean Value),{actionLoaded},{actionFailed},{tryToShowAgain},Pass Button Color,Pass Button Text Color, Pass Background Color)
+  
 
 
 
@@ -264,7 +268,8 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 ### Call the Native Ad
-	activity.callNativeAd("Native Id","native5",Preload Ad (Boolean Value),Load New Ad (Boolean Value),{actionLoaded},{actionFailed},{tryToShowAgain},Pass Button Color)
+	activity.callNativeAd("Native Id","native5",Preload Ad (Boolean Value),Load New Ad (Boolean Value),{actionLoaded},{actionFailed},{tryToShowAgain},Pass Button Color,Pass Button Text Color, Pass Background Color)
+  
 
 
 
@@ -290,7 +295,8 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 ### Call the Native Ad
-	activity.callNativeAd("Native Id","native6 ",Preload Ad (Boolean Value),Load New Ad (Boolean Value),{actionLoaded},{actionFailed},{tryToShowAgain},Pass Button Color)
+	activity.callNativeAd("Native Id","native6 ",Preload Ad (Boolean Value),Load New Ad (Boolean Value),{actionLoaded},{actionFailed},{tryToShowAgain},Pass Button Color,Pass Button Text Color, Pass Background Color)
+  
 
 
 ## Small Native
@@ -315,7 +321,8 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 ### Call the Native Ad
-	 activity.callNativeAd("Native Id","small",Preload Ad (Boolean Value),Load New Ad (Boolean Value),{actionLoaded},{actionFailed},{tryToShowAgain},Pass Button Color)
+	 activity.callNativeAd("Native Id","small",Preload Ad (Boolean Value),Load New Ad (Boolean Value),{actionLoaded},{actionFailed},{tryToShowAgain},Pass Button Color,Pass Button Text Color, Pass Background Color)
+  
 
 
 
