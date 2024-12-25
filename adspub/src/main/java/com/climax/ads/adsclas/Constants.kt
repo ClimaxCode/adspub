@@ -34,7 +34,7 @@ object Constants {
     var smallNative = NativeSmall()
     var largeNative = NativeLarge()
 
-    var bannerAd = CollapsibleBannerAd()
+    var collapsiblebannerAd = CollapsibleBannerAd()
 
 
     var isFailGeneratedBtn = false

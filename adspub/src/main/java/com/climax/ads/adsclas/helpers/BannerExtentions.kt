@@ -5,6 +5,7 @@ import android.widget.FrameLayout
 import com.climax.ads.R
 import com.climax.ads.adsclas.AdaptiveBannerAd
 import com.climax.ads.adsclas.CollapsibleBannerAd
+import com.climax.ads.adsclas.Constants.collapsiblebannerAd
 import com.climax.ads.adsclas.InlineBannerAdManager
 import com.facebook.shimmer.ShimmerFrameLayout
 
@@ -12,14 +13,20 @@ import com.facebook.shimmer.ShimmerFrameLayout
 fun Activity?.collapsibleBanner(
     adId: String
 ) {
-    var bannerAd = CollapsibleBannerAd()
-    bannerAd.loadBanner(
+
+    collapsiblebannerAd.loadBanner(
         this!!,
         adId,
         this.findViewById(R.id.bannerAdLayout),
         this.findViewById(R.id.shimmerBanner)
     )
 }
+fun Activity?.removecollapsibleBanner(
+) {
+
+    collapsiblebannerAd.removeBannerAdView(this?.findViewById(R.id.bannerAdLayout))
+}
+
 
 fun Activity?.inlineBanner(
     adId: String

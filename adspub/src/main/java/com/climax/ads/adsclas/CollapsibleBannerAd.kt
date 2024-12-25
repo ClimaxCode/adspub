@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.util.Log
+import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.FrameLayout
 import com.facebook.shimmer.ShimmerFrameLayout
@@ -20,6 +21,21 @@ class CollapsibleBannerAd() {
         const val COLLAPSIBLE_BANNER_TAG = "collapsibleBanner"
     }
 
+    fun removeBannerAdView(adContainerView: FrameLayout?) {
+        try {
+            adView?.let {
+                if (it.parent != null) {
+                    (it.parent as ViewGroup).removeView(it) // <- fix
+                    //adView = null
+                }
+                adContainerView?.removeAllViews()
+
+
+            }
+        } catch (e: Exception) {
+            Log.e(BANNER_MANAGER_TAG, "ExceptionInAdUnBinding")
+        }
+    }
 
     fun loadBanner(context: Context,id :String,adContainerView: FrameLayout,shimmerFrameLayout: ShimmerFrameLayout) {
 
