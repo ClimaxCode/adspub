@@ -46,8 +46,8 @@
 
                     <View
                         android:id="@+id/ad_app_icon"
-                        android:layout_width="38dp"
-                        android:layout_height="38dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:layout_marginStart="@dimen/_8sdp"
                         android:adjustViewBounds="true"
                         android:background="#33EDD8D8"
@@ -95,7 +95,7 @@
                 <View
                     android:id="@+id/ad_call_to_action"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/_32sdp"
+                    android:layout_height="48dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="@dimen/_6sdp"
                     android:background="#FFD0D3D5"

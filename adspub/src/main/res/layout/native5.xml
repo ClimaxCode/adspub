@@ -155,7 +155,7 @@
                         <androidx.appcompat.widget.AppCompatButton
                             android:id="@+id/ad_call_to_action"
                             android:layout_width="0dp"
-                            android:layout_height="@dimen/_34sdp"
+                            android:layout_height="@dimen/_36sdp"
                             android:backgroundTint="@color/Adscolor"
                             android:layout_marginTop="8dp"
                             android:layout_marginBottom="16dp"

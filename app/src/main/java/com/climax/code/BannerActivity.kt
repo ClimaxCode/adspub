@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.climax.ads.adsclas.helpers.adaptiveBanner
 import com.climax.ads.adsclas.helpers.collapsibleBanner
 import com.climax.ads.adsclas.helpers.inlineBanner
+import com.climax.ads.adsclas.helpers.removecollapsibleBanner
 import com.climax.code.databinding.ActivityBannerBinding
 
 class BannerActivity : AppCompatActivity() {
@@ -17,6 +18,9 @@ class BannerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        binding.remove.setOnClickListener {
+            this.removecollapsibleBanner()
+        }
         if (intent.getStringExtra("style").equals("collap")) {
            binding.collap.visibility  = View.VISIBLE
            this.collapsibleBanner("ca-app-pub-3940256099942544/9214589741")

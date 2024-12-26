@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.FrameLayout
+import com.climax.ads.adsclas.CollapsibleBannerAdManager.Companion.BANNER_MANAGER_TAG
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.ads.mediation.admob.AdMobAdapter
 import com.google.android.gms.ads.AdListener
