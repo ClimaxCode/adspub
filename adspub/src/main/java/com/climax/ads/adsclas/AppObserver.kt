@@ -32,22 +32,11 @@ class AppObserver(
 
 
             var tr= false
-            if (mCurrentActivity.toString().contains(activitys)){
-                tr = true
-            }else{tr = false}
+            tr = mCurrentActivity.toString().contains(activitys)
 
                 Log.d("appppopeen", "onBackgroundEntered:${mCurrentActivity.toString().split("@")[0]
                 } == com.climax.code.${activitys}  $tr")
-           /* if (it is HomeScreenActivity) {
-                if (!it.isShowLocation) {
-                    it.loadAppOpen(Constants.onResumeAppOpenId)
-                }
-            } else {
-                if (it !is FullscreenActivity && !Constants.isOpenLocationDialog && it !is IAPActivity && it !is OnboardingScreen) {
-                    it.loadAppOpen(Constants.onResumeAppOpenId)
-                }
-            }
-*/
+               // fjakfjksjfk
         }
         appIsForeground = false
     }
