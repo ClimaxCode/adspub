@@ -451,6 +451,43 @@ fun Activity?.callNativeAd(
     )
 }
 
+fun Activity?.callFullNativeAd(
+    nativeAdId: String,
+    preLoad: Boolean = false,
+    loadNewAd: Boolean = true,
+    actionLoaded: (() -> Unit),
+    actionFailed: () -> Unit,
+    tryToShowAgain: (Boolean) -> Unit,
+    actionButtonColor: Int,
+    actionButtonTextColor: Int,
+    bgColor: Int
+) {
+
+    var type: Int = 0
+    var frameLayout: FrameLayout? = null
+    var shimmer: ShimmerFrameLayout? = null
+
+    type = R.layout.full_native
+    frameLayout = this?.findViewById(R.id.adContainer)!!
+    shimmer = this.findViewById(R.id.shimmmmer)!!
+
+    Log.d("Ads", "callNativeAd: $type")
+    showLargeNative(
+        nativeAdId,
+        type,
+        this.findViewById(R.id.ad_root_full_native),
+        frameLayout,
+        shimmer,
+        preLoad,
+        loadNewAd,
+        actionLoaded,
+        actionFailed,
+        tryToShowAgain,
+        actionButtonColor,
+        actionButtonTextColor,
+        bgColor
+    )
+}
 fun Activity?.showLargeNative(
     nativeAdId: String,
     nativeAdLayout: Int,

@@ -209,8 +209,7 @@ class NativeLarge {
         bgColor:Int
     ) {
 
-        Log.d("FAHAD", "precheckTimeOut: $checkTimeOut")
-        Log.d("FAHAD", "preAdState: $adState")
+
         when (adState) {
             AdState.LOAD -> loadNative(
                 activity,
