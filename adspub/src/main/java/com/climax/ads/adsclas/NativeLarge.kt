@@ -437,12 +437,14 @@ class NativeLarge {
                     adState = AdState.FAILED
                     actionFailed?.invoke()
                     isNativeAdfailed=true
+                    Log.d("preloadNativeAd", "onAdFailedToLoad: ")
                 }
 
                 override fun onAdLoaded() {
                     super.onAdLoaded()
                     adState = AdState.LOADED
                     isNativeAdfailed=false
+                    Log.d("preloadNativeAd", "onAdLoaded: ")
                 }
 
                 override fun onAdImpression() {

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.climax.ads.adsclas.Constants
+import com.climax.ads.adsclas.callFullNativeAd
 import com.climax.ads.adsclas.callNativeAd
 import com.climax.ads.adsclas.showLargeNative
 import com.climax.ads.adsclas.showShowFullNative
@@ -42,16 +43,16 @@ class FullNativeAdFragment : Fragment() {
     }
     private fun showFullNativeAd() {
         Log.d("Loaddede", "showFullNativeAd: ${Constants.onBoardingFullScreenNativeId}")
-        activity?.let {
+        requireActivity()?.let {
 
-            it.showLargeNative(
-                Constants.onBoardingFullScreenNativeId,
-                com.climax.ads.R.layout.full_native,
-                binding.adRoots,
-                binding.adContainers,
-                binding.shimmmmers,
-                false,false,{},
-                {}, {},Constants.fullNativeButtonColor,Constants.fullNativeButtonTextColor,Constants.fullNativeBGColor)
+            it.callFullNativeAd(
+                "ca-app-pub-3940256099942544/1044960115",
+                false,
+                true, {}, {}, {},
+                Constants.fullNativeButtonColor,
+                Constants.fullNativeButtonTextColor,
+                Constants.fullNativeBGColor)
+
        }
 
 //        activity?.let {

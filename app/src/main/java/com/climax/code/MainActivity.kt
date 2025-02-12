@@ -1,7 +1,9 @@
 package com.climax.code
 
+import AppLanguagesModel
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.climax.ads.adsclas.checkAndShowInterstitial
@@ -11,6 +13,7 @@ import com.climax.ads.adsclas.loadPreInterstitial
 import com.climax.ads.adsclas.preLoadLargeNativeAd
 import com.climax.ads.adsclas.preLoadRewardedVideos
 import com.climax.ads.adsclas.showRewarded
+import com.climax.code.applanguages.ExtensionFun.languagesList
 import com.climax.code.databinding.ActivityMainBinding
 
 
@@ -18,12 +21,14 @@ class MainActivity : AppCompatActivity() {
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
-
+    private var languageLIst : ArrayList<AppLanguagesModel>? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         clicks()
 
+        languageLIst = languagesList
+        Log.d("langlist", "onCreate: ${languageLIst?.size} -- ${languageLIst.toString()}")
 
     }
 

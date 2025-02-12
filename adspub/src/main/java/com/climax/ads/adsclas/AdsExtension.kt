@@ -373,7 +373,7 @@ fun Activity?.callNativeAd(
     when (nativeAdtype) {
         "large" -> {
             type = R.layout.full_native
-            frameLayout = this?.findViewById(R.id.adContainer)!!
+            frameLayout = this?.findViewById(R.id.adContainerFull)!!
             shimmer = this.findViewById(R.id.shimmmmer)!!
         }
 
@@ -462,31 +462,33 @@ fun Activity?.callFullNativeAd(
     actionButtonTextColor: Int,
     bgColor: Int
 ) {
+    this ?: return
+    val  type = R.layout.full_native
+    val frameLayout = findViewById<FrameLayout>(R.id.adContainerFull)
+    val shimmer = findViewById<ShimmerFrameLayout>(R.id.shimmmmer)
 
-    var type: Int = 0
-    var frameLayout: FrameLayout? = null
-    var shimmer: ShimmerFrameLayout? = null
-
-    type = R.layout.full_native
-    frameLayout = this?.findViewById(R.id.adContainer)!!
-    shimmer = this.findViewById(R.id.shimmmmer)!!
-
-    Log.d("Ads", "callNativeAd: $type")
-    showLargeNative(
-        nativeAdId,
-        type,
-        this.findViewById(R.id.ad_root_full_native),
-        frameLayout,
-        shimmer,
-        preLoad,
-        loadNewAd,
-        actionLoaded,
-        actionFailed,
-        tryToShowAgain,
-        actionButtonColor,
-        actionButtonTextColor,
-        bgColor
-    )
+    Log.d("fullNative", "callFullNativeAd: $frameLayout --$shimmer")
+    if (frameLayout != null) {
+    Log.d("fullNative", "callFullNativeAd: frameLayout id ok")
+        if (shimmer != null) {
+            Log.d("fullNative", "callFullNativeAd: shimmer id ok")
+            showLargeNative(
+                nativeAdId,
+                type,
+                this?.findViewById(R.id.ad_root_full_native),
+                frameLayout,
+                shimmer,
+                preLoad,
+                loadNewAd,
+                actionLoaded,
+                actionFailed,
+                tryToShowAgain,
+                actionButtonColor,
+                actionButtonTextColor,
+                bgColor
+            )
+        }
+    }
 }
 fun Activity?.showLargeNative(
     nativeAdId: String,
