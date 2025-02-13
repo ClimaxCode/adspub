@@ -1,0 +1,101 @@
+package com.climax.code.applanguages
+
+import AppLanguagesModel
+import android.annotation.SuppressLint
+import android.content.Context
+import android.content.res.Configuration
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.climax.code.databinding.AppLanguagesBinding
+
+class AppLanguagesAdapter(
+    private val appLanguageList: List<AppLanguagesModel>,
+    private val listener: OnAppLangItemClickListener
+) :
+    RecyclerView.Adapter<AppLanguagesAdapter.MyViewHolder>() {
+
+    private var mlistener: OnAppLangItemClickListener = listener
+    private var isApplied: PrefStorage? = null
+    var context: Context? = null
+    private var isSelectedItem = 0
+    private var isListClick = false
+
+    init {
+        mlistener = listener
+    }
+
+    interface OnAppLangItemClickListener {
+        fun onLangItemClick(position: Int, item: AppLanguagesModel)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        context = parent.context
+        val binding =
+            AppLanguagesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MyViewHolder(binding, mlistener)
+    }
+
+    @SuppressLint("LogNotTimber")
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        isApplied = context?.let { PrefStorage(it) }
+        val currentItem = appLanguageList[holder.adapterPosition]
+
+        val isDarkMode =
+            when (context?.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)) {
+                Configuration.UI_MODE_NIGHT_YES -> true
+                else -> false
+            }
+/*
+
+        if (isDarkMode){
+
+        }else{
+
+        }
+*/
+
+
+        holder.binding.imgLangFlag.setImageResource(currentItem.imageId)
+        holder.binding.langName.text = currentItem.countryName
+        holder.binding.currentLangName.text = currentItem.langName
+        Log.e("showLogTag", "Language is ${isApplied?.intAppLangApplied}")
+
+        if (isApplied?.intAppLangApplied == holder.adapterPosition) {
+            holder.binding.selectedLang.visibility = View.VISIBLE
+            holder.binding.unselectedLang.visibility = View.GONE
+        } else {
+            holder.binding.selectedLang.visibility = View.GONE
+            holder.binding.unselectedLang.visibility = View.GONE
+        }
+        if (isListClick) {
+            if (isSelectedItem == holder.adapterPosition) {
+                holder.binding.selectedLang.visibility = View.VISIBLE
+                holder.binding.unselectedLang.visibility = View.GONE
+            } else {
+                holder.binding.selectedLang.visibility = View.GONE
+                holder.binding.unselectedLang.visibility = View.GONE
+            }
+        }
+
+        holder.binding.root.setOnClickListener {
+            isSelectedItem = holder.adapterPosition
+            isListClick = true
+            mlistener.onLangItemClick(holder.adapterPosition, currentItem)
+            notifyDataSetChanged()
+        }
+    }
+
+    override fun getItemCount(): Int {
+        return appLanguageList.size
+    }
+
+    fun setOnItemClickListener(listener: OnAppLangItemClickListener) {
+        mlistener = listener
+    }
+
+    class MyViewHolder(val binding: AppLanguagesBinding, listener: OnAppLangItemClickListener) :
+        RecyclerView.ViewHolder(binding.root)
+}

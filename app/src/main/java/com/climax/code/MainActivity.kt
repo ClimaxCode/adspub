@@ -33,6 +33,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun clicks() {
+        binding.showLanguageListBtn.setOnClickListener {
+            startActivity(Intent(this,AppLanguagesListView::class.java))
+        }
         binding.buttonexit1.setOnClickListener {
             preLoadRewardedVideos(
                 this@MainActivity,
