@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.climax.code.applanguages.AppLanguagesAdapter
 import com.climax.code.applanguages.ExtensionFun.languagesList
+import com.climax.code.applanguages.PrefStorage
 import com.climax.code.databinding.ActivityAppLanguagesListViewBinding
 import com.climax.code.databinding.ActivityBannerBinding
 
@@ -28,8 +29,9 @@ class AppLanguagesListView : AppCompatActivity(), AppLanguagesAdapter.OnAppLangI
     }
 
     override fun onLangItemClick(position: Int, item: AppLanguagesModel) {
-        Toast.makeText(this, "$position \n" +
-                "${item.countryName}\n${item.langCodes}\n" +
+        Toast.makeText(this, "$position --" +
+                "${item.countryName}--${item.langCodes}--" +
                 "${item.langName}", Toast.LENGTH_SHORT).show()
+        PrefStorage(this).intAppLangApplied = position
     }
 }

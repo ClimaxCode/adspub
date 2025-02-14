@@ -25,4 +25,5 @@
     <color name="textcolor2">#7D7D7D</color>
     <color name="ads_bg">#f4f4f4</color>
     <color name="transparent">#00000000</color>
+    <color name="gray_dark">#929EA9</color>
 </resources>

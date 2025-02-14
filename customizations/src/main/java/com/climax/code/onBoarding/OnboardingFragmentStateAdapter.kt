@@ -20,7 +20,7 @@ class OnboardingFragmentStateAdapter(
     override fun createFragment(position: Int): Fragment {
         return when {
             showFullNative -> when {
-                position == onBoardingFullNativeAtIndex -> FullNativeAdFragment() // Show FullNativeAdFragment at the specified index
+                position == onBoardingFullNativeAtIndex -> FullNativeAdFragment()
                 else -> getAdjustedFragment(position)
             }
 

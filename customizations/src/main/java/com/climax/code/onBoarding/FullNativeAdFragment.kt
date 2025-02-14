@@ -55,28 +55,10 @@ class FullNativeAdFragment : Fragment() {
 
        }
 
-//        activity?.let {
-//            requireActivity().callNativeAd(
-//                "ca-app-pub-3940256099942544/1044960115",
-//                "large",
-//                false,
-//                false,
-//                {},
-//                {},
-//                {})
-//        }
+
 
     }
 
-
-//    override fun onResume() {
-//        super.onResume()
-//        activity?.let {
-//            if(it is OnboardingActivity){
-//                it.hideBottomViews()
-//            }
-//        }
-//    }
     companion object {
 
         @JvmStatic

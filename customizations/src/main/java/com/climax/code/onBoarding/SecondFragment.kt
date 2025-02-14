@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import com.climax.code.databinding.FragmentSecondBinding
 import com.climax.code.utils.ConstantsCustomizations
 import com.climax.code.utils.ConstantsCustomizations.onBoardingItemsList
@@ -43,16 +44,9 @@ class SecondFragment : Fragment() {
             binding.tutHeaderName.setText(onBoardingItemsList[1].title)
             binding.tutDes.setText(onBoardingItemsList[1].description)
         }
-        binding.parentLayout.setBackgroundColor(ConstantsCustomizations.setonBoarding_Bg_Color)
+        binding.parentLayout.setBackgroundColor(ContextCompat.getColor(requireContext(),ConstantsCustomizations.setonBoarding_Bg_Color))
     }
-//    override fun onResume() {
-//        super.onResume()
-//        activity?.let {
-//            if(it is OnBoardingActivity){
-//                it.showBottomViews()
-//            }
-//        }
-//    }
+
     companion object {
 
         @JvmStatic

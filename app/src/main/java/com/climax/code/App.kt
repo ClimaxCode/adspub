@@ -14,7 +14,7 @@ class App : Application() {
     private var appObserver: AppObserver? = null
     override fun onCreate() {
         super.onCreate()
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+      //  AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         appObserver = AppObserver(
             appOpen = AppOpen(),

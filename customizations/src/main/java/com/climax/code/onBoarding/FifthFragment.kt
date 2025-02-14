@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import com.climax.code.R
 import com.climax.code.databinding.FragmentFifthBinding
 import com.climax.code.databinding.FragmentSecondBinding
@@ -43,10 +44,10 @@ class FifthFragment : Fragment() {
 
         if (onBoardingItemsList.size>=5){
             binding.tutImg.setImageResource(onBoardingItemsList[4].imageResId)
-            binding.tutHeaderName.setText(onBoardingItemsList[4].title)
-            binding.tutDes.setText(onBoardingItemsList[4].description)
+            binding.tutHeaderName.text = onBoardingItemsList[4].title
+            binding.tutDes.text = onBoardingItemsList[4].description
         }
-        binding.parentLayout.setBackgroundColor(ConstantsCustomizations.setonBoarding_Bg_Color)
+        binding.parentLayout.setBackgroundColor(ContextCompat.getColor(requireContext(),ConstantsCustomizations.setonBoarding_Bg_Color))
 
     }
     companion object {

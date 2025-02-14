@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import com.climax.code.R
 import com.climax.code.databinding.FragmentFifthBinding
 import com.climax.code.databinding.FragmentFourthBinding
@@ -44,7 +45,7 @@ class FourthFragment : Fragment() {
             binding.tutHeaderName.setText(onBoardingItemsList[3].title)
             binding.tutDes.setText(onBoardingItemsList[3].description)
         }
-        binding.parentLayout.setBackgroundColor(ConstantsCustomizations.setonBoarding_Bg_Color)
+        binding.parentLayout.setBackgroundColor(ContextCompat.getColor(requireContext(),ConstantsCustomizations.setonBoarding_Bg_Color))
 
     }
 
