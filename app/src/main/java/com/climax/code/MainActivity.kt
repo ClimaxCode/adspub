@@ -15,6 +15,7 @@ import com.climax.ads.adsclas.preLoadRewardedVideos
 import com.climax.ads.adsclas.showRewarded
 import com.climax.code.applanguages.ExtensionFun.languagesList
 import com.climax.code.databinding.ActivityMainBinding
+import com.climax.code.utils.ConstantsCustomizations
 
 
 class MainActivity : AppCompatActivity() {
@@ -29,7 +30,6 @@ class MainActivity : AppCompatActivity() {
 
         languageLIst = languagesList
         Log.d("langlist", "onCreate: ${languageLIst?.size} -- ${languageLIst.toString()}")
-
     }
 
     fun clicks() {
