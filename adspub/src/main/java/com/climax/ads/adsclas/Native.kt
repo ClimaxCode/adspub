@@ -9,8 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.climax.ads.R
+
 import com.climax.ads.adsclas.enums.AdState
+import com.climax.ads.R
 import com.google.android.gms.ads.nativead.NativeAd
 import com.google.android.gms.ads.nativead.NativeAdOptions
 import com.google.android.gms.ads.nativead.NativeAdView
@@ -396,34 +397,6 @@ class Native {
                     }
                 }
 
-//                if (nativeAd.price == null) {
-//                    adView.priceView?.visibility = View.INVISIBLE
-//                } else {
-//                    adView.priceView?.visibility = View.VISIBLE
-//                    (adView.priceView as TextView).text = nativeAd.price
-//                }
-
-//                if (nativeAd.store == null) {
-//                    adView.storeView?.visibility = View.INVISIBLE
-//                } else {
-//                    adView.storeView?.visibility = View.VISIBLE
-//                    (adView.storeView as TextView).text = nativeAd.store
-//                }
-
-//                if (nativeAd.starRating == null) {
-//                    adView.starRatingView?.visibility = View.INVISIBLE
-//                } else {
-//                    (adView.starRatingView as RatingBar).rating =
-//                        nativeAd.starRating!!.toFloat()
-//                    adView.starRatingView?.visibility = View.VISIBLE
-//                }
-
-//                if (nativeAd.advertiser == null) {
-//                    adView.advertiserView?.visibility = View.GONE
-//                } else {
-//                    (adView.advertiserView as TextView).text = nativeAd.advertiser
-//                    adView.advertiserView?.visibility = View.GONE
-//                }
 
                 adView.setNativeAd(nativeAd)
                 container?.show()

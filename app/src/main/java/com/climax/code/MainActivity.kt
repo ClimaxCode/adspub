@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.climax.ads.adsclas.checkAndShowInterstitial
+import com.climax.ads.adsclas.checkNetwork.BaseActivity
 import com.climax.ads.adsclas.exit1
 import com.climax.ads.adsclas.exit2
 import com.climax.ads.adsclas.loadPreInterstitial
@@ -18,7 +19,7 @@ import com.climax.code.databinding.ActivityMainBinding
 import com.climax.code.utils.ConstantsCustomizations
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }

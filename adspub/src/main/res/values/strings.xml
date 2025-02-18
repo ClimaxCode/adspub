@@ -4,4 +4,7 @@
     <string name="loading">Loading</string>
     <string name="exit_app">Exit App</string>
     <string name="are_you_to_exit">Are you sure you want to exit app</string>
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="no_internet_connect_and_try_again">No Internet. Connect And try Again!</string>
+    <string name="setting">Setting</string>
 </resources>

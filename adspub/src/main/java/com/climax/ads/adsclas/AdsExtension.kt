@@ -10,12 +10,15 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.SystemClock
+import android.provider.Settings
 import android.util.Log
 import android.view.View
 import android.view.Window
 import android.widget.FrameLayout
+import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.climax.ads.R
 import com.climax.ads.adsclas.Constants.ADS_INITIALIZATION_COMPLETED
@@ -32,6 +35,8 @@ import com.climax.ads.adsclas.Constants.showFullNative
 import com.climax.ads.adsclas.Constants.smallNative
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.gms.ads.MobileAds
+import com.google.android.material.card.MaterialCardView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textview.MaterialTextView
 
 
@@ -739,5 +744,32 @@ fun Activity.openUrl(appUri: Uri) {
     try {
         startActivity(Intent(Intent.ACTION_VIEW, appUri))
     } catch (e: Exception) {
+    }
+}
+
+fun Context.showNetworkCheckDialog() {
+    // Create the AlertDialog with a custom layout
+    val alertDialog: AlertDialog = MaterialAlertDialogBuilder(
+        this,
+        R.style.MyRounded_MaterialComponents_MaterialAlertDialog
+    )
+        .setView(R.layout.check_network_dialog)
+        .setCancelable(false)
+        .show()
+
+    // Find views in the custom layout
+    val setting: CardView? = alertDialog.findViewById(R.id.settingNEt)
+    val close: ImageView? = alertDialog.findViewById(R.id.close)
+
+    // Set onClickListener with single click prevention for the close button
+    close?.setOnSingleClickListener {
+        alertDialog.dismiss()
+    }
+
+    // Set onClickListener for the settings button with single click prevention
+    setting?.setOnSingleClickListener {
+        alertDialog.dismiss()
+        val intent = Intent(Settings.ACTION_WIFI_SETTINGS)
+        startActivity(intent)
     }
 }

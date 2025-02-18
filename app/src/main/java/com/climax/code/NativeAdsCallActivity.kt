@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.climax.ads.R
+import com.climax.code.R
 import com.climax.ads.adsclas.Constants.isNativeAdfailed
 import com.climax.ads.adsclas.callNativeAd
 import com.climax.code.databinding.ActivityNativeAdsCallBinding

@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.climax.ads"
+    namespace = "com.climax.code"
     compileSdk = 34
 
     defaultConfig {

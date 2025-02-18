@@ -1,13 +1,10 @@
 package com.climax.ads.adsclas.helpers
 
 import android.app.Activity
-import android.widget.FrameLayout
 import com.climax.ads.R
 import com.climax.ads.adsclas.AdaptiveBannerAd
-import com.climax.ads.adsclas.CollapsibleBannerAd
 import com.climax.ads.adsclas.Constants.collapsiblebannerAd
 import com.climax.ads.adsclas.InlineBannerAdManager
-import com.facebook.shimmer.ShimmerFrameLayout
 
 
 fun Activity?.collapsibleBanner(

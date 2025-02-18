@@ -6,6 +6,7 @@ import androidx.lifecycle.ProcessLifecycleOwner
 import com.climax.ads.adsclas.AppObserver
 import com.climax.ads.adsclas.AppOpen
 import com.climax.ads.adsclas.Constants
+import com.climax.ads.adsclas.checkNetwork.LibraryInit
 import com.climax.code.onBoarding.OnboardingItem
 import com.climax.code.utils.ConstantsCustomizations.onBoardingItemsList
 import com.climax.code.utils.ConstantsCustomizations.setonBoarding_Bg_Color
@@ -16,6 +17,7 @@ class App : Application() {
         super.onCreate()
       //  AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
+        LibraryInit.init(this)
         appObserver = AppObserver(
             appOpen = AppOpen(),
             "ca-app-pub-3940256099942544/9257395921",
