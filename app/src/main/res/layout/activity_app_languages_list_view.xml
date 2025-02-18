@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg_color_"
     tools:context=".AppLanguagesListView">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,6 +17,7 @@
             android:layout_height="wrap_content"
             android:text="App Languages"
             android:textSize="@dimen/_14ssp"
+            android:textColor="@color/white"
             android:layout_marginStart="@dimen/_8sdp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

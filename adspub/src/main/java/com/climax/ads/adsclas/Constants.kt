@@ -1,6 +1,5 @@
 package com.climax.ads.adsclas
 
-import android.widget.Button
 import androidx.lifecycle.MutableLiveData
 import com.climax.ads.R
 
@@ -61,6 +60,8 @@ object Constants {
     var rewarded = Rewarded()
 
 
+
+
     /* network dialog */
 
     var headerText = "No internet connection"
@@ -75,7 +76,11 @@ object Constants {
 
 
    /* language screen text color */
-   var countryNameTextColor = R.color.dark_grey
-   var languageNameTextColor = R.color.black
+   var countryNameTextColor = R.color.white
+   var languageNameTextColor = R.color.dark_grey
+   var languageCardSelectedItemColor = R.color.color_card_item
+   var languageCardUnSelectedItemColor = R.color.color_card_item
+   var languageLayoutItemColor = R.drawable.selection_bar_item
+   var selectedTickIcon = R.drawable.ic_app_language_selected
 
 }

@@ -69,21 +69,31 @@ class AppLanguagesAdapter(
         holder.binding.langName.text = currentItem.countryName
         holder.binding.currentLangName.text = currentItem.langName
         Log.e("showLogTag", "Language is ${isApplied?.intAppLangApplied}")
+        holder.binding.selectedLang.setImageResource(Constants.selectedTickIcon)
+
 
         if (isApplied?.intAppLangApplied == holder.adapterPosition) {
             holder.binding.selectedLang.visibility = View.VISIBLE
             holder.binding.unselectedLang.visibility = View.GONE
+            holder.binding.cardItem.setCardBackgroundColor(ContextCompat.getColor(context!!,Constants.languageCardSelectedItemColor))
+            holder.binding.layoutItem.background = ContextCompat.getDrawable(context!!, Constants.languageLayoutItemColor)
         } else {
             holder.binding.selectedLang.visibility = View.GONE
             holder.binding.unselectedLang.visibility = View.GONE
+            holder.binding.cardItem.setCardBackgroundColor(ContextCompat.getColor(context!!,Constants.languageCardUnSelectedItemColor))
+            holder.binding.layoutItem.setBackgroundColor(ContextCompat.getColor(context!!, Constants.languageCardUnSelectedItemColor))
         }
         if (isListClick) {
             if (isSelectedItem == holder.adapterPosition) {
                 holder.binding.selectedLang.visibility = View.VISIBLE
                 holder.binding.unselectedLang.visibility = View.GONE
+                holder.binding.cardItem.setCardBackgroundColor(ContextCompat.getColor(context!!,Constants.languageCardSelectedItemColor))
+                holder.binding.layoutItem.background = ContextCompat.getDrawable(context!!, Constants.languageLayoutItemColor)
             } else {
                 holder.binding.selectedLang.visibility = View.GONE
                 holder.binding.unselectedLang.visibility = View.GONE
+                holder.binding.cardItem.setCardBackgroundColor(ContextCompat.getColor(context!!,Constants.languageCardUnSelectedItemColor))
+                holder.binding.layoutItem.setBackgroundColor(ContextCompat.getColor(context!!, Constants.languageCardUnSelectedItemColor))
             }
         }
 

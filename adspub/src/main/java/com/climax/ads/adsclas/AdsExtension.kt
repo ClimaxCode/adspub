@@ -789,7 +789,7 @@ fun Context.showNetworkCheckDialog() {
     }
 }
 
-fun Context.setAppLocale(langCode: String) {
+fun Activity.setAppLocale(langCode: String) {
     val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags(langCode)
     AppCompatDelegate.setApplicationLocales(appLocale)
 }
