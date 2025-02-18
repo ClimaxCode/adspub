@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.climax.ads.adsclas.Constants
 import com.climax.ads.adsclas.checkAndShowInterstitial
 import com.climax.ads.adsclas.checkNetwork.BaseActivity
 import com.climax.ads.adsclas.exit1

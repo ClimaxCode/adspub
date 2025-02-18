@@ -12,6 +12,7 @@ import android.net.Uri
 import android.os.SystemClock
 import android.provider.Settings
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.view.Window
 import android.widget.FrameLayout
@@ -20,6 +21,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import com.climax.ads.R
 import com.climax.ads.adsclas.Constants.ADS_INITIALIZATION_COMPLETED
 import com.climax.ads.adsclas.Constants.OTHER_AD_DISPLAYED
@@ -33,6 +35,7 @@ import com.climax.ads.adsclas.Constants.native
 import com.climax.ads.adsclas.Constants.rewarded
 import com.climax.ads.adsclas.Constants.showFullNative
 import com.climax.ads.adsclas.Constants.smallNative
+import com.climax.ads.databinding.CheckNetworkDialogBinding
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.gms.ads.MobileAds
 import com.google.android.material.card.MaterialCardView
@@ -748,26 +751,36 @@ fun Activity.openUrl(appUri: Uri) {
 }
 
 fun Context.showNetworkCheckDialog() {
-    // Create the AlertDialog with a custom layout
+    val binding = CheckNetworkDialogBinding.inflate(LayoutInflater.from(this))
+
     val alertDialog: AlertDialog = MaterialAlertDialogBuilder(
         this,
         R.style.MyRounded_MaterialComponents_MaterialAlertDialog
     )
-        .setView(R.layout.check_network_dialog)
+        .setView(binding.root)
         .setCancelable(false)
         .show()
 
-    // Find views in the custom layout
-    val setting: CardView? = alertDialog.findViewById(R.id.settingNEt)
-    val close: ImageView? = alertDialog.findViewById(R.id.close)
 
-    // Set onClickListener with single click prevention for the close button
-    close?.setOnSingleClickListener {
+    binding.close.setImageResource(Constants.closeIcon)
+    binding.vect.setImageResource(Constants.networkImage)
+
+    binding.noInternectText.text = Constants.headerText
+    binding.checkInternetText.text = Constants.descriptionText
+    binding.noInternectText.setTextColor(ContextCompat.getColor(this, Constants.headerTextColor))
+    binding.checkInternetText.setTextColor(ContextCompat.getColor(this, Constants.descriptionTextColor))
+    binding.settingText.setTextColor(ContextCompat.getColor(this, Constants.settingTextColor))
+    binding.settingNEt.setCardBackgroundColor(ContextCompat.getColor(this,Constants.settingButtonColor))
+
+    binding.root.setBackgroundColor(ContextCompat.getColor(this, Constants.bgColorNetworkDialog))
+
+    // Close button click listener
+    binding.close.setOnClickListener {
         alertDialog.dismiss()
     }
 
-    // Set onClickListener for the settings button with single click prevention
-    setting?.setOnSingleClickListener {
+    // Settings button click listener
+    binding.settingNEt.setOnClickListener {
         alertDialog.dismiss()
         val intent = Intent(Settings.ACTION_WIFI_SETTINGS)
         startActivity(intent)
