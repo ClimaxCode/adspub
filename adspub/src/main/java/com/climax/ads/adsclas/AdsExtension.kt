@@ -356,7 +356,7 @@ fun Activity?.preLoadNativeAd(
 fun Activity?.preLoadLargeNativeAd(nativeAdId: String) {
     this?.let {
         if (!Constants.isPurchased() && isNetworkAvailable()) {
-            Log.e("Aqeel", "Pre load exit Native")
+            Log.e("AdTags", "Pre load exit Native")
             largeNative.preLoadNative(it, nativeAdId)
         }
     }
@@ -617,7 +617,7 @@ fun Activity?.showShowFullNative(
 fun Activity?.preLoadFullNativeAd(nativeAdId: String) {
     this?.let {
         if (!Constants.isPurchased() && isNetworkAvailable()) {
-            Log.e("Aqeel", "Pre load exit Native")
+            Log.e("AdTags", "Pre load exit Native")
             showFullNative.preLoadNative(it, nativeAdId)
         }
     }

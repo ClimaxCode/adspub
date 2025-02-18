@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.climax.ads.adsclas.Constants
 import com.climax.code.R
 import com.climax.code.databinding.AppLanguagesBinding
 
@@ -58,8 +59,8 @@ class AppLanguagesAdapter(
             }
         } else {
             context?.let {
-                holder.binding.langName.setTextColor(ContextCompat.getColor(it, R.color.darkBlack))
-                holder.binding.currentLangName.setTextColor(ContextCompat.getColor(it, R.color.black))
+                holder.binding.langName.setTextColor(ContextCompat.getColor(it, Constants.countryNameTextColor))
+                holder.binding.currentLangName.setTextColor(ContextCompat.getColor(it, Constants.languageNameTextColor))
             }
         }
 

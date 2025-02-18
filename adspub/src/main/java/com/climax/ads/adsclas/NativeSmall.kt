@@ -125,8 +125,8 @@ class NativeSmall {
         actionFailed: (() -> Unit)? = null
     ) {
 
-        Log.d("FAHAD", "precheckTimeOut: $checkTimeOut")
-        Log.d("FAHAD", "preAdState: $adState")
+        Log.d("AdTags", "precheckTimeOut: $checkTimeOut")
+        Log.d("AdTags", "preAdState: $adState")
         when (adState) {
             AdState.LOAD -> loadNative(
                 activity,
@@ -236,8 +236,8 @@ class NativeSmall {
                 nativeAd = ad
                 adState = AdState.SHOWING
                 countDownTimer.start()
-                Log.d("FAHAD", "loadNative: ${nativeAd.hashCode()}")
-                Log.d("FAHAD", "checkTimeOutLoad: $checkTimeOut")
+                Log.d("AdTags", "loadNative: ${nativeAd.hashCode()}")
+                Log.d("AdTags", "checkTimeOutLoad: $checkTimeOut")
 
                 populateNativeAdView(
                     activity,
@@ -298,7 +298,7 @@ class NativeSmall {
                 //nativeAd?.destroy()
                 nativeAd = ad
                 countDownTimer.start()
-                Log.d("FAHAD", "preloadNative: ${nativeAd.hashCode()}")
+                Log.d("AdTags", "preloadNative: ${nativeAd.hashCode()}")
                 actionLoaded?.invoke()
             }
             .withAdListener(object : AdListener() {

@@ -13,7 +13,7 @@ import com.google.android.gms.ads.appopen.AppOpenAd
 
 import kotlinx.coroutines.*
 
-const val LOG_TAG = "Fahad_Ads"
+const val LOG_TAG = "AdTags_Ads"
 
 class AppOpen {
     private var adState = AdState.LOAD
