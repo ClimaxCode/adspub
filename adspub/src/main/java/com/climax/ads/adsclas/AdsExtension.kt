@@ -19,9 +19,11 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.os.LocaleListCompat
 import com.climax.ads.R
 import com.climax.ads.adsclas.Constants.ADS_INITIALIZATION_COMPLETED
 import com.climax.ads.adsclas.Constants.OTHER_AD_DISPLAYED
@@ -785,4 +787,9 @@ fun Context.showNetworkCheckDialog() {
         val intent = Intent(Settings.ACTION_WIFI_SETTINGS)
         startActivity(intent)
     }
+}
+
+fun Context.setAppLocale(langCode: String) {
+    val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags(langCode)
+    AppCompatDelegate.setApplicationLocales(appLocale)
 }

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import com.climax.ads.adsclas.Constants
 import com.climax.code.databinding.FragmentFirstBinding
 import com.climax.code.utils.ConstantsCustomizations
 import com.climax.code.utils.ConstantsCustomizations.onBoardingItemsList
@@ -39,9 +40,11 @@ private lateinit var binding: FragmentFirstBinding
 
         if (onBoardingItemsList.size>=1){
             binding.tutImg.setImageResource(onBoardingItemsList[0].imageResId)
-            binding.tutHeaderName.setText(onBoardingItemsList[0].title)
-            binding.tutDes.setText(onBoardingItemsList[0].description)
+            binding.tutHeaderName.text = onBoardingItemsList[0].title
+            binding.tutDes.text = onBoardingItemsList[0].description
         }
+        binding.tutHeaderName.setTextColor(ContextCompat.getColor(requireContext(),ConstantsCustomizations.headerColorOnboarding))
+        binding.tutDes.setTextColor(ContextCompat.getColor(requireContext(),ConstantsCustomizations.desColorOnboarding))
         binding.parentLayout.setBackgroundColor(ContextCompat.getColor(requireContext(),ConstantsCustomizations.setonBoarding_Bg_Color))
 
     }

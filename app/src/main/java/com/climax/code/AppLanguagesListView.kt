@@ -5,11 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.climax.ads.adsclas.setAppLocale
 import com.climax.code.applanguages.AppLanguagesAdapter
 import com.climax.code.applanguages.ExtensionFun.languagesList
 import com.climax.code.applanguages.PrefStorage
 import com.climax.code.databinding.ActivityAppLanguagesListViewBinding
-import com.climax.code.databinding.ActivityBannerBinding
 
 class AppLanguagesListView : AppCompatActivity(), AppLanguagesAdapter.OnAppLangItemClickListener {
     private val binding by lazy {
@@ -33,5 +33,6 @@ class AppLanguagesListView : AppCompatActivity(), AppLanguagesAdapter.OnAppLangI
                 "${item.countryName}--${item.langCodes}--" +
                 "${item.langName}", Toast.LENGTH_SHORT).show()
         PrefStorage(this).intAppLangApplied = position
+        setAppLocale(item.langCodes)
     }
 }

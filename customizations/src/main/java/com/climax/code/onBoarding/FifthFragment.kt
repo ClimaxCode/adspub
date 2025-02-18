@@ -1,5 +1,6 @@
 package com.climax.code.onBoarding
 
+import android.graphics.Typeface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import com.climax.code.databinding.FragmentSecondBinding
 import com.climax.code.databinding.FragmentThirdBinding
 import com.climax.code.utils.ConstantsCustomizations
 import com.climax.code.utils.ConstantsCustomizations.onBoardingItemsList
+import java.io.File
 
 
 private const val ARG_PARAM1b = "param1"
@@ -47,7 +49,12 @@ class FifthFragment : Fragment() {
             binding.tutHeaderName.text = onBoardingItemsList[4].title
             binding.tutDes.text = onBoardingItemsList[4].description
         }
+        binding.tutHeaderName.setTextColor(ContextCompat.getColor(requireContext(),ConstantsCustomizations.headerColorOnboarding))
+        binding.tutDes.setTextColor(ContextCompat.getColor(requireContext(),ConstantsCustomizations.desColorOnboarding))
         binding.parentLayout.setBackgroundColor(ContextCompat.getColor(requireContext(),ConstantsCustomizations.setonBoarding_Bg_Color))
+
+
+
 
     }
     companion object {
