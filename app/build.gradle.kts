@@ -59,5 +59,5 @@ dependencies {
     implementation("com.tbuonomo:dotsindicator:5.0")
     implementation(project(":adspub"))
     implementation(project(":customizations"))
-
+    implementation ("com.airbnb.android:lottie:3.4.0")
 }

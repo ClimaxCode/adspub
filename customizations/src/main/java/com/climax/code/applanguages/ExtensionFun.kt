@@ -5,12 +5,12 @@ import com.climax.code.R
 
 object ExtensionFun {
     val languagesList = arrayListOf(
-        AppLanguagesModel(R.drawable.united_states, "English(US)", "en", "English"),
         AppLanguagesModel(R.drawable.spain, "Spanish", "es", "español"),
         AppLanguagesModel(R.drawable.saudi_arabia, "Arabic", "ar", "عربي"),
         AppLanguagesModel(R.drawable.germany, "German", "de", "Deutsch"),
         AppLanguagesModel(R.drawable.indonesia, "Indonesian", "in", "Indonesia"),
         AppLanguagesModel(R.drawable.russia, "Russian", "ru", "русский"),
+        AppLanguagesModel(R.drawable.united_states, "English(US)", "en", "English"),
         AppLanguagesModel(R.drawable.france, "French", "fr", "français"),
         AppLanguagesModel(R.drawable.china, "Chinese", "zh", "中國人"),
         AppLanguagesModel(R.drawable.iran, "Persian", "fa", "فارسی"),

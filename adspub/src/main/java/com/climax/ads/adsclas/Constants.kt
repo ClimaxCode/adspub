@@ -60,10 +60,7 @@ object Constants {
     var rewarded = Rewarded()
 
 
-
-
     /* network dialog */
-
     var headerText = "No internet connection"
     var descriptionText = "No Internet. Connect And try Again!"
     var bgColorNetworkDialog = R.color.white
@@ -73,6 +70,7 @@ object Constants {
     var settingButtonColor = R.color.main_color
     var networkImage = R.drawable.ic_no_internet_vector
     var closeIcon = R.drawable.cross_translation
+    var closeIconPadding = 9f
 
 
    /* language screen text color */

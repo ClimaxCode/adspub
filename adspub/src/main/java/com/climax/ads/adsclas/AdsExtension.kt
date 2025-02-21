@@ -12,23 +12,24 @@ import android.net.Uri
 import android.os.SystemClock
 import android.provider.Settings
 import android.util.Log
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.Window
 import android.widget.FrameLayout
-import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.os.LocaleListCompat
+import androidx.core.view.setPadding
 import com.climax.ads.R
 import com.climax.ads.adsclas.Constants.ADS_INITIALIZATION_COMPLETED
 import com.climax.ads.adsclas.Constants.OTHER_AD_DISPLAYED
 import com.climax.ads.adsclas.Constants.appOpen
 import com.climax.ads.adsclas.Constants.clickCount
+import com.climax.ads.adsclas.Constants.closeIconPadding
 import com.climax.ads.adsclas.Constants.interstitial
 import com.climax.ads.adsclas.Constants.interstitialAdCount
 import com.climax.ads.adsclas.Constants.isOnClickAnyAd
@@ -40,7 +41,6 @@ import com.climax.ads.adsclas.Constants.smallNative
 import com.climax.ads.databinding.CheckNetworkDialogBinding
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.gms.ads.MobileAds
-import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textview.MaterialTextView
 
@@ -58,9 +58,13 @@ fun Activity?.loadAppOpen(
         }
     }
 }
-fun Activity.loadPreInterstitialSplash(interstitialAdId: String,onShowAdCompletedAction: ((Boolean) -> Unit)? = null) {
+
+fun Activity.loadPreInterstitialSplash(
+    interstitialAdId: String,
+    onShowAdCompletedAction: ((Boolean) -> Unit)? = null
+) {
     if (!Constants.isPurchased()) {
-        interstitial.loadInterstitial(this, interstitialAdId,onShowAdCompletedAction)
+        interstitial.loadInterstitial(this, interstitialAdId, onShowAdCompletedAction)
     }
 }
 
@@ -473,13 +477,13 @@ fun Activity?.callFullNativeAd(
     bgColor: Int
 ) {
     this ?: return
-    val  type = R.layout.full_native
+    val type = R.layout.full_native
     val frameLayout = findViewById<FrameLayout>(R.id.adContainerFull)
     val shimmer = findViewById<ShimmerFrameLayout>(R.id.shimmmmer)
 
     Log.d("fullNative", "callFullNativeAd: $frameLayout --$shimmer")
     if (frameLayout != null) {
-    Log.d("fullNative", "callFullNativeAd: frameLayout id ok")
+        Log.d("fullNative", "callFullNativeAd: frameLayout id ok")
         if (shimmer != null) {
             Log.d("fullNative", "callFullNativeAd: shimmer id ok")
             showLargeNative(
@@ -500,6 +504,7 @@ fun Activity?.callFullNativeAd(
         }
     }
 }
+
 fun Activity?.showLargeNative(
     nativeAdId: String,
     nativeAdLayout: Int,
@@ -673,13 +678,13 @@ fun Activity?.showRewarded(
 
 fun Activity?.preLoadRewardedVideos(
     activity: Activity,
-    adId:String,
+    adId: String,
     showLoadingDialog: Boolean = false,
     onRewardedAdLoaded: ((Boolean) -> Unit)?
 ) {
     if (!Constants.isPurchased()) {
         this?.let {
-            rewarded.loadRewarded(activity,adId, showLoadingDialog, onRewardedAdLoaded)
+            rewarded.loadRewarded(activity, adId, showLoadingDialog, onRewardedAdLoaded)
         } ?: run {
             onRewardedAdLoaded?.invoke(false)
         }
@@ -762,17 +767,32 @@ fun Context.showNetworkCheckDialog() {
         .setView(binding.root)
         .setCancelable(false)
         .show()
-
-
+// Convert to pixels
+    val paddingPx = TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_DIP,
+        closeIconPadding,
+        this.resources.displayMetrics
+    ).toInt()
+    binding.close.setPadding(paddingPx, paddingPx, paddingPx, paddingPx)
     binding.close.setImageResource(Constants.closeIcon)
     binding.vect.setImageResource(Constants.networkImage)
 
     binding.noInternectText.text = Constants.headerText
     binding.checkInternetText.text = Constants.descriptionText
     binding.noInternectText.setTextColor(ContextCompat.getColor(this, Constants.headerTextColor))
-    binding.checkInternetText.setTextColor(ContextCompat.getColor(this, Constants.descriptionTextColor))
+    binding.checkInternetText.setTextColor(
+        ContextCompat.getColor(
+            this,
+            Constants.descriptionTextColor
+        )
+    )
     binding.settingText.setTextColor(ContextCompat.getColor(this, Constants.settingTextColor))
-    binding.settingNEt.setCardBackgroundColor(ContextCompat.getColor(this,Constants.settingButtonColor))
+    binding.settingNEt.setCardBackgroundColor(
+        ContextCompat.getColor(
+            this,
+            Constants.settingButtonColor
+        )
+    )
 
     binding.root.setBackgroundColor(ContextCompat.getColor(this, Constants.bgColorNetworkDialog))
 
