@@ -5,7 +5,7 @@ import com.climax.code.onBoarding.OnboardingItem
 
 object ConstantsCustomizations {
     var onBoardingItemsList:ArrayList<OnboardingItem> = arrayListOf()
-    var setonBoarding_Bg_Color:Int = R.color.white
+    var setonBoarding_Bg_Color = R.color.white
     var onBoardingFullNativeAtIndex= 2
 
     var filledStarDrawable=R.drawable.filled_star

@@ -182,12 +182,12 @@ class MainActivity : BaseActivity() {
             startActivity(intent)
         }
 
-        this.loadPreInterstitial("ca-app-pub-3940256099942544/1033173712")
+        this.loadPreInterstitial("ca-app-pub-3940256099942544/103317371212")
 
         binding.inter1.setOnClickListener {
             this.checkAndShowInterstitial(
                 true,
-                "ca-app-pub-3940256099942544/1033173712",
+                "ca-app-pub-3940256099942544/103317371212",
                 true,
                 0,
                 onShowAdCompletedAction = {

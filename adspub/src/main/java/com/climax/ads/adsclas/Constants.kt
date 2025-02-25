@@ -2,6 +2,7 @@ package com.climax.ads.adsclas
 
 import androidx.lifecycle.MutableLiveData
 import com.climax.ads.R
+import com.climax.ads.adsclas.applovin.AppLovinInterstitial
 
 
 object Constants {
@@ -12,6 +13,7 @@ object Constants {
     var isOnClickAnyAd= false
     var isNewAddLoaded= false
     var isNativeAdfailed= false
+    var canShowLoadingAd= false
 
 
     var isPurchasedLiveData = MutableLiveData(false)
@@ -80,5 +82,15 @@ object Constants {
    var languageCardUnSelectedItemColor = R.color.color_card_item
    var languageLayoutItemColor = R.drawable.selection_bar_item
    var selectedTickIcon = R.drawable.ic_app_language_selected
+
+
+  /*app lovin ids*/
+    var applovinIntersId = "0"
+    var applovinNativeId = "0"
+    var applovinBannerId = "0"
+    var applovinAppOpenId = "0"
+    var applovinRewardedId = "0"
+
+   var  interstitialAppLovinNew = AppLovinInterstitial()
 
 }

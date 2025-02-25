@@ -43,7 +43,7 @@ private lateinit var binding : FragmentThirdBinding
         }
         binding.tutHeaderName.setTextColor(ContextCompat.getColor(requireContext(),ConstantsCustomizations.headerColorOnboarding))
         binding.tutDes.setTextColor(ContextCompat.getColor(requireContext(),ConstantsCustomizations.desColorOnboarding))
-        binding.parentLayout.setBackgroundColor(ContextCompat.getColor(requireContext(),ConstantsCustomizations.setonBoarding_Bg_Color))
+        binding.parentLayout.setBackgroundColor(ConstantsCustomizations.setonBoarding_Bg_Color)
 
     }
 

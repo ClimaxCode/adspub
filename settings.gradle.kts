@@ -11,6 +11,7 @@ pluginManagement {
         mavenLocal()
      //   maven { url = uri("https://jitpack.io") }
         gradlePluginPortal()
+        maven { url = uri("https://artifacts.applovin.com/android") }
     }
 }
 dependencyResolutionManagement {
@@ -21,6 +22,7 @@ dependencyResolutionManagement {
         mavenCentral()
         maven { url = uri("https://jitpack.io") }
         mavenCentral()
+        maven { url = uri("https://artifacts.applovin.com/android") }
     }
 }
 

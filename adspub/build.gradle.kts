@@ -50,6 +50,8 @@ dependencies {
     implementation(libs.sdp.android)
     implementation(libs.ssp.android)
     implementation(libs.shimmer)
+    implementation ("com.applovin:applovin-sdk:13.0.1")
+    implementation ("com.applovin.mediation:facebook-adapter:6.18.0.1")
 }
 
 afterEvaluate {

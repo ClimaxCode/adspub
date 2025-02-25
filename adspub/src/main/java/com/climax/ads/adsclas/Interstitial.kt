@@ -54,7 +54,7 @@ class Interstitial {
                         mInterstitialAd = null
                         isFailInterstitialAd = true
                         onShowAdCompletedAction?.invoke(false)
-
+                        Constants.interstitialAppLovinNew.loadInterstitial(context,Constants.applovinIntersId)
                     }
 
                     override fun onAdLoaded(interstitialAd: InterstitialAd) {
@@ -169,10 +169,10 @@ class Interstitial {
         preLoad: Boolean,
         waitingTime: Long,
         onShowAdCompletedAction: () -> Unit,
-        onInterstitialFailed: (() -> Unit?)? = null
+        onInterstitialFailed: ((Boolean) -> Unit?)? = null
     ) {
 
-        Log.e("InterstitialNew", "showInterstitial")
+        Log.e("checkLoadInter", "showInterstitial $waitingTime")
         this@Interstitial.preLoad = preLoad
         lastInterstitialAdId = interstitialAdId
         requestedForAd = true
@@ -181,23 +181,20 @@ class Interstitial {
         }
         mInterstitialAd?.apply {
             Constants.OTHER_AD_DISPLAYED = true
-            Log.e("InterstitialNew", "showInterstitial called show")
+            Log.e("checkLoadInter", "showInterstitial called show")
             setInterstitialAdListeners(activity, interstitialAdId, preLoad, onShowAdCompletedAction)
             show(activity)
 
         } ?: run {
-//            loadingDialog = activity.createLoadingDialog("Loading Ad...!")
-            if (preLoad) {
+            if(waitingTime!=0L && activity.isNetworkAvailable()){
+                Log.d("checkAdLoadingStatus", "showInterstitial: loading")
+                Constants.canShowLoadingAd = true
+                //            loadingDialog = activity.createLoadingDialog("Loading Ad...!")
                 loadingDialog = activity.createLoadingDialog("Processing...!")
                 if (!activity.isFinishing && !activity.isDestroyed) {
                     loadingDialog?.show()
                 }
-                loadInterstitialWithWaiting(
-                    activity,
-                    interstitialAdId,
-                    preLoad,
-                    onShowAdCompletedAction
-                )
+                loadInterstitialWithWaiting(activity,interstitialAdId, preLoad, onShowAdCompletedAction)
                 action = onShowAdCompletedAction
                 userWaitingJob = CoroutineScope(Dispatchers.Main).launch {
                     delay(waitingTime)
@@ -208,46 +205,30 @@ class Interstitial {
                     }
                     when (adState) {
                         AdState.LOAD -> {}
-                        AdState.LOADING -> onInterstitialFailed?.invoke()
+                        AdState.LOADING -> onInterstitialFailed?.invoke(true)
                         AdState.LOADED -> {
-                            setInterstitialAdListeners(
-                                activity,
-                                interstitialAdId,
-                                preLoad,
-                                onShowAdCompletedAction
-                            )
-                            mInterstitialAd?.show(activity)
-                                ?: run { onShowAdCompletedAction.invoke() }
+                            setInterstitialAdListeners(activity,interstitialAdId, preLoad, onShowAdCompletedAction)
+                            mInterstitialAd?.show(activity) ?: run { onShowAdCompletedAction.invoke() }
                         }
-
-                        AdState.FAILED -> onInterstitialFailed?.invoke()
+                        AdState.FAILED -> onInterstitialFailed?.invoke(true)
                         AdState.SHOWN_FAILED -> {
-                            setInterstitialAdListeners(
-                                activity,
-                                interstitialAdId,
-                                preLoad,
-                                onShowAdCompletedAction
-                            )
-                            mInterstitialAd?.show(activity)
-                                ?: run { onShowAdCompletedAction.invoke() }
+                            setInterstitialAdListeners(activity,interstitialAdId, preLoad, onShowAdCompletedAction)
+                            mInterstitialAd?.show(activity) ?: run { onShowAdCompletedAction.invoke() }
                         }
-
                         AdState.SHOWING -> {}
                         AdState.DISMISSED -> {
                             requestedForAd = false
                         }
-
                         AdState.IMPRESSION -> {}
                         AdState.AD_CLICKED -> {}
                     }
                 }
             }else{
-                onInterstitialFailed?.invoke()
+                Constants.isLastAdWasAdmob = false
+                onInterstitialFailed?.invoke(true)
             }
-
         }
     }
-
     fun onResume(activity: Activity) {
         if (currentActivityRegisterCheck == activity.localClassName && requestedForAd) {
             userWaitingJob = CoroutineScope(Dispatchers.Main).launch {

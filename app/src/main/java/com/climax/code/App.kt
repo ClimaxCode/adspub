@@ -1,8 +1,10 @@
 package com.climax.code
 
 import android.app.Application
+import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ProcessLifecycleOwner
+import com.applovin.sdk.AppLovinSdk
 import com.climax.ads.adsclas.AppObserver
 import com.climax.ads.adsclas.AppOpen
 import com.climax.ads.adsclas.Constants
@@ -13,6 +15,7 @@ import com.climax.code.onBoarding.OnboardingItem
 import com.climax.code.utils.ConstantsCustomizations.onBoardingItemsList
 import com.climax.code.utils.ConstantsCustomizations.setonBoarding_Bg_Color
 
+@Suppress("DEPRECATION")
 class App : Application() {
     private var appObserver: AppObserver? = null
     override fun onCreate() {
@@ -21,6 +24,15 @@ class App : Application() {
 
         LibraryInit.init(this)
         bgColorNetworkDialog = R.color.card_color
+
+        try {
+            AppLovinSdk.getInstance(this@App).initializeSdk { configuration ->
+                Log.d("AppLovinSdk", "AppLovin SDK initialized with country code: ${configuration.countryCode}")
+            }
+
+        } catch (e: Exception) {
+            Log.e("AdsInit", "Error initializing SDKs", e)
+        }
         appObserver = AppObserver(
             appOpen = AppOpen(),
             "ca-app-pub-3940256099942544/9257395921",

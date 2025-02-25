@@ -32,6 +32,7 @@ import com.climax.ads.adsclas.Constants.clickCount
 import com.climax.ads.adsclas.Constants.closeIconPadding
 import com.climax.ads.adsclas.Constants.interstitial
 import com.climax.ads.adsclas.Constants.interstitialAdCount
+import com.climax.ads.adsclas.Constants.interstitialAppLovinNew
 import com.climax.ads.adsclas.Constants.isOnClickAnyAd
 import com.climax.ads.adsclas.Constants.largeNative
 import com.climax.ads.adsclas.Constants.native
@@ -112,7 +113,7 @@ fun Activity?.checkAndShowInterstitial(
     preLoad: Boolean = false,
     waitingTime: Long = 0L,
     onShowAdCompletedAction: () -> Unit,
-    onInterstitialFailed: (() -> Unit)
+    onInterstitialFailed: ((Boolean) -> Unit)
 ) {
 
     Log.d("zh", "checkAndShowInterstitial: checkAppOpen ${Constants.isAppOpenShowed}")
@@ -134,7 +135,7 @@ fun Activity?.checkAndShowInterstitial(
     } else {
         Log.e("ads", "Last ad was App Open")
         Constants.isAppOpenShowed = false
-        onInterstitialFailed.invoke()
+        onInterstitialFailed.invoke(false)
     }
 
 }
@@ -199,7 +200,7 @@ fun Activity?.showInterstitial(
     preLoad: Boolean = false,
     waitingTime: Long = 0L,
     onShowAdCompletedAction: () -> Unit,
-    onInterstitialFailed: (() -> Unit)? = null
+    onInterstitialFailed: ((Boolean) -> Unit)? = null
 ) {
     this?.let {
         Log.e("ad", "showInterstitial/ ${!Constants.isPurchased()}")
@@ -212,18 +213,28 @@ fun Activity?.showInterstitial(
                     "showInterstitial/ $interstitialAdCount interstitial.showInterstitial} ${Constants.isLastAdWasAdmob}"
                 )
                 Log.e("ad", "showInterstitial/  ${Constants.isFailInterstitialAd}")
+                if (Constants.isFailInterstitialAd) {
+                    interstitialAppLovinNew.showInterstitial(
+                        this, interstitialAdId,
+                        preLoad,
+                        waitingTime,
+                        onShowAdCompletedAction,
+                        onInterstitialFailed
+                    )
+                } else {
+                    interstitial.showInterstitial(
+                        this, interstitialAdId,
+                        preLoad,
+                        waitingTime,
+                        onShowAdCompletedAction,
+                        onInterstitialFailed
+                    )
+                }
 
-                interstitial.showInterstitial(
-                    this, interstitialAdId,
-                    preLoad,
-                    waitingTime,
-                    onShowAdCompletedAction,
-                    onInterstitialFailed
-                )
 
             } else {
                 Constants.isLastAdWasAdmob = false
-                onInterstitialFailed?.invoke()
+                onInterstitialFailed?.invoke(true)
             }
         } else {
             Constants.isLastAdWasAdmob = true

@@ -60,4 +60,7 @@ dependencies {
     implementation(project(":adspub"))
     implementation(project(":customizations"))
     implementation ("com.airbnb.android:lottie:3.4.0")
+
+    implementation ("com.applovin:applovin-sdk:13.0.1")
+    implementation ("com.applovin.mediation:facebook-adapter:6.18.0.1")
 }
