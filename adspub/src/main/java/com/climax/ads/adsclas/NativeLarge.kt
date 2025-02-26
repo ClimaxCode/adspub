@@ -18,6 +18,7 @@ import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.climax.ads.R
+import com.climax.ads.adsclas.Constants.appLovinNativeAd
 import com.climax.ads.adsclas.Constants.isFirst
 import com.climax.ads.adsclas.Constants.isLoadNativeAd
 import com.climax.ads.adsclas.Constants.isNativeAdfailed
@@ -379,6 +380,8 @@ class NativeLarge {
                     shimmerFrameLayout.hide()
                     isNativeAdfailed= true
                     Log.d("nativeAdssd", "onAdFailedToLoad: ")
+
+                    appLovinNativeAd.loadApplovinNativeAds(activity,R.layout.applovin_large_native_ads,frameLayout,shimmerFrameLayout)
                 }
 
                 override fun onAdLoaded() {

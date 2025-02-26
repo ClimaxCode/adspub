@@ -159,14 +159,12 @@ class AppLovinInterstitial {
                         Log.d("AppLovinInterstitial", "onAdHidden: ${Constants.applovinIntersId}")
                         Constants.interstitialAppLovinNew.loadInterstitial(activity,Constants.applovinIntersId)
 
-                        //  loadInterstitial(activity, lastInterstitialAdId, onShowAdCompletedAction)
                     }
                 })
                 showAd()
             } else {
                 Constants.interstitialAppLovinNew.loadInterstitial(activity,Constants.applovinIntersId)
-                Log.d("AppLovinInterstitial", "ready: ${Constants.applovinIntersId}")
-                Log.e("AppLovinInterstitial", "Ad not ready.")
+
                 onShowAdCompletedAction?.invoke()
             }
         } ?: run {

@@ -25,7 +25,7 @@ class Interstitial {
     private var preLoad = false
     private var currentActivityRegisterCheck: String = ""
     private var requestedForAd = false
-    var lastInterstitialAdId = ""
+    private var lastInterstitialAdId = ""
 
     companion object {
         var discardDone = false
@@ -189,7 +189,6 @@ class Interstitial {
             if(waitingTime!=0L && activity.isNetworkAvailable()){
                 Log.d("checkAdLoadingStatus", "showInterstitial: loading")
                 Constants.canShowLoadingAd = true
-                //            loadingDialog = activity.createLoadingDialog("Loading Ad...!")
                 loadingDialog = activity.createLoadingDialog("Processing...!")
                 if (!activity.isFinishing && !activity.isDestroyed) {
                     loadingDialog?.show()

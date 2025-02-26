@@ -1,28 +1,26 @@
 package com.climax.ads.adsclas.applovin
 
-import android.app.Activity
+import android.content.Context
 import android.view.View
 import android.widget.FrameLayout
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.applovin.mediation.MaxAd
 import com.applovin.mediation.MaxAdViewAdListener
 import com.applovin.mediation.MaxError
 import com.applovin.mediation.ads.MaxAdView
 import com.climax.ads.adsclas.Constants
 import com.climax.ads.adsclas.isNetworkAvailable
-
 import com.facebook.shimmer.ShimmerFrameLayout
 
 
 
-class AppLovinBannerAd(var context: Activity) {
+class AppLovinBannerAd() {
     private var adView: MaxAdView? = null
     private var TAG = "AdaptiveBanner"
 
 
 
     fun loadApplovinBanner(
-        containerLayout: ConstraintLayout,
+         context: Context,
         adLayout: FrameLayout,
         bannerId: String,
         loadingText: ShimmerFrameLayout,
@@ -66,13 +64,11 @@ class AppLovinBannerAd(var context: Activity) {
 
                     override fun onAdLoadFailed(adUnitId: String, error: MaxError) {
                         adLayout.visibility = View.GONE
-                        containerLayout.visibility = View.GONE
                         loadingText.visibility = View.GONE
                     }
 
                     override fun onAdDisplayFailed(ad: MaxAd, error: MaxError) {
                         adLayout.visibility = View.GONE
-                        containerLayout.visibility = View.GONE
                         loadingText.visibility = View.GONE
                     }
                 })
@@ -81,7 +77,6 @@ class AppLovinBannerAd(var context: Activity) {
         } else {
             onShowAdCompletedAction?.invoke(false)
             adLayout.visibility = View.GONE
-            containerLayout.visibility = View.GONE
             loadingText.visibility = View.GONE
         }
     }

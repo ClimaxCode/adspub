@@ -2,7 +2,10 @@ package com.climax.ads.adsclas
 
 import androidx.lifecycle.MutableLiveData
 import com.climax.ads.R
+import com.climax.ads.adsclas.applovin.AppLovinBannerAd
 import com.climax.ads.adsclas.applovin.AppLovinInterstitial
+import com.climax.ads.adsclas.applovin.AppOpenAppLovin
+import com.climax.ads.adsclas.applovin.ApplovinNative
 
 
 object Constants {
@@ -10,15 +13,15 @@ object Constants {
     var isSplashAppOpenFail = false
     var isBannerLoaded = false
     var isOpenLocationDialog = false
-    var isOnClickAnyAd= false
-    var isNewAddLoaded= false
-    var isNativeAdfailed= false
-    var canShowLoadingAd= false
+    var isOnClickAnyAd = false
+    var isNewAddLoaded = false
+    var isNativeAdfailed = false
+    var canShowLoadingAd = false
 
 
     var isPurchasedLiveData = MutableLiveData(false)
     fun isPurchased() = isPurchasedLiveData.value ?: false
-    var isFirst=true
+    var isFirst = true
 
     var interstitial = Interstitial()
     var appOpen = AppOpen()
@@ -75,22 +78,24 @@ object Constants {
     var closeIconPadding = 9f
 
 
-   /* language screen text color */
-   var countryNameTextColor = R.color.white
-   var languageNameTextColor = R.color.dark_grey
-   var languageCardSelectedItemColor = R.color.color_card_item
-   var languageCardUnSelectedItemColor = R.color.color_card_item
-   var languageLayoutItemColor = R.drawable.selection_bar_item
-   var selectedTickIcon = R.drawable.ic_app_language_selected
+    /* language screen text color */
+    var countryNameTextColor = R.color.white
+    var languageNameTextColor = R.color.dark_grey
+    var languageCardSelectedItemColor = R.color.color_card_item
+    var languageCardUnSelectedItemColor = R.color.color_card_item
+    var languageLayoutItemColor = R.drawable.selection_bar_item
+    var selectedTickIcon = R.drawable.ic_app_language_selected
 
 
-  /*app lovin ids*/
+    /*app lovin ids*/
     var applovinIntersId = "0"
     var applovinNativeId = "0"
     var applovinBannerId = "0"
     var applovinAppOpenId = "0"
     var applovinRewardedId = "0"
 
-   var  interstitialAppLovinNew = AppLovinInterstitial()
+    var interstitialAppLovinNew = AppLovinInterstitial()
+    var applovinBannerAd = AppLovinBannerAd()
+    var appLovinNativeAd = ApplovinNative()
 
 }

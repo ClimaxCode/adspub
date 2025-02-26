@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.FrameLayout
+import com.climax.ads.adsclas.Constants.applovinBannerAd
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
@@ -70,6 +71,7 @@ class AdaptiveBannerAd(var context: Context) {
                     Log.d(TAG, "onAdFailedToLoad: ")
                     loadingText.visibility = View.GONE
                     onShowAdCompletedAction?.invoke(false)
+                    applovinBannerAd.loadApplovinBanner(context,adLayout,Constants.applovinBannerId,loadingText)
                 }
 
                 override fun onAdImpression() {
