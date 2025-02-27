@@ -55,6 +55,7 @@ class NativeLarge {
 
     fun showNative(
         activity: Activity,
+        nativeAdtype: String,
         nativeAdId: String,
         nativeAdLayout: Int,
         container: ConstraintLayout?,
@@ -73,6 +74,7 @@ class NativeLarge {
         when (adState) {
             AdState.LOAD -> loadNative(
                 activity,
+                nativeAdtype,
                 lastNativeAdId,
                 nativeAdLayout,
                 container,
@@ -84,6 +86,7 @@ class NativeLarge {
                 if (loadNewAd) {
                     loadNative(
                         activity,
+                        nativeAdtype,
                         lastNativeAdId,
                         nativeAdLayout,
                         container,
@@ -112,6 +115,7 @@ class NativeLarge {
 
             AdState.FAILED -> loadNative(
                 activity,
+                nativeAdtype,
                 lastNativeAdId,
                 nativeAdLayout,
                 container,
@@ -140,6 +144,7 @@ class NativeLarge {
                     )
                     loadNative(
                         activity,
+                        nativeAdtype,
                         lastNativeAdId,
                         nativeAdLayout,
                         container,
@@ -154,6 +159,7 @@ class NativeLarge {
                     if (checkTimeOut) {
                         loadNative(
                             activity,
+                            nativeAdtype,
                             lastNativeAdId,
                             nativeAdLayout,
                             container,
@@ -184,6 +190,7 @@ class NativeLarge {
             AdState.DISMISSED -> {}
             AdState.AD_CLICKED -> loadNative(
                 activity,
+                nativeAdtype,
                 lastNativeAdId,
                 nativeAdLayout,
                 container,
@@ -199,6 +206,7 @@ class NativeLarge {
 
     fun showPreLoadNative(
         activity: Activity,
+        nativeAdtype: String,
         nativeAdLayout: Int,
         container: ConstraintLayout,
         frameLayout: FrameLayout,
@@ -214,6 +222,7 @@ class NativeLarge {
         when (adState) {
             AdState.LOAD -> loadNative(
                 activity,
+                nativeAdtype,
                 lastNativeAdId,
                 nativeAdLayout,
                 container,
@@ -243,6 +252,7 @@ class NativeLarge {
             AdState.LOADING -> {}
             AdState.FAILED -> loadNative(
                 activity,
+                nativeAdtype,
                 lastNativeAdId,
                 nativeAdLayout,
                 container,
@@ -278,6 +288,7 @@ class NativeLarge {
                 if (checkTimeOut) {
                     loadNative(
                         activity,
+                        nativeAdtype,
                         lastNativeAdId,
                         nativeAdLayout,
                         container,
@@ -311,6 +322,7 @@ class NativeLarge {
             AdState.DISMISSED -> {}
             AdState.AD_CLICKED -> loadNative(
                 activity,
+                nativeAdtype,
                 lastNativeAdId,
                 nativeAdLayout,
                 container,
@@ -328,6 +340,7 @@ class NativeLarge {
 
     private fun loadNative(
         activity: Activity,
+        nativeAdtype: String,
         nativeAdId: String,
         nativeAdLayout: Int,
         container: ConstraintLayout?,
@@ -355,7 +368,7 @@ class NativeLarge {
                 adState = AdState.SHOWING
                 countDownTimer.start()
                 Log.d("native", "loadNative: ${nativeAd.hashCode()}")
-                Log.d("native", "checkTimeOutLoad: $checkTimeOut")
+                Log.d("native", "nativeAdLayout: $nativeAdtype")
 
                 populateNativeAdView(
                     activity,
@@ -369,25 +382,45 @@ class NativeLarge {
                     bgColor
                 )
                 isNewAddLoaded = false
-                actionLoaded?.invoke()
+                actionLoaded.invoke()
             }
             .withAdListener(object : AdListener() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {
                     adState = AdState.FAILED
                     actionFailed?.invoke()
-                    container?.hide()
+                    /*container?.hide()
                     frameLayout.hide()
-                    shimmerFrameLayout.hide()
+                    shimmerFrameLayout.hide()*/
                     isNativeAdfailed= true
                     Log.d("nativeAdssd", "onAdFailedToLoad: ")
 
-                    appLovinNativeAd.loadApplovinNativeAds(activity,R.layout.applovin_large_native_ads,frameLayout,shimmerFrameLayout)
+                    when(nativeAdtype){
+                        "native1"->{
+                            appLovinNativeAd.loadApplovinNativeAds(activity,R.layout.applovin_large_native_ads,frameLayout,shimmerFrameLayout)
+                        }
+                        "native2"->{
+                            appLovinNativeAd.loadApplovinNativeAds(activity,R.layout.applovin_large_native_2_ads,frameLayout,shimmerFrameLayout)
+                        }
+                        "native3"->{
+                            appLovinNativeAd.loadApplovinNativeAds(activity,R.layout.applovin_large_native_3_ads,frameLayout,shimmerFrameLayout)
+                        }
+                        "native4"->{
+                            appLovinNativeAd.loadApplovinNativeAds(activity,R.layout.applovin_large_native_ads,frameLayout,shimmerFrameLayout)
+                        }
+                        "native5"->{
+                            appLovinNativeAd.loadApplovinNativeAds(activity,R.layout.applovin_large_native_5_ads,frameLayout,shimmerFrameLayout)
+                        }
+                        "native6"->{
+                            appLovinNativeAd.loadApplovinNativeAds(activity,R.layout.applovin_large_native_6_ads,frameLayout,shimmerFrameLayout)
+                        }
+                    }
+
                 }
 
                 override fun onAdLoaded() {
                     super.onAdLoaded()
                     isNewAddLoaded = false
-                    actionLoaded?.invoke()
+                    actionLoaded.invoke()
                     adState = AdState.LOADED
                     isLoadNativeAd = true
                     isNativeAdfailed= false

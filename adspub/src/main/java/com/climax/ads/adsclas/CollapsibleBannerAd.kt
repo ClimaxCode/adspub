@@ -81,6 +81,7 @@ class CollapsibleBannerAd() {
                 override fun onAdFailedToLoad(p0: LoadAdError) {
                     super.onAdFailedToLoad(p0)
                     Log.e(COLLAPSIBLE_BANNER_TAG, "onAdFailedToLoad:${p0.message}")
+                    Constants.applovinBannerAd.loadApplovinBanner(context,adContainerView,Constants.applovinBannerId,shimmerFrameLayout)
                 }
 
                 override fun onAdImpression() {

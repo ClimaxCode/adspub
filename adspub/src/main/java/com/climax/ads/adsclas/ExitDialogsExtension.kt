@@ -28,7 +28,7 @@ fun Activity?.exit1(adId: String, adButtonColor: Int,buttonTextColor:Int,exitBut
     dialogBinding.cancelButton.setOnClickListener {
         exitDialog.dismiss()
     }
-    showLargeNative(adId,
+    showLargeNative(adId,"exit_native1",
         R.layout.exit_native1_adcontent,
         dialogBinding.layout.adRoot,
         dialogBinding.layout.adContainere1,
@@ -67,7 +67,7 @@ fun Activity?.exit2(adId: String, adButtonColor: Int,buttonTextColor:Int,bgColor
 
     }
 
-    showLargeNative(adId,
+    showLargeNative(adId,"exit_native1",
         R.layout.exit_native2_adcontent,
         dialogBinding.layout.adRoot,
         dialogBinding.layout.adContainere2,

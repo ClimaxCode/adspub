@@ -14,6 +14,7 @@ import com.climax.ads.adsclas.showNetworkCheckDialog
 import com.climax.code.onBoarding.OnboardingItem
 import com.climax.code.utils.ConstantsCustomizations.onBoardingItemsList
 import com.climax.code.utils.ConstantsCustomizations.setonBoarding_Bg_Color
+import com.google.android.ump.ConsentDebugSettings
 
 @Suppress("DEPRECATION")
 class App : Application() {
@@ -29,7 +30,7 @@ class App : Application() {
             AppLovinSdk.getInstance(this@App).initializeSdk { configuration ->
                 Log.d("AppLovinSdk", "AppLovin SDK initialized with country code: ${configuration.countryCode}")
             }
-
+            ConsentDebugSettings.Builder(this).addTestDeviceHashedId("2D34734E32B43287642FE9D9F7A04BEF")
         } catch (e: Exception) {
             Log.e("AdsInit", "Error initializing SDKs", e)
         }

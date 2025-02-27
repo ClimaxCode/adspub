@@ -65,6 +65,7 @@ class MixedGridAdapter(
                 holder as AdViewHolder
                 context.showLargeNative(
                     "ca-app-pub-3940256099942544/1044960115",
+                    "native5",
                     R.layout.native5,
                     holder.binding.adRoot,
                     holder.binding.adContainer5,

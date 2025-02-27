@@ -447,20 +447,12 @@ fun Activity?.callNativeAd(
         else -> {
             return
         }
-//        "exit1" ->{
-//            type = R.layout.exit_native1_adcontent
-//            frameLayout =  this?.findViewById(R.id.adContainere1)!!
-//            shimmer=  this.findViewById(R.id.shimmerExit1)!!
-//        }
-//        "exit2"->{
-//            type = R.layout.exit_native2_adcontent
-//            frameLayout =  this?.findViewById(R.id.adContainere2)!!
-//            shimmer=  this.findViewById(R.id.shimmerExit2)!!
-//        }
+
     }
     Log.d("Ads", "callNativeAd: $type")
     showLargeNative(
         nativeAdId,
+        nativeAdtype,
         type,
         this.findViewById(R.id.ad_root),
         frameLayout,
@@ -499,8 +491,9 @@ fun Activity?.callFullNativeAd(
             Log.d("fullNative", "callFullNativeAd: shimmer id ok")
             showLargeNative(
                 nativeAdId,
+                "fullNative",
                 type,
-                this?.findViewById(R.id.ad_root_full_native),
+                this.findViewById(R.id.ad_root_full_native),
                 frameLayout,
                 shimmer,
                 preLoad,
@@ -518,6 +511,7 @@ fun Activity?.callFullNativeAd(
 
 fun Activity?.showLargeNative(
     nativeAdId: String,
+    nativeAdtype: String,
     nativeAdLayout: Int,
     container: ConstraintLayout?,
     frameLayout: FrameLayout,
@@ -535,6 +529,7 @@ fun Activity?.showLargeNative(
         if (!Constants.isPurchased() && isNetworkAvailable()) {
             largeNative.showNative(
                 this,
+                nativeAdtype,
                 nativeAdId = nativeAdId,
                 nativeAdLayout,
                 container,
