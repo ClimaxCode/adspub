@@ -80,6 +80,7 @@ object Constants {
 
     /* language screen text color */
     var countryNameTextColor = R.color.white
+    var viewLineColor = R.color.dark_grey
     var languageNameTextColor = R.color.dark_grey
     var languageCardSelectedItemColor = R.color.color_card_item
     var languageCardUnSelectedItemColor = R.color.color_card_item
