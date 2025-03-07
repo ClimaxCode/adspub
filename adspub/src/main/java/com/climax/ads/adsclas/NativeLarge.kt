@@ -249,7 +249,22 @@ class NativeLarge {
                 )
             }
 
-            AdState.LOADING -> {}
+            AdState.LOADING -> {
+                CoroutineScope(Dispatchers.Main).launch {
+                populateNativeAdView(
+                    activity,
+                    nativeAdLayout,
+                    nativeAd,
+                    container,
+                    frameLayout,
+                    shimmerFrameLayout,
+                    actionButtonColor,
+                    actionButtonTextColor,
+                    bgColor
+                )
+            }.invokeOnCompletion {
+                actionLoaded?.invoke()
+            }}
             AdState.FAILED -> loadNative(
                 activity,
                 nativeAdtype,
