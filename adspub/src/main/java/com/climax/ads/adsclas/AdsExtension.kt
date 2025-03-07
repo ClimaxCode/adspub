@@ -401,7 +401,11 @@ fun Activity?.callNativeAd(
             frameLayout = this?.findViewById(R.id.adContainerFull)!!
             shimmer = this.findViewById(R.id.shimmmmer)!!
         }
-
+        "small_native" -> {
+            type = R.layout.content_small_ad
+            frameLayout = this?.findViewById(R.id.ad_container_language)!!
+            shimmer = this.findViewById(R.id.language_shimmer_view_container)!!
+        }
         "native1" -> {
             type = R.layout.native1
             frameLayout = this?.findViewById(R.id.adContainer1)!!
@@ -513,7 +517,7 @@ fun Activity?.showLargeNative(
     nativeAdId: String,
     nativeAdtype: String,
     nativeAdLayout: Int,
-    container: ConstraintLayout?,
+    container: ConstraintLayout,
     frameLayout: FrameLayout,
     shimmerFrameLayout: FrameLayout,
     preLoad: Boolean = false,
@@ -527,23 +531,41 @@ fun Activity?.showLargeNative(
 ) {
     this?.let {
         if (!Constants.isPurchased() && isNetworkAvailable()) {
-            largeNative.showNative(
-                this,
-                nativeAdtype,
-                nativeAdId = nativeAdId,
-                nativeAdLayout,
-                container,
-                frameLayout,
-                shimmerFrameLayout,
-                loadNewAd,
-                actionLoaded,
-                actionFailed,
-                tryToShowAgain,
-                actionButtonColor,
-                actionButtonTextColor,
-                bgColor
-            )
-            if (preLoad) largeNative.preLoadNative(this, nativeAdId)
+
+            if (preLoad) {
+                largeNative.showPreLoadNative(
+                    this,
+                    nativeAdId,
+                    nativeAdLayout,
+                    container,
+                    frameLayout,
+                    shimmerFrameLayout,
+                    actionLoaded,
+                    actionFailed,
+                    actionButtonColor,
+                    actionButtonTextColor,
+                    bgColor
+                )
+            } else {
+                largeNative.showNative(
+                    this,
+                    nativeAdtype,
+                    nativeAdId = nativeAdId,
+                    nativeAdLayout,
+                    container,
+                    frameLayout,
+                    shimmerFrameLayout,
+                    loadNewAd,
+                    actionLoaded,
+                    actionFailed,
+                    tryToShowAgain,
+                    actionButtonColor,
+                    actionButtonTextColor,
+                    bgColor
+                )
+            }
+
+
         } else {
             container?.hide()
             frameLayout.hide()

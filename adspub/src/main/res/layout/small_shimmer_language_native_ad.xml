@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/shimmerNativeKeyboardLayout"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ad_app_icon_s"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="4dp"
+            android:adjustViewBounds="true"
+            android:visibility="visible"
+            android:background="#999999"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/txtAd_s"
+            android:layout_width="24dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_3sdp"
+            android:background="#999999"
+            android:gravity="center"
+            android:padding="@dimen/_2sdp"
+            android:textSize="@dimen/_8sdp"
+            android:textStyle="bold"
+            android:visibility="visible"
+            app:layout_constraintStart_toEndOf="@+id/ad_app_icon_s"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/ad_headline_s"
+            android:layout_width="0dp"
+            android:layout_height="14dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:background="#999999"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_24sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtAd_s"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/txt_h"
+            android:layout_width="0dp"
+            android:layout_height="14dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:background="#999999"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_24sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtAd_s"
+            app:layout_constraintTop_toBottomOf="@+id/ad_headline_s" />
+
+        <Button
+            android:id="@+id/ad_call_to_action12"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:background="#999999"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
