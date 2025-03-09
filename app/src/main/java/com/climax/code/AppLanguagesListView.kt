@@ -33,6 +33,6 @@ class AppLanguagesListView : AppCompatActivity(), AppLanguagesAdapter.OnAppLangI
                 "${item.countryName}--${item.langCodes}--" +
                 "${item.langName}", Toast.LENGTH_SHORT).show()
         PrefStorage(this).intAppLangApplied = position
-        setAppLocale(item.langCodes)
+       // setAppLocale(item.langCodes)
     }
 }
