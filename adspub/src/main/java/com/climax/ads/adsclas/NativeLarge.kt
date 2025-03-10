@@ -69,7 +69,7 @@ class NativeLarge {
         actionButtonTextColor: Int,
         bgColor: Int
     ) {
-        lastNativeAdId = nativeAdId
+      //  lastNativeAdId = nativeAdId
 
         when (adState) {
             AdState.LOAD -> loadNative(
