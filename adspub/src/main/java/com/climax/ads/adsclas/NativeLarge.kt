@@ -75,7 +75,7 @@ class NativeLarge {
             AdState.LOAD -> loadNative(
                 activity,
                 nativeAdtype,
-                lastNativeAdId,
+                nativeAdId,
                 nativeAdLayout,
                 container,
                 frameLayout,
@@ -87,7 +87,7 @@ class NativeLarge {
                     loadNative(
                         activity,
                         nativeAdtype,
-                        lastNativeAdId,
+                        nativeAdId,
                         nativeAdLayout,
                         container,
                         frameLayout,
@@ -116,7 +116,7 @@ class NativeLarge {
             AdState.FAILED -> loadNative(
                 activity,
                 nativeAdtype,
-                lastNativeAdId,
+                nativeAdId,
                 nativeAdLayout,
                 container,
                 frameLayout,
@@ -145,7 +145,7 @@ class NativeLarge {
                     loadNative(
                         activity,
                         nativeAdtype,
-                        lastNativeAdId,
+                        nativeAdId,
                         nativeAdLayout,
                         container,
                         frameLayout,
@@ -160,7 +160,7 @@ class NativeLarge {
                         loadNative(
                             activity,
                             nativeAdtype,
-                            lastNativeAdId,
+                            nativeAdId,
                             nativeAdLayout,
                             container,
                             frameLayout,
@@ -191,7 +191,7 @@ class NativeLarge {
             AdState.AD_CLICKED -> loadNative(
                 activity,
                 nativeAdtype,
-                lastNativeAdId,
+                nativeAdId,
                 nativeAdLayout,
                 container,
                 frameLayout,
@@ -469,6 +469,7 @@ class NativeLarge {
         actionLoaded: (() -> Unit)? = null,
         actionFailed: (() -> Unit)? = null
     ) {
+        lastNativeAdId = nativeAdId
         val videoOptions = VideoOptions.Builder().build()
         val adOptions = NativeAdOptions.Builder().setVideoOptions(videoOptions).build()
         val adLoader = AdLoader.Builder(
