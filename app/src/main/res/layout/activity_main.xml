@@ -96,26 +96,49 @@
             app:layout_constraintStart_toStartOf="@+id/native4"
             app:layout_constraintTop_toBottomOf="@+id/native4" />
 
+        <TextView
+            android:id="@+id/languageList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="App Languages"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inter1" />
+
         <Button
             android:id="@+id/buttonexit1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
+            android:layout_marginTop="8dp"
             android:text="Exit Style 1"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/buttonexit2"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/exit" />
+
         <Button
             android:id="@+id/buttonexit2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
             android:text="Exit Style 2"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/buttonexit1" />
+            app:layout_constraintStart_toEndOf="@+id/buttonexit1"
+            app:layout_constraintTop_toTopOf="@+id/buttonexit1" />
+
+        <Button
+            android:id="@+id/buttonexit3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Exit Style 3"
+            app:layout_constraintEnd_toEndOf="@+id/buttonexit2"
+            app:layout_constraintStart_toStartOf="@+id/buttonexit1"
+            app:layout_constraintTop_toBottomOf="@+id/buttonexit1" />
+
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
@@ -149,7 +172,6 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/inline"
             app:layout_constraintTop_toBottomOf="@+id/inline" />
-
 
 
         <Button
@@ -207,27 +229,27 @@
             app:layout_constraintTop_toTopOf="@+id/inter1" />
 
         <TextView
-            android:id="@+id/languageList"
+            android:id="@+id/exit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="App Languages"
+            android:text="Exit Dialogs"
             android:textSize="@dimen/_12ssp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inter2" />
+            app:layout_constraintTop_toBottomOf="@+id/showLanguageListBtn" />
 
         <Button
             android:id="@+id/showLanguageListBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Show app language list"
-            android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="Show app language list"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/languageList"/>
+            app:layout_constraintTop_toBottomOf="@+id/languageList" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

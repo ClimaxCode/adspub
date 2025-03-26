@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/dialog_bg"
+    android:padding="16dp"
+    app:strokeWidth="0dp"
+    app:cardCornerRadius="@dimen/_20sdp"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/_8sdp"
+        android:background="@android:color/transparent"
+        android:layout_height="wrap_content">
+
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="start"
+        android:text="@string/exit_app"
+        android:textColor="@color/txtcolorprimaryLight"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="start"
+        android:id="@+id/desc"
+        android:text="@string/are_you_to_exit"
+        android:textColor="@color/txtcolorsecondayLight"
+        android:textSize="14sp"/>
+
+    <include
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_12sdp"
+        layout="@layout/native7_layout" />
+
+
+
+
+    <!-- Buttons for Exit and Cancel -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        android:gravity="end">
+
+        <TextView
+            android:id="@+id/cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CANCEL"
+            android:paddingHorizontal="@dimen/_30sdp"
+            android:paddingVertical="@dimen/_8sdp"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/txtcolorprimaryLight"
+            />
+        <TextView
+            android:id="@+id/exit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EXIT"
+            android:paddingHorizontal="@dimen/_30sdp"
+            android:paddingVertical="@dimen/_8sdp"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/txtcolorprimaryLight"
+          />
+
+
+    </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

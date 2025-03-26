@@ -11,6 +11,7 @@ import com.climax.ads.adsclas.checkAndShowInterstitial
 import com.climax.ads.adsclas.checkNetwork.BaseActivity
 import com.climax.ads.adsclas.exit1
 import com.climax.ads.adsclas.exit2
+import com.climax.ads.adsclas.exit3
 import com.climax.ads.adsclas.loadPreInterstitial
 import com.climax.ads.adsclas.preLoadLargeNativeAd
 import com.climax.ads.adsclas.preLoadRewardedVideos
@@ -88,6 +89,17 @@ class MainActivity : BaseActivity() {
                 R.color.text_color_green,
                 R.color.txt_color,
                 R.color.sub_color
+            ) {
+
+            }
+        }
+
+        binding.buttonexit3.setOnClickListener {
+            this.exit3(
+                "ca-app-pub-3940256099942544/2247696110",
+                R.color.text_color_green,
+                R.color.txt_color,
+                R.color.sub_color,false, R.color.bg_color_
             ) {
 
             }
