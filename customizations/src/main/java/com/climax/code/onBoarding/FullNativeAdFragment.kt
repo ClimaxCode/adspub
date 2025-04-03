@@ -47,7 +47,7 @@ class FullNativeAdFragment : Fragment() {
 
             it.callFullNativeAd(
                 "ca-app-pub-3940256099942544/1044960115",
-                false,
+                true,
                 true, {}, {}, {},
                 Constants.fullNativeButtonColor,
                 Constants.fullNativeButtonTextColor,

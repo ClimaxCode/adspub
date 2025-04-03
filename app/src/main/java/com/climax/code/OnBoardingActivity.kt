@@ -70,7 +70,7 @@ class OnBoardingActivity : AppCompatActivity() {
 
         callNativeAd(
             "ca-app-pub-3940256099942544/1044960115",
-            "native6",
+            "native5",
             true,
             false,
             {},
