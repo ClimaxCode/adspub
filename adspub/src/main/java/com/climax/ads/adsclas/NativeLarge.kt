@@ -541,6 +541,14 @@ class NativeLarge {
                     parent_bg.backgroundTintList= ( ColorStateList.valueOf(tintCardColor))
                 }
 
+                if (Constants.adsInDarkMode){
+                    adView.findViewById<TextView>(R.id.ad_headline).setTextColor(activity.getColor(R.color.white))
+                    adView.findViewById<TextView>(R.id.ad_body).setTextColor(activity.getColor(R.color.adsheadlinedark))
+                }else{
+                    adView.findViewById<TextView>(R.id.ad_headline).setTextColor(activity.getColor(R.color.black))
+                    adView.findViewById<TextView>(R.id.ad_body).setTextColor(activity.getColor(R.color.adsheadlineLight))
+                }
+
                 // Set the media view.
                 adView.mediaView = adView.findViewById(R.id.ad_media)
 

@@ -17,6 +17,7 @@ object Constants {
     var isNewAddLoaded = false
     var isNativeAdfailed = false
     var canShowLoadingAd = false
+    var adsInDarkMode = false
 
 
     var isPurchasedLiveData = MutableLiveData(false)

@@ -28,6 +28,8 @@
 
     <color name="txtcolorprimaryLight">#2C2C2C</color>
     <color name="txtcolorsecondayLight">#666666</color>
+    <color name="adsheadlineLight">#585858</color>
+    <color name="adsheadlinedark">#99FFFFFF</color>
 
     <color name="txtcolorprimarydark">#FFFFFF</color>
     <color name="txtcolorsecondaydark">#99FFFFFF</color>
