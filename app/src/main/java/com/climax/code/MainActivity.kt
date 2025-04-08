@@ -40,19 +40,19 @@ class MainActivity : BaseActivity() {
             startActivity(Intent(this,AppLanguagesListView::class.java))
         }
         binding.buttonexit1.setOnClickListener {
-            preLoadRewardedVideos(
-                this@MainActivity,
-                "ca-app-pub-3940256099942544/5224354917",
-                showLoadingDialog = true
-            ) {
-                if (it) {
-                    showRewarded(
-                        false,
-                        waitingTime = 8000L,
-                        "ca-app-pub-3940256099942544/5224354917",
-                        false,
-                        false,
-                        onShowAdCompletedAction = {
+//            preLoadRewardedVideos(
+//                this@MainActivity,
+//                "ca-app-pub-3940256099942544/5224354917",
+//                showLoadingDialog = true
+//            ) {
+//                if (it) {
+//                    showRewarded(
+//                        false,
+//                        waitingTime = 8000L,
+//                        "ca-app-pub-3940256099942544/5224354917",
+//                        false,
+//                        false,
+//                        onShowAdCompletedAction = {
                             this.exit1(
                                 "ca-app-pub-3940256099942544/2247696110",
                                 R.color.main_color,
@@ -61,26 +61,26 @@ class MainActivity : BaseActivity() {
                                 R.color.sub_color
                             ) {
                             }
-//                            binding.proViewBtn.visibility = View.GONE
-//                            binding.watchAdViewBtn.visibility = View.GONE
-//                            appliedSelectedFont()
-//                            isShowInterstitialsAd = true
-                        },
-                        onFailedAdAction = {
-                            Toast.makeText(
-                                this@MainActivity,
-                                "Currently Reward is not Available. Try again",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        })
-                } else {
-                    Toast.makeText(
-                        this@MainActivity,
-                        "Currently Reward is not Available. Try again",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
+////                            binding.proViewBtn.visibility = View.GONE
+////                            binding.watchAdViewBtn.visibility = View.GONE
+////                            appliedSelectedFont()
+////                            isShowInterstitialsAd = true
+//                        },
+//                        onFailedAdAction = {
+//                            Toast.makeText(
+//                                this@MainActivity,
+//                                "Currently Reward is not Available. Try again",
+//                                Toast.LENGTH_SHORT
+//                            ).show()
+//                        })
+//                } else {
+//                    Toast.makeText(
+//                        this@MainActivity,
+//                        "Currently Reward is not Available. Try again",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                }
+//            }
 
         }
         binding.buttonexit2.setOnClickListener {

@@ -43,17 +43,17 @@ class FullNativeAdFragment : Fragment() {
     }
     private fun showFullNativeAd() {
         Log.d("Loaddede", "showFullNativeAd: ${Constants.onBoardingFullScreenNativeId}")
-        requireActivity()?.let {
-//
-            it.callFullNativeAd(
-                "ca-app-pub-3940256099942544/1044960115",
+       activity?.let {
+    //
+            it.callNativeAd(
+                "ca-app-pub-3940256099942544/1044960115","large",
                 true,
                 true, {}, {}, {},
                 Constants.fullNativeButtonColor,
                 Constants.fullNativeButtonTextColor,
                 Constants.fullNativeBGColor)
 
-       }
+        }
 
 
 

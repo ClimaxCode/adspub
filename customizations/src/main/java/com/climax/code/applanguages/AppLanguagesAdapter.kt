@@ -111,12 +111,9 @@ class AppLanguagesAdapter(
                     Constants.languageCardUnSelectedItemColor
                 )
             )
-            holder.binding.layoutItem.setBackgroundColor(
-                ContextCompat.getColor(
-                    context!!,
-                    Constants.languageCardUnSelectedItemColor
-                )
-            )
+            holder.binding.layoutItem.background =
+                ContextCompat.getDrawable(context!!, Constants.languageCardUnSelectedItemColor)
+
         }
         if (isListClick) {
             if (isSelectedItem == holder.adapterPosition) {
@@ -139,12 +136,9 @@ class AppLanguagesAdapter(
                         Constants.languageCardUnSelectedItemColor
                     )
                 )
-                holder.binding.layoutItem.setBackgroundColor(
-                    ContextCompat.getColor(
-                        context!!,
-                        Constants.languageCardUnSelectedItemColor
-                    )
-                )
+                holder.binding.layoutItem.background =
+                    ContextCompat.getDrawable(context!!, Constants.languageCardUnSelectedItemColor)
+
             }
         }
 
