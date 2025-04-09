@@ -13,7 +13,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 
-fun Activity?.exit1(adId: String, adButtonColor: Int,buttonTextColor:Int,exitButtonColor:Int,bgColor:Int, exit: () -> Unit) {
+fun Activity?.exit1(adId: String, adButtonColor: Int,buttonTextColor:Int,exitButtonColor:Int,bgColor:Int,isdarkMode:Boolean,dialogbgColor:Int, exit: () -> Unit) {
     var dialogBinding = ExitNative1Binding.inflate(this!!.layoutInflater)
     val exitDialog: AlertDialog = MaterialAlertDialogBuilder(
         this,
@@ -22,6 +22,18 @@ fun Activity?.exit1(adId: String, adButtonColor: Int,buttonTextColor:Int,exitBut
         .setView(dialogBinding.root)
         .show()
     exitDialog.window?.setDimAmount(0.7f)
+
+    if (isdarkMode) {
+
+        dialogBinding.title.setTextColor(getColor(R.color.txtcolorprimarydark))
+        dialogBinding.desc.setTextColor(getColor(R.color.txtcolorsecondaydark))
+        dialogBinding.bgcolor.setBackgroundColor(dialogbgColor)
+    }else{
+        dialogBinding.title.setTextColor(getColor(R.color.txtcolorprimaryLight))
+        dialogBinding.desc.setTextColor(getColor(R.color.txtcolorsecondayLight))
+        dialogBinding.bgcolor.setBackgroundColor(dialogbgColor)
+    }
+
     dialogBinding.exitButton.setOnClickListener {
         exitDialog.dismiss()
         exit()
