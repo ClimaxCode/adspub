@@ -27,10 +27,12 @@ fun Activity?.exit1(adId: String, adButtonColor: Int,buttonTextColor:Int,exitBut
 
         dialogBinding.title.setTextColor(getColor(R.color.txtcolorprimarydark))
         dialogBinding.desc.setTextColor(getColor(R.color.txtcolorsecondaydark))
+        dialogBinding.exitButton.setTextColor(getColor(R.color.txtcolorsecondaydark))
         dialogBinding.bgcolor.setBackgroundColor(dialogbgColor)
     }else{
         dialogBinding.title.setTextColor(getColor(R.color.txtcolorprimaryLight))
         dialogBinding.desc.setTextColor(getColor(R.color.txtcolorsecondayLight))
+        dialogBinding.exitButton.setTextColor(getColor(R.color.txtcolorsecondayLight))
         dialogBinding.bgcolor.setBackgroundColor(dialogbgColor)
     }
 

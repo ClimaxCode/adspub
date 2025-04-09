@@ -58,7 +58,7 @@ class MainActivity : BaseActivity() {
                                 R.color.main_color,
                                 R.color.white,
                                 R.color.main_color,
-                                R.color.sub_color
+                                R.color.sub_color,true,R.color.black
                             ) {
                             }
 ////                            binding.proViewBtn.visibility = View.GONE
