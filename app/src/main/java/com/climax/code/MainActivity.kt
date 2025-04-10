@@ -55,6 +55,7 @@ class MainActivity : BaseActivity() {
 //                        onShowAdCompletedAction = {
                             this.exit1(
                                 "ca-app-pub-3940256099942544/2247696110",
+                                true,
                                 R.color.main_color,
                                 R.color.white,
                                 R.color.main_color,
@@ -86,6 +87,7 @@ class MainActivity : BaseActivity() {
         binding.buttonexit2.setOnClickListener {
             this.exit2(
                 "ca-app-pub-3940256099942544/2247696110",
+                true,
                 R.color.text_color_green,
                 R.color.txt_color,
                 R.color.sub_color
@@ -97,6 +99,7 @@ class MainActivity : BaseActivity() {
         binding.buttonexit3.setOnClickListener {
             this.exit3(
                 "ca-app-pub-3940256099942544/2247696110",
+                true,
                 R.color.text_color_green,
                 R.color.txt_color,
                 R.color.sub_color,false, R.color.bg_color_
