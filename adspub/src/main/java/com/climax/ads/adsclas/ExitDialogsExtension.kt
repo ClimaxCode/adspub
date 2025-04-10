@@ -13,7 +13,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 
-fun Activity?.exit1(adId: String, adButtonColor: Int,buttonTextColor:Int,exitButtonColor:Int,bgColor:Int,isdarkMode:Boolean,dialogbgColor:Int, exit: () -> Unit) {
+fun Activity?.exit1(adId: String,preload:Boolean, adButtonColor: Int,buttonTextColor:Int,exitButtonColor:Int,bgColor:Int,isdarkMode:Boolean,dialogbgColor:Int, exit: () -> Unit) {
     var dialogBinding = ExitNative1Binding.inflate(this!!.layoutInflater)
     val exitDialog: AlertDialog = MaterialAlertDialogBuilder(
         this,
@@ -49,7 +49,7 @@ fun Activity?.exit1(adId: String, adButtonColor: Int,buttonTextColor:Int,exitBut
         dialogBinding.layout.adRoot,
         dialogBinding.layout.adContainere1,
         dialogBinding.layout.shimmerExit1,
-        false,
+        preload,
         true,
         {
 
@@ -69,7 +69,7 @@ fun Activity?.exit1(adId: String, adButtonColor: Int,buttonTextColor:Int,exitBut
 
 }
 
-fun Activity?.exit2(adId: String, adButtonColor: Int,buttonTextColor:Int,bgColor:Int, exit: () -> Unit) {
+fun Activity?.exit2(adId: String,preload:Boolean, adButtonColor: Int,buttonTextColor:Int,bgColor:Int, exit: () -> Unit) {
     var dialogBinding = ExitNative2Binding.inflate(this!!.layoutInflater)
     val exitDialog = BottomSheetDialog(
         this
@@ -88,7 +88,7 @@ fun Activity?.exit2(adId: String, adButtonColor: Int,buttonTextColor:Int,bgColor
         dialogBinding.layout.adRoot,
         dialogBinding.layout.adContainere2,
         dialogBinding.layout.shimmerExit2,
-        false,
+        preload,
         true,
         {
 
@@ -103,7 +103,7 @@ fun Activity?.exit2(adId: String, adButtonColor: Int,buttonTextColor:Int,bgColor
     )
     exitDialog.show()
 }
-fun Activity?.exit3(adId: String, adButtonColor: Int,buttonTextColor:Int,bgColor:Int,isdarkMode:Boolean,dialogbgColor:Int, exit: () -> Unit) {
+fun Activity?.exit3(adId: String,preload:Boolean, adButtonColor: Int,buttonTextColor:Int,bgColor:Int,isdarkMode:Boolean,dialogbgColor:Int, exit: () -> Unit) {
     var dialogBinding = ExitNative3Binding.inflate(this!!.layoutInflater)
     val exitDialog: AlertDialog = MaterialAlertDialogBuilder(
         this,
@@ -139,7 +139,7 @@ fun Activity?.exit3(adId: String, adButtonColor: Int,buttonTextColor:Int,bgColor
         dialogBinding.layout.adRoot,
         dialogBinding.layout.adContainer7,
         dialogBinding.layout.shimmer7,
-        false,
+        preload,
         true,
         {
 
