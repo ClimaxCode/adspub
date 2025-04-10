@@ -10,7 +10,6 @@
     app:strokeWidth="1dp">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_margin="@dimen/_12sdp"
         android:layout_height="wrap_content">
 
 
@@ -38,7 +37,7 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:background="@drawable/green_outlinewe"
+                        android:background="@drawable/black_outline"
                         android:layout_height="match_parent">
 
                         <View
