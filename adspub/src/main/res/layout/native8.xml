@@ -157,7 +157,7 @@
                     android:layout_height="140dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginStart="8dp"
-                    android:background="@drawable/ads_action_btn4"
+                    android:background="@drawable/bg4"
                     android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
