@@ -113,6 +113,17 @@ class NativeLarge {
 
             AdState.LOADING -> {
                 tryToShowAgain?.invoke(true)
+                populateNativeAdView(
+                    activity,
+                    nativeAdLayout,
+                    nativeAd,
+                    container,
+                    frameLayout,
+                    shimmerFrameLayout,
+                    actionButtonColor,
+                    actionButtonTextColor,
+                    bgColor
+                )
             }
 
             AdState.FAILED -> loadNative(
@@ -217,6 +228,7 @@ class NativeLarge {
             )
         }
     }
+
 
     fun showPreLoadNative(
         activity: Activity,

@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.climax.code.R
 import com.climax.ads.adsclas.Constants.isNativeAdfailed
 import com.climax.ads.adsclas.callNativeAd
+import com.climax.ads.adsclas.showLargeNative
 import com.climax.code.databinding.ActivityNativeAdsCallBinding
 
 class NativeAdsCallActivity : AppCompatActivity() {
@@ -39,6 +40,21 @@ class NativeAdsCallActivity : AppCompatActivity() {
                 }, R.color.button_active, R.color.sub_color, R.color.sub_color
             )
 
+//            showLargeNative(
+//                "ca-app-pub-3940256099942544/1044960115", "native1",
+//                com.climax.ads.R.layout.native1,
+//                this.findViewById(com.climax.ads.R.id.ad_root),
+//                binding.layout.shimmer1,
+//                shimmer,
+//                preLoad,
+//                loadNewAd,
+//                actionLoaded,
+//                actionFailed,
+//                tryToShowAgain,
+//                actionButtonColor,
+//                actionButtonTextColor,
+//                bgColor
+//            )
 
         } else if (intent.getStringExtra("style").equals("three")) {
             binding.three.visibility = View.VISIBLE
