@@ -407,7 +407,7 @@ class NativeLarge {
                     frameLayout.hide()
                     shimmerFrameLayout.hide()*/
                     isNativeAdfailed= true
-                    Log.d("nativeAdssd", "onAdFailedToLoad: ")
+                    Log.d("nativeAdssd", "onAdFailedToLoad: $adError")
 
                     when(nativeAdtype){
                         "native1"->{

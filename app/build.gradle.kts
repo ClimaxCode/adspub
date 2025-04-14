@@ -11,7 +11,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.climax.code"
+        applicationId = "com.climax.testcode"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
