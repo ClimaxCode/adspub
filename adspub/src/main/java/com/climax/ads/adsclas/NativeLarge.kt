@@ -71,6 +71,8 @@ class NativeLarge {
     ) {
       //  lastNativeAdId = nativeAdId
 
+        Log.d("NativeadState", "showNative: $adState")
+
         when (adState) {
             AdState.LOAD -> loadNative(
                 activity,
@@ -128,7 +130,19 @@ class NativeLarge {
             )
 
             AdState.SHOWN_FAILED -> {}
-            AdState.SHOWING -> {}
+            AdState.SHOWING -> {
+                populateNativeAdView(
+                    activity,
+                    nativeAdLayout,
+                    nativeAd,
+                    container,
+                    frameLayout,
+                    shimmerFrameLayout,
+                    actionButtonColor,
+                    actionButtonTextColor,
+                    bgColor
+                )
+            }
             AdState.IMPRESSION -> {
                 if (loadNewAd) {
                     populateNativeAdView(
