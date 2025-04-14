@@ -325,7 +325,7 @@
 
 
 ## Native Type 8
-![alt text](https://github.com/ClimaxCode/adspub/blob/main/screenshots/native7.png)
+![alt text](https://github.com/ClimaxCode/adspub/blob/main/screenshots/native8.png)
 ### Add this code to XML
 	    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
