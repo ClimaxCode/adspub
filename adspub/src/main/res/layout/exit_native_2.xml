@@ -5,6 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="16dp"
+    android:id="@+id/parentbg"
+    android:backgroundTint="@color/black"
     android:background="@drawable/top_rounded">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -141,13 +143,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/black_outline"
+            android:background="@drawable/white_outline"
             android:text="EXIT"
             android:paddingVertical="@dimen/_8sdp"
             android:foreground="?attr/selectableItemBackground"
             android:gravity="center"
             android:textStyle="bold"
-            android:textColor="@color/black" />
+            android:textColor="@color/white" />
 
     </LinearLayout>
 </LinearLayout>

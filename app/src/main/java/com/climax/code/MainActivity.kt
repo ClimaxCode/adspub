@@ -58,7 +58,7 @@ class MainActivity : BaseActivity() {
                                 true,
                                 R.color.text_color_green,
                                 R.color.txt_color,
-                                R.color.sub_color
+                                R.color.sub_color, true, R.color.bg_color_
 
                             ) {
                             }
@@ -86,12 +86,12 @@ class MainActivity : BaseActivity() {
         }
         binding.buttonexit2.setOnClickListener {
             this.exit2(
-                "/21775744923/example/native",
+                "/21775744923/example/native","small",
                 true,
                 R.color.main_color,
                 R.color.white,
                 R.color.main_color,
-                R.color.sub_color,false,R.color.white
+                R.color.sub_color,true,R.color.bg_color_
             ) {
 
             }
@@ -99,7 +99,7 @@ class MainActivity : BaseActivity() {
 
         binding.buttonexit3.setOnClickListener {
             this.exit3(
-                "/21775744923/example/native",
+                "/21775744923/example/native","native3",
                 true,
                 R.color.text_color_green,
                 R.color.txt_color,

@@ -4,13 +4,14 @@
     android:id="@+id/bgcolor"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#FFFFFF"
+    android:background="@drawable/rounded_top"
+    android:backgroundTint="@color/white"
     android:orientation="vertical"
     android:padding="16dp">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:id="@+id/container1"
         android:visibility="gone"
         android:layout_height="wrap_content">
@@ -23,9 +24,9 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:id="@+id/container2"
-
+        android:visibility="gone"
         android:layout_height="wrap_content">
 
         <include
@@ -34,7 +35,102 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:id="@+id/container3"
+        android:visibility="gone"
+        android:layout_height="wrap_content">
 
+        <include
+            android:id="@+id/layout3"
+            layout="@layout/native3_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:id="@+id/container4"
+        android:visibility="gone"
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/layout4"
+            layout="@layout/native4_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:id="@+id/container5"
+        android:visibility="gone"
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/layout5"
+            layout="@layout/native5_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:id="@+id/container6"
+        android:visibility="gone"
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/layout6"
+            layout="@layout/native6_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:id="@+id/container7"
+        android:visibility="gone"
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/layout7"
+            layout="@layout/native7_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:id="@+id/container8"
+        android:visibility="gone"
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/layout8"
+            layout="@layout/native8_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:id="@+id/container9"
+        android:visibility="gone"
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/layout9"
+            layout="@layout/small_native_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
