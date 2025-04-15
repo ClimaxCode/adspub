@@ -54,7 +54,7 @@ class MainActivity : BaseActivity() {
 //                        false,
 //                        onShowAdCompletedAction = {
                             this.exit1(
-                                "/21775744923/example/native","native5",
+                                "ca-app-pub-3940256099942544/2247696110","native2",
                                 true,
                                 R.color.text_color_green,
                                 R.color.txt_color,
@@ -86,7 +86,7 @@ class MainActivity : BaseActivity() {
         }
         binding.buttonexit2.setOnClickListener {
             this.exit2(
-                "/21775744923/example/native","small",
+                "ca-app-pub-3940256099942544/2247696110","small",
                 true,
                 R.color.main_color,
                 R.color.white,
