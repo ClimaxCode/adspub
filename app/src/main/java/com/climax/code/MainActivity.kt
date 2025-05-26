@@ -109,32 +109,21 @@ class MainActivity : BaseActivity() {
             }
         }
         binding.fullNative.setOnClickListener {
-//            var intent = Intent(this, NativeAdsCallActivity::class.java)
-//            intent.putExtra("style", "one")
-//            startActivity(intent)
-
-            val rateAppDialog = RateAppDialogFragment.newInstance(
-                image = com.climax.ads.R.drawable.green_outlinewe, title = "Exit", exitTitle = "Later","ca-app-pub-3940256099942544/9214589741",
-                dialogType = "reward_type",
+            val rateAppDialog = RateUsDialog2.newInstance(
+             title = "Exit", exitTitle = "Later",
                 onActionExit = {
                     // Action to perform when the dialog triggers this function
                     // Log.d("RateAppDialog", "User completed action!")
-                    Toast.makeText(this, "Action Completed!", Toast.LENGTH_SHORT).show()
-                },
-                onActionFeedback = {
-                    // Action to perform when the dialog triggers this function
-                    // Log.d("RateAppDialog", "User completed action!")
-                    Toast.makeText(this, "Action Completed!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Action onActionExit!", Toast.LENGTH_SHORT).show()
                 },
                 onActionRateus = {
                     // Action to perform when the dialog triggers this function
                     // Log.d("RateAppDialog", "User completed action!")
-                    Toast.makeText(this, "Action Completed!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Action onActionRateus!", Toast.LENGTH_SHORT).show()
                 }
             )
 
-// Show the dialog
-            rateAppDialog.show(supportFragmentManager, RateAppDialogFragment.AD_DIALOG_TAG)
+            rateAppDialog.show(supportFragmentManager, "rateAppDialog")
         }
         binding.native1.setOnClickListener {
             var intent = Intent(this, NativeAdsCallActivity::class.java)

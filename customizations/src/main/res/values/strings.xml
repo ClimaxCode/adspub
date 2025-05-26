@@ -13,7 +13,7 @@
     <string name="txt_desc_onBoard2">Open Status Saver app to download and share  Friends Statuses</string>
     <string name="txt_desc_onBoard3">Status Saver, Chat Locker, Direct Message and Web Scan</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="thanks_for_using_birthday" >Thanks for using Birthday</string>
+    <string name="thanks_for_using_birthday">Thanks for using Birthday</string>
     <string name="dsfsf">We really appreciate you taking the time to rate us.</string>
     <string name="rate_us">Rate Us</string>
     <string name="exit">Exit</string>
@@ -21,4 +21,9 @@
     <string name="the_best_we_could_have">The best we could have</string>
     <string name="english">English</string>
     <string name="todo">ToDo</string>
+    <string name="rate_your_experince">Rate Your Experience</string>
+    <string name="ratedesc">Take a minute to rate this app and help us to improve more features.</string>
+    <string name="very_bad">Very Bad</string>
+    <string name="excellent">Excellent</string>
+    <string name="later">Later</string>
 </resources>
