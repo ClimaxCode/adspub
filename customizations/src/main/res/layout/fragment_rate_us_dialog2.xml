@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/rounded_white"
     android:padding="@dimen/_16sdp"
     android:id="@+id/bg_rate2"
     android:layout_height="wrap_content">
@@ -160,12 +160,11 @@
         app:layout_constraintStart_toStartOf="@+id/btnStar5"
         app:layout_constraintTop_toBottomOf="@+id/btnStar1" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp"
-        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -174,29 +173,38 @@
         <TextView
             android:id="@+id/cancel"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
             android:background="@drawable/rounded_blue"
             android:backgroundTint="@color/white"
             android:fontFamily="@font/poppins_medium"
             android:gravity="center"
             android:text="@string/later"
             android:textColor="@color/textcolor2"
-            android:textSize="@dimen/_16sdp" />
+            android:textSize="@dimen/_16sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/done"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/done"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_16sdp"
-            android:layout_weight="1"
-            android:singleLine="true"
+            android:layout_marginStart="8dp"
             android:background="@drawable/rounded_blue"
             android:gravity="center"
             android:paddingVertical="@dimen/_8sdp"
+            android:singleLine="true"
             android:text="@string/rate_us"
             android:textColor="@color/white"
             android:textSize="@dimen/_16sdp"
-            android:textStyle="bold" />
-    </LinearLayout>
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/cancel"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

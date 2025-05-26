@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.DialogFragment
 import com.climax.ads.adsclas.setOnSingleClickListener
 import com.climax.code.databinding.FragmentRateUsDialog2Binding
 import com.climax.code.utils.ConstantsCustomizations
@@ -15,9 +16,8 @@ import com.climax.code.utils.OnRateAppExitClickListeners
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.coroutines.Job
 
-class RateUsDialog2 : BottomSheetDialogFragment() {
+class RateUsDialog2 : DialogFragment() {
     private var onActionExit: (() -> Unit)? = null
-
     private var onActionRateus: (() -> Unit)? = null
     private var title: String? = null
     private var exitTitle: String? = null
@@ -76,6 +76,7 @@ class RateUsDialog2 : BottomSheetDialogFragment() {
         super.onCreate(savedInstanceState)
 
         dialogType = arguments?.getString(KEY_DIALOG_TYPE)
+
 
     }
 
