@@ -12,7 +12,11 @@ object ConstantsCustomizations {
     var unfilledStarDrawable=R.drawable.unfilled_star
     var buttonColorRate=R.color.main_color
     var bgColorRate=R.color.white
-
+    var titleColorRate=R.color.bg_color_
+    var descColorRate=R.color.bg_color_
+    var bg_later_rate= R.color.grey
+    var txtcolorlater= R.color.grey
+    var bg_feedback_rate= R.color.grey
 
     var headerColorOnboarding= R.color.darkBlack
     var desColorOnboarding= R.color.black

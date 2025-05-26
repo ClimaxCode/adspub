@@ -9,14 +9,15 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/poppins_medium"
         android:text="@string/rate_your_experince"
         android:textColor="@color/black"
-        android:textSize="@dimen/_15sdp"
+        android:textSize="@dimen/_17sdp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,21 +25,21 @@
         android:id="@+id/textView19"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/poppins_medium"
         android:text="@string/ratedesc"
         android:textColor="@color/textcolor2"
         android:textSize="@dimen/_12sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/btnStar1"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView19">
 
@@ -151,6 +152,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btnStar1" />
 
     <TextView
+        android:id="@+id/txtexelent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/excellent"
@@ -163,8 +165,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -174,14 +176,16 @@
             android:id="@+id/cancel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/rounded_blue"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/poppins_medium"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/rounded_bluelib"
+            android:backgroundTint="#CACACA"
             android:gravity="center"
+            android:paddingVertical="@dimen/_8sdp"
+            android:singleLine="true"
             android:text="@string/later"
-            android:textColor="@color/textcolor2"
+            android:textColor="@color/white"
             android:textSize="@dimen/_16sdp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/done"
             app:layout_constraintHorizontal_bias="0.5"
@@ -192,8 +196,8 @@
             android:id="@+id/done"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/rounded_blue"
+            android:layout_marginStart="24dp"
+            android:background="@drawable/rounded_bluelib"
             android:gravity="center"
             android:paddingVertical="@dimen/_8sdp"
             android:singleLine="true"

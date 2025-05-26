@@ -13,12 +13,12 @@ import com.climax.ads.adsclas.setOnSingleClickListener
 import com.climax.code.databinding.FragmentRateUsDialog2Binding
 import com.climax.code.utils.ConstantsCustomizations
 import com.climax.code.utils.OnRateAppExitClickListeners
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.coroutines.Job
 
 class RateUsDialog2 : DialogFragment() {
     private var onActionExit: (() -> Unit)? = null
     private var onActionRateus: (() -> Unit)? = null
+    private var onActionFeedback: (() -> Unit)? = null
     private var title: String? = null
     private var exitTitle: String? = null
 
@@ -28,13 +28,15 @@ class RateUsDialog2 : DialogFragment() {
             title: String,
             exitTitle: String,
             onActionExit: (() -> Unit)? = null,
-            onActionRateus: (() -> Unit)? = null
+            onActionRateus: (() -> Unit)? = null,
+            onActionFeedback: (() -> Unit)? = null
         ): RateUsDialog2 {
             val rateAppDialogFragment = RateUsDialog2()
             rateAppDialogFragment.title = title
             rateAppDialogFragment.exitTitle = exitTitle
             rateAppDialogFragment.onActionExit = onActionExit
             rateAppDialogFragment.onActionRateus = onActionRateus
+            rateAppDialogFragment.onActionFeedback = onActionFeedback
             return rateAppDialogFragment
         }
 
@@ -47,9 +49,9 @@ class RateUsDialog2 : DialogFragment() {
         onActionExit?.invoke()
     }
 
-//    fun triggerActionFeedBack() {
-//        onActionFeedback?.invoke()
-//    }
+    fun triggerActionFeedBack() {
+        onActionFeedback?.invoke()
+    }
 
     fun triggerActionRate() {
         onActionRateus?.invoke()
@@ -62,6 +64,12 @@ class RateUsDialog2 : DialogFragment() {
     var adJob: Job? = null
 
     var dialogType: String? = null
+
+
+    override fun onStart() {
+        super.onStart()
+        dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -101,6 +109,35 @@ class RateUsDialog2 : DialogFragment() {
     }
 
     private fun setupClickListeners() {
+
+        binding.title.setTextColor(ConstantsCustomizations.titleColorRate)
+        binding.textView19.setTextColor(ConstantsCustomizations.descColorRate)
+        binding.textView20.setTextColor(ConstantsCustomizations.descColorRate)
+        binding.txtexelent.setTextColor(ConstantsCustomizations.descColorRate)
+
+        binding.cancel.setBackgroundTintList(
+            ContextCompat.getColorStateList(
+                requireContext(),
+                ConstantsCustomizations.bg_later_rate
+            )
+        )
+        binding.cancel.setBackgroundTintMode(PorterDuff.Mode.SRC_IN)
+
+        binding.done.setBackgroundTintList(
+            ContextCompat.getColorStateList(
+                requireContext(),
+                ConstantsCustomizations.bg_feedback_rate
+            )
+        )
+        binding.done.setBackgroundTintMode(PorterDuff.Mode.SRC_IN)
+
+        binding.bgRate2.setBackgroundTintList(
+            ContextCompat.getColorStateList(
+                requireContext(),
+                ConstantsCustomizations.bgColorRate
+            )
+        )
+        binding.imgStar1.setBackgroundTintMode(PorterDuff.Mode.SRC_IN)
 
         binding.bgRate2.setBackgroundTintList(
             ContextCompat.getColorStateList(
@@ -163,10 +200,15 @@ class RateUsDialog2 : DialogFragment() {
         binding.cancel.text = exitTitle
 
         binding.done.setOnClickListener {
-
             dialog?.dismiss()
-            listener?.onRateClick(4)
-            triggerActionRate()
+            if (isRate){
+                listener?.onRateClick(4)
+                triggerActionRate()
+            }else{
+                listener?.onRateClick(3)
+                triggerActionFeedBack()
+            }
+
         }
 
         binding.cancel.setOnClickListener {
@@ -251,18 +293,22 @@ class RateUsDialog2 : DialogFragment() {
         showRateUsBtnState(ratingValue)
     }
 
+    var isRate= true
     private fun showRateUsBtnState(ratingValue: Int) {
         when (ratingValue) {
 
-//            1, 2, 3 -> {
+            1, 2, 3 -> {
 //                binding.btnRateus.invisible()
 //                binding.btnFeedback.show()
-//            }
-//
-//            4, 5 -> {
-//                binding.btnRateus.show()
-//                binding.btnFeedback.invisible()
-//            }
+                isRate = false
+                binding.done.text =getText( R.string.feedback)
+            }
+
+            4, 5 -> {
+                isRate = true
+                binding.done.text =getText( R.string.rate_us)
+
+            }
         }
     }
 

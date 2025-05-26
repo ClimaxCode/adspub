@@ -115,6 +115,9 @@ class MainActivity : BaseActivity() {
                     // Action to perform when the dialog triggers this function
                     // Log.d("RateAppDialog", "User completed action!")
                     Toast.makeText(this, "Action onActionExit!", Toast.LENGTH_SHORT).show()
+                }, onActionFeedback = {
+                    Toast.makeText(this, "Action onActionFeedback!", Toast.LENGTH_SHORT).show()
+
                 },
                 onActionRateus = {
                     // Action to perform when the dialog triggers this function
