@@ -110,10 +110,11 @@ class RateUsDialog2 : DialogFragment() {
 
     private fun setupClickListeners() {
 
-        binding.title.setTextColor(ConstantsCustomizations.titleColorRate)
-        binding.textView19.setTextColor(ConstantsCustomizations.descColorRate)
-        binding.textView20.setTextColor(ConstantsCustomizations.descColorRate)
-        binding.txtexelent.setTextColor(ConstantsCustomizations.descColorRate)
+        binding.title.setTextColor(ContextCompat.getColor(requireContext(),ConstantsCustomizations.titleColorRate))
+        binding.textView19.setTextColor(ContextCompat.getColor(requireContext(),ConstantsCustomizations.descColorRate))
+        binding.textView20.setTextColor(ContextCompat.getColor(requireContext(),ConstantsCustomizations.descColorRate))
+        binding.txtexelent.setTextColor(ContextCompat.getColor(requireContext(),ConstantsCustomizations.descColorRate))
+        binding.cancel.setTextColor(ContextCompat.getColor(requireContext(),ConstantsCustomizations.txtcolorlater))
 
         binding.cancel.setBackgroundTintList(
             ContextCompat.getColorStateList(
