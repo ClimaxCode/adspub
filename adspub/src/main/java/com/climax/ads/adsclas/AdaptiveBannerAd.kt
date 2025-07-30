@@ -1,11 +1,39 @@
 package com.climax.ads.adsclas
 
 import android.content.Context
+
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.FrameLayout
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.runtime.*
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.viewinterop.AndroidView
 import com.climax.ads.adsclas.Constants.applovinBannerAd
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.gms.ads.AdListener
@@ -71,7 +99,7 @@ class AdaptiveBannerAd(var context: Context) {
                     Log.d(TAG, "onAdFailedToLoad: ")
                     loadingText.visibility = View.GONE
                     onShowAdCompletedAction?.invoke(false)
-                    applovinBannerAd.loadApplovinBanner(context,adLayout,Constants.applovinBannerId,loadingText)
+
                 }
 
                 override fun onAdImpression() {
@@ -96,5 +124,106 @@ class AdaptiveBannerAd(var context: Context) {
 
         }
     }
+    @Composable
+    fun loadAdaptiveBannerCompose(
+        modifier: Modifier = Modifier,
+        bannerId: String,
+        onAdLoaded: ((Boolean) -> Unit)? = null
+    ) {
+        val context = LocalContext.current
+        val adView = remember { AdView(context) }
+        var isAdLoaded by remember { mutableStateOf(false) }
 
+        val density = LocalDensity.current.density
+        val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val outMetrics = DisplayMetrics().apply {
+            windowManager.defaultDisplay.getMetrics(this)
+        }
+
+        val adWidthPixels = outMetrics.widthPixels.toFloat()
+        val adWidth = (adWidthPixels / density).toInt()
+        val adSize = AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(context, adWidth)
+
+        LaunchedEffect(bannerId) {
+            if (!Constants.isPurchased() && context.isNetworkAvailable()) {
+                adView.setAdSize(adSize)
+                adView.adUnitId = bannerId
+
+                val adRequest = AdRequest.Builder().build()
+
+                adView.adListener = object : AdListener() {
+                    override fun onAdLoaded() {
+                        isAdLoaded = true
+                        onAdLoaded?.invoke(true)
+                    }
+
+                    override fun onAdFailedToLoad(error: LoadAdError) {
+                        isAdLoaded = false
+                        onAdLoaded?.invoke(false)
+                        applovinBannerAd.loadApplovinBannerCompose(modifier,Constants.applovinBannerId,onAdLoaded)
+                        // Optionally: AppLovin fallback
+                    }
+                }
+
+                adView.loadAd(adRequest)
+            } else {
+                onAdLoaded?.invoke(false)
+            }
+        }
+
+        Box(
+            modifier = modifier
+                .fillMaxWidth()
+                .height(adSize.height.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            if (isAdLoaded) {
+                AndroidView(
+                    factory = { adView },
+                    modifier = Modifier.fillMaxSize()
+                )
+            } else {
+                ShimmerBox(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .clip(RectangleShape)
+                )
+            }
+        }
+    }
+
+}
+
+@Composable
+fun ShimmerBox(
+    modifier: Modifier = Modifier,
+    shape: Shape = RoundedCornerShape(8.dp)
+) {
+    val shimmerColors = listOf(
+        Color.LightGray.copy(alpha = 0.6f),
+        Color.LightGray.copy(alpha = 0.2f),
+        Color.LightGray.copy(alpha = 0.6f)
+    )
+
+    val transition = rememberInfiniteTransition(label = "shimmer")
+    val translateAnim by transition.animateFloat(
+        initialValue = 0f,
+        targetValue = 1000f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(durationMillis = 1200, easing = LinearEasing),
+            repeatMode = RepeatMode.Restart
+        ),
+        label = "shimmerAnim"
+    )
+
+    val brush = Brush.linearGradient(
+        colors = shimmerColors,
+        start = Offset.Zero,
+        end = Offset(x = translateAnim, y = translateAnim)
+    )
+
+    Spacer(
+        modifier = modifier
+            .background(brush, shape)
+    )
 }
