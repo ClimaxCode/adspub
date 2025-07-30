@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.climax.ads"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 24
@@ -32,12 +32,26 @@ android {
     viewBinding {
         enable = true
     }
+    buildFeatures{
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.11" // ✅ REQUIRED for Kotlin 1.9.24
+    }
     kotlinOptions {
         jvmTarget = "17"
     }
 }
 
 dependencies {
+    val composeBom = platform("androidx.compose:compose-bom:2024.05.00") // ✅ Stable BOM
+    implementation(composeBom)
+    androidTestImplementation(composeBom)
+
+    implementation("androidx.compose.ui:ui")
+    implementation("androidx.compose.material3:material3")
+    implementation("androidx.compose.ui:ui-tooling-preview")
+    debugImplementation("androidx.compose.ui:ui-tooling")
     implementation(libs.androidx.core.ktx.v190)
    // implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

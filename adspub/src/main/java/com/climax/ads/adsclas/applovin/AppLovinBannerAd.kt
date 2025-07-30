@@ -95,77 +95,78 @@ class AppLovinBannerAd() {
         }
     }
 
-    @Composable
-    fun loadApplovinBannerCompose(
-        modifier: Modifier = Modifier,
-        bannerId: String,
-        onAdLoaded: ((Boolean) -> Unit)? = null
+
+}
+@Composable
+fun loadApplovinBannerCompose(context: Context,
+    modifier: Modifier = Modifier,
+    bannerId: String,
+    onAdLoaded: ((Boolean) -> Unit)? = null
+) {
+
+    var isAdLoaded by remember { mutableStateOf(false) }
+
+    // Decide banner height based on screen size
+    val screenWidthDp = LocalConfiguration.current.smallestScreenWidthDp
+    val bannerHeightDp = if (screenWidthDp >= 600) 90 else 50
+
+    val adView = remember {
+        MaxAdView(bannerId, context).apply {
+            setListener(object : MaxAdViewAdListener {
+                override fun onAdExpanded(ad: MaxAd) {}
+                override fun onAdCollapsed(ad: MaxAd) {}
+
+                override fun onAdLoaded(ad: MaxAd) {
+                    isAdLoaded = true
+                    onAdLoaded?.invoke(true)
+                }
+
+                override fun onAdDisplayed(ad: MaxAd) {}
+                override fun onAdHidden(ad: MaxAd) {}
+
+                override fun onAdClicked(ad: MaxAd) {
+                    Constants.isOnClickAnyAd = true
+                }
+
+                override fun onAdLoadFailed(adUnitId: String, error: MaxError) {
+                    isAdLoaded = false
+                    onAdLoaded?.invoke(false)
+                }
+
+                override fun onAdDisplayFailed(ad: MaxAd, error: MaxError) {
+                    isAdLoaded = false
+                    onAdLoaded?.invoke(false)
+                }
+            })
+        }
+    }
+
+    // Trigger load only once
+    LaunchedEffect(Unit) {
+        if (!Constants.isPurchased() && context.isNetworkAvailable()) {
+            adView.loadAd()
+        } else {
+            onAdLoaded?.invoke(false)
+        }
+    }
+
+    Box(
+        modifier = modifier
+            .fillMaxWidth()
+            .height(bannerHeightDp.dp),
+        contentAlignment = Alignment.Center
     ) {
-        val context = LocalContext.current
-        var isAdLoaded by remember { mutableStateOf(false) }
-
-        // Decide banner height based on screen size
-        val screenWidthDp = LocalConfiguration.current.smallestScreenWidthDp
-        val bannerHeightDp = if (screenWidthDp >= 600) 90 else 50
-
-        val adView = remember {
-            MaxAdView(bannerId, context).apply {
-                setListener(object : MaxAdViewAdListener {
-                    override fun onAdExpanded(ad: MaxAd) {}
-                    override fun onAdCollapsed(ad: MaxAd) {}
-
-                    override fun onAdLoaded(ad: MaxAd) {
-                        isAdLoaded = true
-                        onAdLoaded?.invoke(true)
-                    }
-
-                    override fun onAdDisplayed(ad: MaxAd) {}
-                    override fun onAdHidden(ad: MaxAd) {}
-
-                    override fun onAdClicked(ad: MaxAd) {
-                        Constants.isOnClickAnyAd = true
-                    }
-
-                    override fun onAdLoadFailed(adUnitId: String, error: MaxError) {
-                        isAdLoaded = false
-                        onAdLoaded?.invoke(false)
-                    }
-
-                    override fun onAdDisplayFailed(ad: MaxAd, error: MaxError) {
-                        isAdLoaded = false
-                        onAdLoaded?.invoke(false)
-                    }
-                })
-            }
-        }
-
-        // Trigger load only once
-        LaunchedEffect(Unit) {
-            if (!Constants.isPurchased() && context.isNetworkAvailable()) {
-                adView.loadAd()
-            } else {
-                onAdLoaded?.invoke(false)
-            }
-        }
-
-        Box(
-            modifier = modifier
-                .fillMaxWidth()
-                .height(bannerHeightDp.dp),
-            contentAlignment = Alignment.Center
-        ) {
-            if (isAdLoaded) {
-                AndroidView(
-                    factory = { adView },
-                    modifier = Modifier.fillMaxSize()
-                )
-            } else {
-                ShimmerBox(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .clip(RectangleShape)
-                )
-            }
+        if (isAdLoaded) {
+            AndroidView(
+                factory = { adView },
+                modifier = Modifier.fillMaxSize()
+            )
+        } else {
+            ShimmerBox(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .clip(RectangleShape)
+            )
         }
     }
 }

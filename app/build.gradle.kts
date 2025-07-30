@@ -8,12 +8,12 @@ version = "1.0.0"
 
 android {
     namespace = "com.climax.code"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.climax.testcodeq"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -40,9 +40,23 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.11" // ✅ REQUIRED for Kotlin 1.9.24
+    }
+    buildFeatures{
+        compose = true
+    }
 }
 
 dependencies {
+    val composeBom = platform("androidx.compose:compose-bom:2024.05.00") // ✅ Stable BOM
+    implementation(composeBom)
+    androidTestImplementation(composeBom)
+
+    implementation("androidx.compose.ui:ui")
+    implementation("androidx.compose.material3:material3")
+    implementation("androidx.compose.ui:ui-tooling-preview")
+    debugImplementation("androidx.compose.ui:ui-tooling")
     implementation(libs.androidx.core.ktx.v190)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
