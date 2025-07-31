@@ -459,6 +459,12 @@ fun Activity?.callNativeAd(
             shimmer = this.findViewById(R.id.shimmer8)!!
         }
 
+        "native9" -> {
+            type = R.layout.native9
+            frameLayout = this?.findViewById(R.id.adContainer9)!!
+            shimmer = this.findViewById(R.id.shimmer9)!!
+        }
+
         "small" -> {
             type = R.layout.small_native
             frameLayout = this?.findViewById(R.id.adContainers)!!

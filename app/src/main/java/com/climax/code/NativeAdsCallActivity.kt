@@ -109,7 +109,7 @@ class NativeAdsCallActivity : AppCompatActivity() {
 
             callNativeAd(
                 "ca-app-pub-3940256099942544/1044960115",
-                "native8",
+                "native9",
                 false,
                 true,
                 { Log.d("adss", "onCreate: loaded") },
