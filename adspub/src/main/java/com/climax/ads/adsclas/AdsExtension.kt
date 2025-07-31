@@ -15,11 +15,22 @@ import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.Window
 import android.widget.FrameLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.os.LocaleListCompat
@@ -518,6 +529,105 @@ fun Activity?.callFullNativeAd(
         }
     }
 }
+
+@Composable
+fun LargeNativeAdView(
+    modifier: Modifier = Modifier,
+    height:Dp,
+    nativeAdId: String,
+    nativeAdtype: String,
+    nativeAdLayout: Int,
+    preLoad: Boolean = false,
+    loadNewAd: Boolean = true,
+    actionLoaded: () -> Unit = {},
+    actionFailed: () -> Unit = {},
+    tryToShowAgain: (Boolean) -> Unit = {},
+    actionButtonColor: Int,
+    actionButtonTextColor: Int,
+    bgColor: Int
+) {
+    val context = LocalContext.current
+    val activity = context as? Activity
+
+    AndroidView(
+        modifier = modifier,
+        factory = { ctx ->
+            // Root container
+            val root = ConstraintLayout(ctx)
+
+            // Container for native ad view
+            val adContainer = ConstraintLayout(ctx).apply {
+                id = View.generateViewId()
+                layoutParams = ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                )
+            }
+
+            // FrameLayout for native ad injection
+            val frameLayout = FrameLayout(ctx).apply {
+                id = View.generateViewId()
+                layoutParams = ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                )
+            }
+
+            // FrameLayout that will act as shimmer container
+            val shimmerFrameLayout = FrameLayout(ctx).apply {
+                id = View.generateViewId()
+                layoutParams = ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                )
+
+                // Embed ComposeView with shimmer inside
+                val shimmerComposeView = ComposeView(ctx).apply {
+                    layoutParams = FrameLayout.LayoutParams(
+                        FrameLayout.LayoutParams.MATCH_PARENT,
+                        FrameLayout.LayoutParams.WRAP_CONTENT
+                    )
+                    setContent {
+                        ShimmerBox(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(height)
+                                .padding(8.dp)
+                        )
+                    }
+                }
+
+                addView(shimmerComposeView)
+            }
+
+            // Add all views to root
+            root.addView(adContainer)
+            root.addView(frameLayout)
+            root.addView(shimmerFrameLayout)
+
+            // Call your native ad display function
+            activity?.showLargeNative(
+                nativeAdId = nativeAdId,
+                nativeAdtype = nativeAdtype,
+                nativeAdLayout = nativeAdLayout,
+                container = adContainer,
+                frameLayout = frameLayout,
+                shimmerFrameLayout = shimmerFrameLayout, // ✅ Acceptable now
+                preLoad = preLoad,
+                loadNewAd = loadNewAd,
+                actionLoaded = actionLoaded,
+                actionFailed = actionFailed,
+                tryToShowAgain = tryToShowAgain,
+                actionButtonColor = actionButtonColor,
+                actionButtonTextColor = actionButtonTextColor,
+                bgColor = bgColor
+            )
+
+            root
+        }
+    )
+}
+
 
 fun Activity?.showLargeNative(
     nativeAdId: String,
