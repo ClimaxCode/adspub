@@ -1,4 +1,4 @@
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -135,4 +135,4 @@
 
     </com.google.android.gms.ads.nativead.NativeAdView>
 
-</com.google.android.material.card.MaterialCardView>
+</androidx.cardview.widget.CardView>

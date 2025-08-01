@@ -91,7 +91,7 @@ class MainActivity : BaseActivity() {
                 true,
                 R.color.main_color,
                 R.color.white,
-                R.color.sub_color,true,R.color.bg_color_
+                R.color.sub_color,false,R.color.bg_color_
             ) {
 
             }
