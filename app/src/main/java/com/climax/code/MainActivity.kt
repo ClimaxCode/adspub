@@ -12,6 +12,7 @@ import com.climax.ads.adsclas.checkNetwork.BaseActivity
 import com.climax.ads.adsclas.exit1
 import com.climax.ads.adsclas.exit2
 import com.climax.ads.adsclas.exit3
+import com.climax.ads.adsclas.exit4
 import com.climax.ads.adsclas.loadPreInterstitial
 import com.climax.ads.adsclas.preLoadLargeNativeAd
 import com.climax.ads.adsclas.preLoadRewardedVideos
@@ -85,12 +86,11 @@ class MainActivity : BaseActivity() {
 
         }
         binding.buttonexit2.setOnClickListener {
-            this.exit2(
-                "ca-app-pub-3940256099942544/2247696110","small",
+            this.exit4(
+                "ca-app-pub-3940256099942544/2247696110","native9",
                 true,
                 R.color.main_color,
                 R.color.white,
-                R.color.main_color,
                 R.color.sub_color,true,R.color.bg_color_
             ) {
 
