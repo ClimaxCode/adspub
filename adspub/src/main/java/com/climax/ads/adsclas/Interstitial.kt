@@ -48,7 +48,7 @@ class Interstitial {
                 adRequest,
                 object : InterstitialAdLoadCallback() {
                     override fun onAdFailedToLoad(adError: LoadAdError) {
-                        Log.e("InterstitialNew", "onAdFailedToLoad")
+                        Log.e("InterstitialNew", "onAdFailedToLoad $adError")
                         Constants.isLoadedAdInters = false
                         adState = AdState.FAILED
                         mInterstitialAd = null
