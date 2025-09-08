@@ -2,19 +2,20 @@ package com.climax.code
 
 import android.app.Application
 import android.util.Log
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ProcessLifecycleOwner
+import com.applovin.sdk.AppLovinMediationProvider
 import com.applovin.sdk.AppLovinSdk
+import com.applovin.sdk.AppLovinSdkInitializationConfiguration
 import com.climax.ads.adsclas.AppObserver
 import com.climax.ads.adsclas.AppOpen
 import com.climax.ads.adsclas.Constants
 import com.climax.ads.adsclas.Constants.bgColorNetworkDialog
 import com.climax.ads.adsclas.checkNetwork.LibraryInit
-import com.climax.ads.adsclas.showNetworkCheckDialog
 import com.climax.code.onBoarding.OnboardingItem
 import com.climax.code.utils.ConstantsCustomizations.onBoardingItemsList
 import com.climax.code.utils.ConstantsCustomizations.setonBoarding_Bg_Color
 import com.google.android.ump.ConsentDebugSettings
+
 
 @Suppress("DEPRECATION")
 class App : Application() {
@@ -27,8 +28,19 @@ class App : Application() {
         bgColorNetworkDialog = R.color.card_color
 
         try {
-            AppLovinSdk.getInstance(this@App).initializeSdk { configuration ->
-                Log.d("AppLovinSdk", "AppLovin SDK initialized with country code: ${configuration.countryCode}")
+//            AppLovinSdk.getInstance.i(this) { configuration ->
+//                Log.d("AppLovin", "Initialized with country code: ${configuration.countryCode}")
+//            }
+
+
+            // Create the initialization configuration
+            val initConfig = AppLovinSdkInitializationConfiguration.builder("«SDK-key»")
+                .setMediationProvider(AppLovinMediationProvider.MAX)
+                .build()
+
+            // Initialize the SDK with the configuration
+            AppLovinSdk.getInstance(this).initialize(initConfig) { sdkConfig ->
+                Log.d("AppLovin", "Initialized with country code: ${sdkConfig.countryCode}")
             }
             ConsentDebugSettings.Builder(this).addTestDeviceHashedId("2D34734E32B43287642FE9D9F7A04BEF")
         } catch (e: Exception) {

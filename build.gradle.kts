@@ -4,7 +4,7 @@
 buildscript {
     dependencies {
 
-        classpath ("com.applovin.quality:AppLovinQualityServiceGradlePlugin:+")
+        classpath ("com.applovin.quality:AppLovinQualityServiceGradlePlugin:5.9.9")
     }
 }
 plugins {
