@@ -95,6 +95,7 @@ object Constants {
     var applovinBannerId = "0"
     var applovinAppOpenId = "0"
     var applovinRewardedId = "0"
+    var isApplovinEnabled = false
 
     var interstitialAppLovinNew = AppLovinInterstitial()
     var applovinBannerAd = AppLovinBannerAd()

@@ -73,8 +73,11 @@ class AppLovinInterstitial {
                             "AppLovinInterstitial",
                             "onAdHidden: ${Constants.applovinIntersId}"
                         )
-                        Constants.interstitialAppLovinNew.loadInterstitial(context,Constants.applovinIntersId)
-
+                        if (Constants.isApplovinEnabled){
+                            Constants.interstitialAppLovinNew.loadInterstitial(context,Constants.applovinIntersId)
+                        }else{
+                            Log.d("onAppLovin", "onAppLovin:Disabled Inter")
+                        }
                     }
 
                     override fun onAdClicked(ad: MaxAd) {
@@ -157,14 +160,20 @@ class AppLovinInterstitial {
                         appLovinInterstitialAd = null
                         onShowAdCompletedAction?.invoke()
                         Log.d("AppLovinInterstitial", "onAdHidden: ${Constants.applovinIntersId}")
-                        Constants.interstitialAppLovinNew.loadInterstitial(activity,Constants.applovinIntersId)
-
+                        if (Constants.isApplovinEnabled){
+                            Constants.interstitialAppLovinNew.loadInterstitial(activity,Constants.applovinIntersId)
+                        }else{
+                            Log.d("onAppLovin", "onAppLovin:Disabled Inter")
+                        }
                     }
                 })
                 showAd()
             } else {
-                Constants.interstitialAppLovinNew.loadInterstitial(activity,Constants.applovinIntersId)
-
+                if (Constants.isApplovinEnabled){
+                    Constants.interstitialAppLovinNew.loadInterstitial(activity,Constants.applovinIntersId)
+                }else{
+                    Log.d("onAppLovin", "onAppLovin:Disabled Inter")
+                }
                 onShowAdCompletedAction?.invoke()
             }
         } ?: run {

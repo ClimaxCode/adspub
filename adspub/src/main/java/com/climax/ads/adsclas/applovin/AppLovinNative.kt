@@ -12,6 +12,7 @@ import com.applovin.mediation.nativeAds.MaxNativeAdView
 import com.applovin.mediation.nativeAds.MaxNativeAdViewBinder
 import com.climax.ads.R
 import com.climax.ads.adsclas.Constants
+import com.climax.ads.adsclas.Constants.interstitialAppLovinNew
 
 
 class ApplovinNative {
@@ -27,6 +28,10 @@ class ApplovinNative {
         frameLayout2.visibility = View.GONE
         shimmerFrameLayout.visibility = View.VISIBLE
 
+        if (!Constants.isApplovinEnabled){
+            Log.d("onAppLovin", "onAppLovin:Disabled Native")
+           return
+        }
         if (Constants.applovinNativeId != "" && Constants.applovinNativeId!= "0") {
 
             Log.d(

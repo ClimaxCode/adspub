@@ -120,7 +120,7 @@ class NativeAdsCallActivity : AppCompatActivity() {
             binding.eight.visibility = View.VISIBLE
             callNativeAd(
                 "ca-app-pub-3940256099942544/1044960115",
-                "small",
+                "native10",
                 false,
                 true,
                 {},
@@ -131,6 +131,21 @@ class NativeAdsCallActivity : AppCompatActivity() {
                 R.color.sub_color
             )
         }
+//        else if (intent.getStringExtra("style").equals("s")) {
+//            binding.eight.visibility = View.VISIBLE
+//            callNativeAd(
+//                "ca-app-pub-3940256099942544/1044960115",
+//                "native10",
+//                false,
+//                true,
+//                {},
+//                {},
+//                {},
+//                R.color.red,
+//                R.color.sub_color,
+//                R.color.sub_color
+//            )
+//        }
 
 
     }

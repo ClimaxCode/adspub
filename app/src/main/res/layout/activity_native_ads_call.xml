@@ -156,7 +156,7 @@
 
         <include
             android:id="@+id/layout7"
-            layout="@layout/small_native_layout"
+            layout="@layout/native10_layout"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

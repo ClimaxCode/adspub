@@ -54,7 +54,11 @@ class Interstitial {
                         mInterstitialAd = null
                         isFailInterstitialAd = true
                         onShowAdCompletedAction?.invoke(false)
-                        Constants.interstitialAppLovinNew.loadInterstitial(context,Constants.applovinIntersId)
+                        if (Constants.isApplovinEnabled){
+                            Constants.interstitialAppLovinNew.loadInterstitial(context,Constants.applovinIntersId)
+                        }else{
+                            Log.d("onAppLovin", "onAppLovin:Disabled Inter")
+                        }
                     }
 
                     override fun onAdLoaded(interstitialAd: InterstitialAd) {

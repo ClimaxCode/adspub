@@ -512,6 +512,19 @@ fun Activity?.exit4(adId: String,nativeAdtype:String,preload:Boolean, adButtonCo
             shimmer = dialogBinding.layout10.shimmer9
         }
 
+        "native9" -> {
+            dialogBinding.container10.visibility = View.VISIBLE
+            type = R.layout.native9
+            frameLayout = dialogBinding.layout10.adContainer9
+            shimmer = dialogBinding.layout10.shimmer9
+        }
+//        "native10" -> {
+//            dialogBinding.c.visibility = View.VISIBLE
+//            type = R.layout.native9
+//            frameLayout = dialogBinding.layout10.adContainer9
+//            shimmer = dialogBinding.layout10.shimmer9
+//        }
+
         "small" -> {
             dialogBinding.container9.visibility = View.VISIBLE
             type = R.layout.small_native

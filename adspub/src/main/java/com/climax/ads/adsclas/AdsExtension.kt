@@ -225,13 +225,18 @@ fun Activity?.showInterstitial(
                 )
                 Log.e("ad", "showInterstitial/  ${Constants.isFailInterstitialAd}")
                 if (Constants.isFailInterstitialAd) {
-                    interstitialAppLovinNew.showInterstitial(
-                        this, interstitialAdId,
-                        preLoad,
-                        waitingTime,
-                        onShowAdCompletedAction,
-                        onInterstitialFailed
-                    )
+                    if (Constants.isApplovinEnabled){
+                        interstitialAppLovinNew.showInterstitial(
+                            this, interstitialAdId,
+                            preLoad,
+                            waitingTime,
+                            onShowAdCompletedAction,
+                            onInterstitialFailed
+                        )
+                    }else{
+                        Log.d("onAppLovin", "onAppLovin:Disabled Inter")
+                    }
+
                 } else {
                     interstitial.showInterstitial(
                         this, interstitialAdId,
@@ -463,6 +468,12 @@ fun Activity?.callNativeAd(
             type = R.layout.native9
             frameLayout = this?.findViewById(R.id.adContainer9)!!
             shimmer = this.findViewById(R.id.shimmer9)!!
+        }
+
+        "native10" -> {
+            type = R.layout.native10
+            frameLayout = this?.findViewById(R.id.adContainer10)!!
+            shimmer = this.findViewById(R.id.shimmer10)!!
         }
 
         "small" -> {
