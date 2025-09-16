@@ -1,3 +1,4 @@
+package com.climax.code.applanguages
 data class AppLanguagesModel(
     val imageId: Int,
     var countryName: String,
