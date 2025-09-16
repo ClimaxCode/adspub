@@ -1,12 +1,13 @@
 package com.climax.code
 
-import AppLanguagesModel
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.climax.ads.adsclas.setAppLocale
 import com.climax.code.applanguages.AppLanguagesAdapter
+import com.climax.code.applanguages.AppLanguagesModel
 import com.climax.code.applanguages.ExtensionFun.languagesList
 import com.climax.code.applanguages.PrefStorage
 import com.climax.code.databinding.ActivityAppLanguagesListViewBinding

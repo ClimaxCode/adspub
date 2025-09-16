@@ -1,6 +1,6 @@
 package com.climax.code
 
-import AppLanguagesModel
+
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +11,7 @@ import com.climax.ads.adsclas.exit3
 import com.climax.ads.adsclas.exit4
 import com.climax.ads.adsclas.loadPreInterstitial
 import com.climax.ads.adsclas.preLoadLargeNativeAd
+import com.climax.code.applanguages.AppLanguagesModel
 import com.climax.code.applanguages.ExtensionFun.languagesList
 import com.climax.code.databinding.ActivityMainBinding
 
