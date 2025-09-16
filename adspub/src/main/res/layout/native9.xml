@@ -154,7 +154,8 @@
                                 android:layout_marginTop="@dimen/_8sdp"
                                 android:layout_marginEnd="@dimen/_4sdp"
                                 android:ellipsize="end"
-                                android:maxLines="2"
+                                android:maxLines="3"
+                                android:lines="3"
                                 android:textColor="@color/txt_color"
                                 android:textSize="@dimen/_8ssp" />
 

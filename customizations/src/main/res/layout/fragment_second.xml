@@ -17,7 +17,7 @@
             android:id="@+id/tutImg"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_250sdp"
-            android:src="@drawable/img1"
+            android:src="@drawable/ic_no_internet_vector"
             android:layout_marginTop="@dimen/_30sdp"
             app:layout_constraintBottom_toTopOf="@+id/tut_headerName"
             app:layout_constraintEnd_toEndOf="parent"

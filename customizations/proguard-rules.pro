@@ -19,3 +19,12 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# Keep AppLanguages classes
+-keep class com.climax.code.applanguages.** { *; }
+
+# Keep onboarding classes
+-keep class com.climax.code.onBoarding.** { *; }
+
+# Keep utils
+-keep class com.climax.code.utils.** { *; }

@@ -20,7 +20,7 @@ class RecyclerViewActivity : AppCompatActivity() {
 
         for (i in 1..100) {
             // Add a regular item
-            dummyItemlist.add(dummyItem.RegularItem(R.drawable.img1, "Programmatic Item #$i"))
+            dummyItemlist.add(dummyItem.RegularItem(com.climax.ads.R.drawable.ic_no_internet_vector, "Programmatic Item #$i"))
 
             // Add an ad after every 4th row (i.e., after every 16th item in a 4-column grid)
             if (i == 8 ) {

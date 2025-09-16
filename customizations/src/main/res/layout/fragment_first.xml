@@ -17,7 +17,7 @@
             android:layout_width="0dp"
             android:layout_height="@dimen/_250sdp"
             android:layout_marginTop="@dimen/_30sdp"
-            android:src="@drawable/t2"
+            android:src="@drawable/filled_star"
             app:layout_constraintBottom_toTopOf="@+id/tut_headerName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

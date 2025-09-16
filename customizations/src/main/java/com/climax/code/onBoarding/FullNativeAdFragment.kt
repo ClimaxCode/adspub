@@ -46,7 +46,7 @@ class FullNativeAdFragment : Fragment() {
        activity?.let {
     //
             it.callNativeAd(
-                "ca-app-pub-3940256099942544/1044960115","large",
+                "ca-app-pub-3940256099942544/2247696110","large",
                 true,
                 true, {}, {}, {},
                 Constants.fullNativeButtonColor,

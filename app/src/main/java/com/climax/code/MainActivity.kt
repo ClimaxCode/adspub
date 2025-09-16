@@ -4,22 +4,15 @@ import AppLanguagesModel
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import com.climax.ads.adsclas.Constants
 import com.climax.ads.adsclas.checkAndShowInterstitial
 import com.climax.ads.adsclas.checkNetwork.BaseActivity
 import com.climax.ads.adsclas.exit1
-import com.climax.ads.adsclas.exit2
 import com.climax.ads.adsclas.exit3
 import com.climax.ads.adsclas.exit4
 import com.climax.ads.adsclas.loadPreInterstitial
 import com.climax.ads.adsclas.preLoadLargeNativeAd
-import com.climax.ads.adsclas.preLoadRewardedVideos
-import com.climax.ads.adsclas.showRewarded
 import com.climax.code.applanguages.ExtensionFun.languagesList
 import com.climax.code.databinding.ActivityMainBinding
-import com.climax.code.utils.ConstantsCustomizations
 
 
 class MainActivity : BaseActivity() {
@@ -87,7 +80,7 @@ class MainActivity : BaseActivity() {
         }
         binding.buttonexit2.setOnClickListener {
             this.exit4(
-                "ca-app-pub-3940256099942544/2247696110","native9",
+                "ca-app-pub-3940256099942544/2247696110","native10",
                 true,
                 R.color.main_color,
                 R.color.white,
@@ -99,7 +92,7 @@ class MainActivity : BaseActivity() {
 
         binding.buttonexit3.setOnClickListener {
             this.exit3(
-                "/21775744923/example/native","native3",
+                "/21775744923/example/native","native9",
                 true,
                 R.color.text_color_green,
                 R.color.txt_color,
@@ -109,28 +102,46 @@ class MainActivity : BaseActivity() {
             }
         }
         binding.fullNative.setOnClickListener {
-            val rateAppDialog = RateUsDialog2.newInstance(
-             title = "Exit", exitTitle = "Later",
-                onActionExit = {
-                    // Action to perform when the dialog triggers this function
-                    // Log.d("RateAppDialog", "User completed action!")
-                    Toast.makeText(this, "Action onActionExit!", Toast.LENGTH_SHORT).show()
-                }, onActionFeedback = {
-                    Toast.makeText(this, "Action onActionFeedback!", Toast.LENGTH_SHORT).show()
+//            val rateAppDialog = RateUsDialog2.newInstance(
+//             title = "Exit", exitTitle = "Later",
+//                onActionExit = {
+//                    // Action to perform when the dialog triggers this function
+//                    // Log.d("RateAppDialog", "User completed action!")
+//                    Toast.makeText(this, "Action onActionExit!", Toast.LENGTH_SHORT).show()
+//                }, onActionFeedback = {
+//                    Toast.makeText(this, "Action onActionFeedback!", Toast.LENGTH_SHORT).show()
+//
+//                },
+//                onActionRateus = {
+//                    // Action to perform when the dialog triggers this function
+//                    // Log.d("RateAppDialog", "User completed action!")
+//                    Toast.makeText(this, "Action onActionRateus!", Toast.LENGTH_SHORT).show()
+//                }
+//            )
+//
+//            rateAppDialog.show(supportFragmentManager, "rateAppDialog")
+            var intent = Intent(this, NativeAdsCallActivity::class.java)
+            intent.putExtra("style", "one")
+            startActivity(intent)
 
-                },
-                onActionRateus = {
-                    // Action to perform when the dialog triggers this function
-                    // Log.d("RateAppDialog", "User completed action!")
-                    Toast.makeText(this, "Action onActionRateus!", Toast.LENGTH_SHORT).show()
-                }
-            )
-
-            rateAppDialog.show(supportFragmentManager, "rateAppDialog")
         }
         binding.native1.setOnClickListener {
             var intent = Intent(this, NativeAdsCallActivity::class.java)
             intent.putExtra("style", "two")
+            startActivity(intent)
+
+        }
+
+        binding.native9.setOnClickListener {
+            var intent = Intent(this, NativeAdsCallActivity::class.java)
+            intent.putExtra("style", "nine")
+            startActivity(intent)
+
+        }
+
+        binding.native10.setOnClickListener {
+            var intent = Intent(this, NativeAdsCallActivity::class.java)
+            intent.putExtra("style", "ten")
             startActivity(intent)
 
         }
@@ -141,7 +152,7 @@ class MainActivity : BaseActivity() {
 
 
         }
-        preLoadLargeNativeAd("ca-app-pub-3940256099942544/1044960115")
+        preLoadLargeNativeAd("ca-app-pub-3940256099942544/2247696110")
 
         binding.native3.setOnClickListener {
             var intent = Intent(this, NativeAdsCallActivity::class.java)

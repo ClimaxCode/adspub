@@ -1,13 +1,15 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id("org.jetbrains.kotlin.plugin.compose")
     `maven-publish`
     signing
+
 }
 
 android {
     namespace = "com.climax.ads"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 24
@@ -18,7 +20,7 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -35,11 +37,17 @@ android {
     buildFeatures{
         compose = true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.11" // ✅ REQUIRED for Kotlin 1.9.24
+
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+        }
     }
-    kotlinOptions {
-        jvmTarget = "17"
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
     }
 }
 
@@ -68,8 +76,8 @@ dependencies {
     implementation(libs.sdp.android)
     implementation(libs.ssp.android)
     implementation(libs.shimmer)
-    implementation ("com.applovin:applovin-sdk:13.0.1")
-    implementation ("com.applovin.mediation:facebook-adapter:6.18.0.1")
+    implementation ("com.applovin:applovin-sdk:13.4.0")
+  //  implementation ("com.applovin.mediation:facebook-adapter:6.18.0.1")
 }
 
 afterEvaluate {

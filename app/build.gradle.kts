@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("org.jetbrains.kotlin.plugin.compose")
 }
 
 group = "com.github.ClimaxCode"
@@ -8,12 +9,12 @@ version = "1.0.0"
 
 android {
     namespace = "com.climax.code"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.climax.testcodeq"
+        applicationId = "com.climax.testcodeqs"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -22,7 +23,8 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -37,8 +39,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "17"
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+        }
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.11" // ✅ REQUIRED for Kotlin 1.9.24
@@ -75,6 +79,6 @@ dependencies {
     implementation(project(":customizations"))
     implementation ("com.airbnb.android:lottie:6.6.7")
 
-    implementation ("com.applovin:applovin-sdk:13.3.1")
+  //  implementation ("com.applovin:applovin-sdk:13.3.0")
   //  implementation ("com.applovin.mediation:facebook-adapter:6.18.0.1")
 }

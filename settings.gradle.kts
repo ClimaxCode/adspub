@@ -13,6 +13,10 @@ pluginManagement {
         gradlePluginPortal()
         maven { url = uri("https://artifacts.applovin.com/android") }
     }
+
+    plugins {
+        id("org.jetbrains.kotlin.plugin.compose") version "2.2.20"
+    }
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
