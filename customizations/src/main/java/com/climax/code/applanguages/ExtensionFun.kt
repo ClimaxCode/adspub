@@ -1,6 +1,6 @@
 package com.climax.code.applanguages
 
-import AppLanguagesModel
+
 import com.climax.code.R
 
 object ExtensionFun {

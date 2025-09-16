@@ -1,6 +1,5 @@
 package com.climax.code.applanguages
 
-import AppLanguagesModel
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.Configuration
