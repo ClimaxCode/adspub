@@ -498,6 +498,9 @@ class NativeLarge {
                             }
 
                         }
+                    }else{
+                        frameLayout.visibility = View.GONE
+                        shimmerFrameLayout.visibility = View.GONE
                     }
                 }
 

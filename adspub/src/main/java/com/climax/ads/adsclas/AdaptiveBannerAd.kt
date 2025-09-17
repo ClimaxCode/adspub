@@ -108,6 +108,9 @@ class AdaptiveBannerAd(var context: Context) {
                             Constants.applovinBannerId,
                             loadingText
                         )
+                    }else{
+                        adLayout.visibility = View.GONE
+                        loadingText.visibility = View.GONE
                     }
                 }
 

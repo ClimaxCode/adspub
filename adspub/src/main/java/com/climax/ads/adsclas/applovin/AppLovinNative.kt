@@ -40,6 +40,8 @@ class ApplovinNative {
             )
             spnativeAdLoader =
                 MaxNativeAdLoader(Constants.applovinNativeId, activity)
+
+
             spnativeAdLoader?.setRevenueListener { ad: MaxAd? -> }
             spnativeAdLoader?.setNativeAdListener(
                 object : MaxNativeAdListener() {

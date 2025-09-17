@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.util.Log
+import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.FrameLayout
@@ -95,6 +96,9 @@ class CollapsibleBannerAd() {
                             Constants.applovinBannerId,
                             shimmerFrameLayout
                         )
+                    }else{
+                        adContainerView.visibility = View.GONE
+                        shimmerFrameLayout.visibility = View.GONE
                     }
                 }
 
