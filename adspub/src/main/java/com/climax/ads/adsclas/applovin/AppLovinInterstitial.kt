@@ -49,7 +49,7 @@ class AppLovinInterstitial {
                 Log.e("AppLovinInterstitial", "Loading new interstitial ad: $lastInterstitialAdId")
                 adState = AdState.LOADING
 
-                appLovinInterstitialAd = MaxInterstitialAd(Constants.applovinIntersId, context)
+                appLovinInterstitialAd = MaxInterstitialAd(Constants.applovinIntersId)
                 appLovinInterstitialAd?.setListener(object : MaxAdListener {
                     override fun onAdLoaded(ad: MaxAd) {
                         Log.e("AppLovinInterstitial", "Ad loaded successfully.")

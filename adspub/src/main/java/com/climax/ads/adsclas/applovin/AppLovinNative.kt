@@ -38,8 +38,9 @@ class ApplovinNative {
                 "showApplovinNative",
                 "loadApplovinNativeAds12: ${Constants.applovinNativeId}"
             )
+
             spnativeAdLoader =
-                MaxNativeAdLoader(Constants.applovinNativeId, activity)
+                MaxNativeAdLoader(Constants.applovinNativeId)
 
 
             spnativeAdLoader?.setRevenueListener { ad: MaxAd? -> }

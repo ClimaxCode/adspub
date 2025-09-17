@@ -25,6 +25,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.viewinterop.AndroidView
+import com.applovin.mediation.MaxAdViewConfiguration
 import com.climax.ads.adsclas.ShimmerBox
 
 
@@ -42,8 +43,10 @@ class AppLovinBannerAd() {
     ) {
         if (!Constants.isPurchased() && context.isNetworkAvailable()) {
             if (Constants.applovinBannerId != "" && Constants.applovinBannerId != "0") {
-
-                adView = MaxAdView(bannerId, context)
+                val config = MaxAdViewConfiguration.builder()
+                    .setAdaptiveType(MaxAdViewConfiguration.AdaptiveType.ANCHORED)
+                    .build()
+                adView = MaxAdView(bannerId, config)
                 val bannerHeightDp =
                     if (context.resources.configuration.smallestScreenWidthDp >= 600) {
                         90
@@ -109,9 +112,12 @@ fun loadApplovinBannerCompose(context: Context,
     // Decide banner height based on screen size
     val screenWidthDp = LocalConfiguration.current.smallestScreenWidthDp
     val bannerHeightDp = if (screenWidthDp >= 600) 90 else 50
+    val config = MaxAdViewConfiguration.builder()
+        .setAdaptiveType(MaxAdViewConfiguration.AdaptiveType.ANCHORED)
+        .build()
 
     val adView = remember {
-        MaxAdView(bannerId, context).apply {
+        MaxAdView(bannerId, config).apply {
             setListener(object : MaxAdViewAdListener {
                 override fun onAdExpanded(ad: MaxAd) {}
                 override fun onAdCollapsed(ad: MaxAd) {}
