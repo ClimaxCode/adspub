@@ -217,6 +217,7 @@ fun loadAdaptiveBannerCompose(
                     )
                 }else{
                     onAdLoaded?.invoke(false)
+                    onApplovinAdLoaded?.invoke(false)
                 }
 
             }
