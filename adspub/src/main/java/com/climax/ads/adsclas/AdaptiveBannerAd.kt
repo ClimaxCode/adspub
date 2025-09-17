@@ -100,7 +100,15 @@ class AdaptiveBannerAd(var context: Context) {
                     Log.d(TAG, "onAdFailedToLoad: ")
                     loadingText.visibility = View.GONE
                     onShowAdCompletedAction?.invoke(false)
-
+                    if (Constants.isApplovinEnabled) {
+                        Log.e("Applovin_TAG_NEW", "Loading Applovin Banner")
+                        Constants.applovinBannerAd.loadApplovinBanner(
+                            context,
+                            adLayout,
+                            Constants.applovinBannerId,
+                            loadingText
+                        )
+                    }
                 }
 
                 override fun onAdImpression() {

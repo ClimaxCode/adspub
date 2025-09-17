@@ -18,6 +18,7 @@ import com.google.android.gms.ads.LoadAdError
 
 class CollapsibleBannerAd() {
     private var adView: AdView? = null
+
     companion object {
         const val COLLAPSIBLE_BANNER_TAG = "collapsibleBanner"
     }
@@ -38,9 +39,14 @@ class CollapsibleBannerAd() {
         }
     }
 
-    fun loadBanner(context: Context,id :String,adContainerView: FrameLayout,shimmerFrameLayout: ShimmerFrameLayout) {
+    fun loadBanner(
+        context: Context,
+        id: String,
+        adContainerView: FrameLayout,
+        shimmerFrameLayout: ShimmerFrameLayout
+    ) {
 
-        if(!Constants.isPurchased() && context.isNetworkAvailable()) {
+        if (!Constants.isPurchased() && context.isNetworkAvailable()) {
             adView = AdView(context)
 
             val adLayoutParams = FrameLayout.LayoutParams(
@@ -81,7 +87,15 @@ class CollapsibleBannerAd() {
                 override fun onAdFailedToLoad(p0: LoadAdError) {
                     super.onAdFailedToLoad(p0)
                     Log.e(COLLAPSIBLE_BANNER_TAG, "onAdFailedToLoad:${p0.message}")
-                    Constants.applovinBannerAd.loadApplovinBanner(context,adContainerView,Constants.applovinBannerId,shimmerFrameLayout)
+                    if (Constants.isApplovinEnabled) {
+                        Log.e("Applovin_TAG_NEW", "Loading Applovin Banner")
+                        Constants.applovinBannerAd.loadApplovinBanner(
+                            context,
+                            adContainerView,
+                            Constants.applovinBannerId,
+                            shimmerFrameLayout
+                        )
+                    }
                 }
 
                 override fun onAdImpression() {
@@ -100,13 +114,11 @@ class CollapsibleBannerAd() {
                     super.onAdOpened()
                 }
             }
-        }else{
+        } else {
             adContainerView?.hide()
             shimmerFrameLayout?.hide()
         }
     }
-
-
 
 
 }

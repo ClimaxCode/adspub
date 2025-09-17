@@ -4,6 +4,7 @@ package com.climax.code
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.climax.ads.adsclas.checkAndShowInterstitial
 import com.climax.ads.adsclas.checkNetwork.BaseActivity
 import com.climax.ads.adsclas.exit1
@@ -205,7 +206,8 @@ class MainActivity : BaseActivity() {
         this.loadPreInterstitial("ca-app-pub-3940256099942544/103317371212")
 
         binding.inter1.setOnClickListener {
-            this.checkAndShowInterstitial(
+            Toast.makeText(this@MainActivity, "Clicked Inter", Toast.LENGTH_SHORT).show()
+           checkAndShowInterstitial(
                 true,
                 "ca-app-pub-3940256099942544/103317371212",
                 true,

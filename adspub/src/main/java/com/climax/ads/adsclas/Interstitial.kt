@@ -16,6 +16,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+
 class Interstitial {
     private var mInterstitialAd: InterstitialAd? = null
     private var adState = AdState.LOAD
@@ -30,11 +31,16 @@ class Interstitial {
     companion object {
         var discardDone = false
     }
+
     init {
         Log.e("InterstitialNew", "Creating interstitial class")
     }
 
-    fun loadInterstitial(context: Activity, interstitialAdId: String,onShowAdCompletedAction: ((Boolean) -> Unit)? = null) {
+    fun loadInterstitial(
+        context: Activity,
+        interstitialAdId: String,
+        onShowAdCompletedAction: ((Boolean) -> Unit)? = null
+    ) {
         if (interstitialAdId.isNotEmpty()) lastInterstitialAdId = interstitialAdId
         if (adState == AdState.LOADING) return
         mInterstitialAd?.let {
@@ -43,7 +49,8 @@ class Interstitial {
             Log.e("InterstitialNew", "Loading new Interstitial$lastInterstitialAdId")
             val adRequest = AdRequest.Builder().build()
             adState = AdState.LOADING
-            InterstitialAd.load(context.applicationContext,
+            InterstitialAd.load(
+                context.applicationContext,
                 lastInterstitialAdId,
                 adRequest,
                 object : InterstitialAdLoadCallback() {
@@ -54,9 +61,14 @@ class Interstitial {
                         mInterstitialAd = null
                         isFailInterstitialAd = true
                         onShowAdCompletedAction?.invoke(false)
-                        if (Constants.isApplovinEnabled){
-                            Constants.interstitialAppLovinNew.loadInterstitial(context,Constants.applovinIntersId)
-                        }else{
+                        if (Constants.isApplovinEnabled) {
+                            Log.e("Applovin_TAG_NEW", "Loading Applovin Inter Called")
+                            Constants.interstitialAppLovinNew.loadInterstitial(
+                                context,
+                                Constants.applovinIntersId
+                            )
+                        } else {
+                            Log.e("Applovin_TAG_NEW", "Loading Applovin Not Called")
                             Log.d("onAppLovin", "onAppLovin:Disabled Inter")
                         }
                     }
@@ -89,6 +101,7 @@ class Interstitial {
             }
         }
     }
+
     private fun loadInterstitialWithWaiting(
         activity: Activity,
         interstitialAdId: String,
@@ -101,7 +114,8 @@ class Interstitial {
         } ?: run {
             val adRequest = AdRequest.Builder().build()
             adState = AdState.LOADING
-            InterstitialAd.load(activity.applicationContext,
+            InterstitialAd.load(
+                activity.applicationContext,
                 interstitialAdId,
                 adRequest,
                 object : InterstitialAdLoadCallback() {
@@ -190,14 +204,19 @@ class Interstitial {
             show(activity)
 
         } ?: run {
-            if(waitingTime!=0L && activity.isNetworkAvailable()){
+            if (waitingTime != 0L && activity.isNetworkAvailable()) {
                 Log.d("checkAdLoadingStatus", "showInterstitial: loading")
                 Constants.canShowLoadingAd = true
                 loadingDialog = activity.createLoadingDialog("Processing...!")
                 if (!activity.isFinishing && !activity.isDestroyed) {
                     loadingDialog?.show()
                 }
-                loadInterstitialWithWaiting(activity,interstitialAdId, preLoad, onShowAdCompletedAction)
+                loadInterstitialWithWaiting(
+                    activity,
+                    interstitialAdId,
+                    preLoad,
+                    onShowAdCompletedAction
+                )
                 action = onShowAdCompletedAction
                 userWaitingJob = CoroutineScope(Dispatchers.Main).launch {
                     delay(waitingTime)
@@ -210,28 +229,44 @@ class Interstitial {
                         AdState.LOAD -> {}
                         AdState.LOADING -> onInterstitialFailed?.invoke(true)
                         AdState.LOADED -> {
-                            setInterstitialAdListeners(activity,interstitialAdId, preLoad, onShowAdCompletedAction)
-                            mInterstitialAd?.show(activity) ?: run { onShowAdCompletedAction.invoke() }
+                            setInterstitialAdListeners(
+                                activity,
+                                interstitialAdId,
+                                preLoad,
+                                onShowAdCompletedAction
+                            )
+                            mInterstitialAd?.show(activity)
+                                ?: run { onShowAdCompletedAction.invoke() }
                         }
+
                         AdState.FAILED -> onInterstitialFailed?.invoke(true)
                         AdState.SHOWN_FAILED -> {
-                            setInterstitialAdListeners(activity,interstitialAdId, preLoad, onShowAdCompletedAction)
-                            mInterstitialAd?.show(activity) ?: run { onShowAdCompletedAction.invoke() }
+                            setInterstitialAdListeners(
+                                activity,
+                                interstitialAdId,
+                                preLoad,
+                                onShowAdCompletedAction
+                            )
+                            mInterstitialAd?.show(activity)
+                                ?: run { onShowAdCompletedAction.invoke() }
                         }
+
                         AdState.SHOWING -> {}
                         AdState.DISMISSED -> {
                             requestedForAd = false
                         }
+
                         AdState.IMPRESSION -> {}
                         AdState.AD_CLICKED -> {}
                     }
                 }
-            }else{
+            } else {
                 Constants.isLastAdWasAdmob = false
                 onInterstitialFailed?.invoke(true)
             }
         }
     }
+
     fun onResume(activity: Activity) {
         if (currentActivityRegisterCheck == activity.localClassName && requestedForAd) {
             userWaitingJob = CoroutineScope(Dispatchers.Main).launch {
