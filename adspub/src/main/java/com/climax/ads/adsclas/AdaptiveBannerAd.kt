@@ -145,7 +145,8 @@ fun loadAdaptiveBannerCompose(
     context: Context,
     modifier: Modifier = Modifier,
     bannerId: String,
-    onAdLoaded: ((Boolean) -> Unit)? = null
+    onAdLoaded: ((Boolean) -> Unit)? = null,
+    onApplovinAdLoaded: ((Boolean) -> Unit)? = null
 ) {
     var isAdLoaded by remember { mutableStateOf(false) }
     var useAppLovin by remember { mutableStateOf(false) }
@@ -211,7 +212,8 @@ fun loadAdaptiveBannerCompose(
                         context,
                         modifier,
                         Constants.applovinBannerId,
-                        onAdLoaded
+                        onAdLoaded,onApplovinAdLoaded
+
                     )
                 }else{
                     onAdLoaded?.invoke(false)

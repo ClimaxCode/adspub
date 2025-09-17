@@ -104,7 +104,7 @@ class AppLovinBannerAd() {
 fun loadApplovinBannerCompose(context: Context,
     modifier: Modifier = Modifier,
     bannerId: String,
-    onAdLoaded: ((Boolean) -> Unit)? = null
+    onAdLoaded: ((Boolean) -> Unit)? = null, onApplovinAdLoaded: ((Boolean) -> Unit)? = null
 ) {
 
     var isAdLoaded by remember { mutableStateOf(false) }
@@ -125,6 +125,7 @@ fun loadApplovinBannerCompose(context: Context,
                 override fun onAdLoaded(ad: MaxAd) {
                     isAdLoaded = true
                     onAdLoaded?.invoke(true)
+                    onApplovinAdLoaded?.invoke(true)
                 }
 
                 override fun onAdDisplayed(ad: MaxAd) {}
@@ -137,11 +138,13 @@ fun loadApplovinBannerCompose(context: Context,
                 override fun onAdLoadFailed(adUnitId: String, error: MaxError) {
                     isAdLoaded = false
                     onAdLoaded?.invoke(false)
+                    onApplovinAdLoaded?.invoke(false)
                 }
 
                 override fun onAdDisplayFailed(ad: MaxAd, error: MaxError) {
                     isAdLoaded = false
                     onAdLoaded?.invoke(false)
+                    onApplovinAdLoaded?.invoke(false)
                 }
             })
         }
@@ -153,6 +156,7 @@ fun loadApplovinBannerCompose(context: Context,
             adView.loadAd()
         } else {
             onAdLoaded?.invoke(false)
+            onApplovinAdLoaded?.invoke(false)
         }
     }
 
