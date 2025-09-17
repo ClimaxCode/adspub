@@ -108,7 +108,7 @@ class AdaptiveBannerAd(var context: Context) {
                             Constants.applovinBannerId,
                             loadingText
                         )
-                    }else{
+                    } else {
                         adLayout.visibility = View.GONE
                         loadingText.visibility = View.GONE
                     }
@@ -138,9 +138,8 @@ class AdaptiveBannerAd(var context: Context) {
     }
 
 
-
-
 }
+
 @Composable
 fun loadAdaptiveBannerCompose(
     context: Context,
@@ -150,6 +149,7 @@ fun loadAdaptiveBannerCompose(
 ) {
     var isAdLoaded by remember { mutableStateOf(false) }
     var useAppLovin by remember { mutableStateOf(false) }
+    var loadAppLovin by remember { mutableStateOf(Constants.isApplovinEnabled) }
 
     val adView = remember { AdView(context) }
     val density = LocalDensity.current.density
@@ -206,7 +206,17 @@ fun loadAdaptiveBannerCompose(
 
             useAppLovin -> {
                 // ✅ Safely compose fallback here
-                loadApplovinBannerCompose(context, modifier, Constants.applovinBannerId, onAdLoaded)
+                if (loadAppLovin) {
+                    loadApplovinBannerCompose(
+                        context,
+                        modifier,
+                        Constants.applovinBannerId,
+                        onAdLoaded
+                    )
+                }else{
+                    onAdLoaded?.invoke(false)
+                }
+
             }
 
             else -> {
